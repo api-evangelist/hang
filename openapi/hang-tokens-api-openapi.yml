@@ -1,0 +1,566 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities Tokens API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Tokens
+paths:
+  /wallets/{wallet_address}/tokens:
+    get:
+      tags:
+      - Tokens
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_wallets_wallet_address_tokens
+      summary: Retrieve the tokens, if any, owned by a given wallet address.
+      parameters:
+      - name: wallet_address
+        type: string
+        in: path
+        required: true
+        description: the wallet address
+      responses:
+        '200':
+          description: Returns the array of tokens successfully.
+          schema:
+            type: object
+            properties:
+              tokens:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tokens:
+                      type: object
+                      properties:
+                        token_id:
+                          type: string
+                          description: the token id
+                        image:
+                          type: string
+                          description: image url
+                        traits:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: trait name
+                              value:
+                                type: string
+                                description: trait value
+                            additionalProperties: false
+                            required:
+                            - name
+                            - value
+                        tier_metric_value:
+                          type: number
+                          description: the value earned towards the current tier
+                        current_tier:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: uuid of the current tier
+                            order:
+                              type: number
+                              description: indicates the placement order of the current tier in the program
+                            tier_metric_minimum_threshold:
+                              type: string
+                              description: the minimum value required to reach this tier
+                            display_name:
+                              type: string
+                              description: the name of the tier
+                            marketing_benefit_text:
+                              type: string
+                              description: the marketing benefit text for the tier
+                            primary_color:
+                              type: string
+                              description: the primary color for the tier used for branding purposes
+                          additionalProperties: false
+                          required:
+                          - id
+                          - order
+                          - tier_metric_minimum_threshold
+                          - display_name
+                          - marketing_benefit_text
+                          - primary_color
+                      additionalProperties: false
+                      required:
+                      - token_id
+                      - image
+                      - traits
+                      - tier_metric_value
+                      - current_tier
+                  additionalProperties: false
+                  required:
+                  - tokens
+            additionalProperties: false
+            required:
+            - tokens
+      description: Certain resources within the Partner API require a token id to be suppiled. This endpoint returns an array of token ids for a given wallet address.
+  /tokens/{token_id}/add-trait:
+    post:
+      tags:
+      - Tokens
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_tokens_token_id_add-trait
+      summary: Endpoint to add a trait to a token
+      parameters:
+      - name: trait_value
+        type: string
+        in: formData
+        required: true
+        description: value of the trait
+      - name: trait_name
+        type: string
+        in: formData
+        required: true
+        description: name of the trait
+      - name: token_id
+        type: string
+        in: path
+        required: true
+        description: the token id
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              token_id:
+                type: string
+                description: the token id
+              image:
+                type: string
+                description: image url
+              traits:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: trait name
+                    value:
+                      type: string
+                      description: trait value
+                  additionalProperties: false
+                  required:
+                  - name
+                  - value
+            additionalProperties: false
+            required:
+            - token_id
+            - image
+            - traits
+      description: ''
+  /tokens/{token_id}/remove-trait:
+    post:
+      tags:
+      - Tokens
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_tokens_token_id_remove-trait
+      summary: Endpoint to remove a trait from a token
+      parameters:
+      - name: trait_value
+        type: string
+        in: formData
+        required: true
+        description: value of the trait
+      - name: trait_name
+        type: string
+        in: formData
+        required: true
+        description: name of the trait
+      - name: token_id
+        type: string
+        in: path
+        required: true
+        description: the token id
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              token_id:
+                type: string
+                description: the token id
+              image:
+                type: string
+                description: image url
+              traits:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: trait name
+                    value:
+                      type: string
+                      description: trait value
+                  additionalProperties: false
+                  required:
+                  - name
+                  - value
+            additionalProperties: false
+            required:
+            - token_id
+            - image
+            - traits
+      description: ''
+  /tokens/{token_id}/set-token-image:
+    post:
+      tags:
+      - Tokens
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_tokens_token_id_set-token-image
+      summary: Endpoint to set a tokens image
+      parameters:
+      - name: image_url
+        type: string
+        in: formData
+        required: true
+        description: image url for the token
+      - name: token_id
+        type: string
+        in: path
+        required: true
+        description: the token id
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              token_id:
+                type: string
+                description: the token id
+              image:
+                type: string
+                description: image url
+              traits:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: trait name
+                    value:
+                      type: string
+                      description: trait value
+                  additionalProperties: false
+                  required:
+                  - name
+                  - value
+            additionalProperties: false
+            required:
+            - token_id
+            - image
+            - traits
+      description: ''
+  /tokens/{token_id}/level:
+    get:
+      tags:
+      - Tokens
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_tokens_token_id_level
+      summary: Retrieve the current level or tier, as well as earned points (XP) for a token.
+      parameters:
+      - name: token_id
+        type: number
+        in: path
+        required: true
+        description: the token id
+      responses:
+        '200':
+          description: Returns details successfully
+          schema:
+            type: object
+            properties:
+              level:
+                type: object
+                properties:
+                  tier:
+                    type: string
+                    description: Tier name
+                  balance:
+                    type: number
+                    description: XP balance
+                additionalProperties: false
+                required:
+                - tier
+                - balance
+            additionalProperties: false
+            required:
+            - level
+        '404':
+          description: Could not find the token provided.
+      description: Invoke this endpoint to return the tier and earned points (XP) for a given token id.
+  /tokens/{token_id}/loot-boxes:
+    get:
+      tags:
+      - Tokens
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_tokens_token_id_loot-boxes
+      summary: Endpoint to fetch all loot boxes for a token
+      parameters:
+      - name: token_id
+        type: string
+        in: path
+        required: true
+        description: the token id
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              allocated_loot_boxes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    loot_box_id:
+                      type: string
+                      description: Unique identifier for the Lootbox object.
+                    name:
+                      type: string
+                      description: Name/title of the Lootbox object.
+                    description:
+                      type: string
+                      description: description of the Lootbox object.
+                    available_since:
+                      type: number
+                      description: When the lootbox became available, in epoch seconds.
+                    redeemed_at:
+                      type: number
+                      description: When the lootbox was opened, in epoch seconds.
+                    allocated_reward_choice:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the LootBoxRewardChoice object.
+                        reward_uuid:
+                          type: string
+                          description: Unique identifier for the reward tied to the reward choice.
+                        title:
+                          type: string
+                          description: A title for the LootBoxRewardChoice object.
+                        subtitle:
+                          type: string
+                          description: A subtitle for the LootBoxRewardChoice object.
+                        category:
+                          type: string
+                          description: A category for the LootBoxRewardChoice object.
+                        point_reward_value:
+                          type: number
+                          description: The amount of points, or any tier metric (e.g. xp, points, stars, etc), the user has won.
+                        image:
+                          type: string
+                          description: An absolute URL of the LootBoxRewardChoice's image.
+                      additionalProperties: false
+                      required:
+                      - id
+                      - reward_uuid
+                      - title
+                      - subtitle
+                      - category
+                      - point_reward_value
+                      - image
+                    reward_choices:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: Unique identifier for the LootBoxRewardChoice object.
+                          reward_uuid:
+                            type: string
+                            description: Unique identifier for the reward tied to the reward choice.
+                          probability:
+                            type: number
+                            description: The probability of winning the LootBoxRewardChoice.
+                          title:
+                            type: string
+                            description: A title for the LootBoxRewardChoice object.
+                          subtitle:
+                            type: string
+                            description: A subtitle for the LootBoxRewardChoice object.
+                          category:
+                            type: string
+                            description: A category for the LootBoxRewardChoice object.
+                        additionalProperties: false
+                        required:
+                        - id
+                        - reward_uuid
+                        - probability
+                        - title
+                        - subtitle
+                        - category
+                    loot_box_container_images:
+                      type: object
+                      properties:
+                        box_together:
+                          type: string
+                          description: An absolute URL of the LootBox's closed container image.
+                        box_top:
+                          type: string
+                          description: An absolute URL of the LootBox's container top image.
+                        box_bottom:
+                          type: string
+                          description: An absolute URL of the LootBox's container bottom image.
+                      additionalProperties: false
+                      required:
+                      - box_together
+                      - box_top
+                      - box_bottom
+                  additionalProperties: false
+                  required:
+                  - loot_box_id
+                  - name
+                  - description
+                  - available_since
+                  - redeemed_at
+                  - allocated_reward_choice
+                  - reward_choices
+                  - loot_box_container_images
+            additionalProperties: false
+            required:
+            - allocated_loot_boxes
+      description: ''
+  /tokens/{token_id}/loot-boxes/{loot_box_id}/open:
+    post:
+      tags:
+      - Tokens
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: posttokens_token_id_loot-boxes_loot_box_id_open
+      summary: Endpoint to open a loot box
+      parameters:
+      - name: loot_box_id
+        type: string
+        in: path
+        required: true
+        description: the loot box id
+      - name: token_id
+        type: string
+        in: path
+        required: true
+        description: the token id
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              loot_box_reward_outcome:
+                type: object
+                properties:
+                  loot_box_reward_choice_id:
+                    type: string
+                    description: Unique identifier for the LootBoxRewardChoice object.
+                  loot_box_reward_choice_title:
+                    type: string
+                    description: A title for the LootBoxRewardChoice object.
+                  loot_box_reward_choice_subtitle:
+                    type: string
+                    description: A subtitle for the LootBoxRewardChoice object.
+                  loot_box_reward_choice_category:
+                    type: string
+                    description: A category for the LootBoxRewardChoice object.
+                  loot_box_reward_choice_point_reward_value:
+                    type: number
+                    description: The amount of points, or any tier metric (e.g. xp, points, stars, etc), the user has won.
+                  loot_box_reward_choice_image:
+                    type: string
+                    description: An absolute URL of the LootBoxRewardChoice's image.
+                  loot_box_sponsor_name:
+                    type: string
+                    description: Lootbox sponsor name.
+                  loot_box_sponsor_description:
+                    type: string
+                    description: Lootbox sponsor description.
+                  reward_uuid:
+                    type: string
+                    description: Unique identifier for the Reward object.
+                  reward_name:
+                    type: string
+                    description: Reward name.
+                  reward_description:
+                    type: string
+                    description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                  reward_image_url:
+                    type: string
+                    description: An absolute URL of the rewards's image.
+                  reward_redemption_instruction:
+                    type: string
+                    description: The redmeption instructions for a reward.
+                  reward_terms_and_conditions:
+                    type: string
+                    description: The terms and conditions for the reward.
+                  reward_end_date:
+                    type: string
+                    description: The end date for the reward.
+                  reward_store_discount_url:
+                    type: string
+                    description: The button url for the reward.
+                additionalProperties: false
+                required:
+                - loot_box_reward_choice_id
+                - loot_box_reward_choice_title
+                - loot_box_reward_choice_subtitle
+                - loot_box_reward_choice_category
+                - loot_box_reward_choice_point_reward_value
+                - loot_box_reward_choice_image
+                - loot_box_sponsor_name
+                - loot_box_sponsor_description
+                - reward_uuid
+                - reward_name
+                - reward_description
+                - reward_image_url
+                - reward_redemption_instruction
+                - reward_terms_and_conditions
+                - reward_end_date
+                - reward_store_discount_url
+            additionalProperties: false
+            required:
+            - loot_box_reward_outcome
+      description: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

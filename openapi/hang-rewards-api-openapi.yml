@@ -1,0 +1,935 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities Rewards API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Rewards
+paths:
+  /v2/program-memberships/{program_membership_id}/rewards:
+    get:
+      tags:
+      - Rewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_v2_program-memberships_program_membership_id_rewards
+      summary: Retrieve the rewards, if any, for a given program membership id.
+      parameters:
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: the program membership id
+      responses:
+        '200':
+          description: Returns rewards successfully
+          schema:
+            type: object
+            properties:
+              rewards:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      description: reward uuid
+                    name:
+                      type: string
+                      description: reward name
+                    redemption_instruction:
+                      type: string
+                      description: instructions on how to redeem the reward
+                    redemption_method:
+                      type: string
+                      enum:
+                      - code
+                      - store_link
+                      - promo_code
+                      - achievement
+                      description: the method upon which this reward should be redeemed
+                    redemption_count:
+                      type: number
+                      description: the number of times this reward has been redeemed
+                    interval:
+                      type: number
+                      description: how often the user can redeem the reward in days, if 0 then unlimited
+                    limit:
+                      type: number
+                      description: reward limit, if any, for the reward
+                    start_date:
+                      type: number
+                      description: when the reward can be redeemed, in epoch seconds
+                    end_date:
+                      type: number
+                      description: when the reward can no longer be redeemed, in epoch seconds
+                    reward_type:
+                      type: string
+                      enum:
+                      - redemption
+                      - discount_percent_based
+                      - discount_value_based
+                      - access
+                      description: "redemption should be used as default, discount based rewards\n      should use one of discount_percent_based or discount_value_based, and access should be used for voting,\n      forms or events."
+                    last_redeemed_at:
+                      type: number
+                      description: the last time this reward has been redeemed, in epoch seconds
+                    image_url:
+                      type: string
+                      description: an absolute URL of the reward's image
+                    achievement_id:
+                      type: number
+                      description: the id of the reward achievement
+                  additionalProperties: false
+                  required:
+                  - uuid
+                  - name
+                  - redemption_instruction
+                  - redemption_method
+                  - redemption_count
+                  - interval
+                  - limit
+                  - start_date
+                  - end_date
+                  - reward_type
+                  - last_redeemed_at
+                  - image_url
+                  - achievement_id
+            additionalProperties: false
+            required:
+            - rewards
+        '404':
+          description: Could not find the program membership provided.
+        '500':
+          description: Could not retrieve rewards for program membership.
+      description: Invoke this endpoint to return an array of rewards that are associated with a given program membership id.
+  /v2/admin/rewards/{reward_uuid}:
+    get:
+      tags:
+      - Rewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_v2_admin_rewards_reward_uuid
+      summary: Endpoint to retrieve a reward with given unique id.
+      parameters:
+      - name: reward_uuid
+        type: string
+        in: path
+        required: true
+        description: The unique Id of the reward.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              reward:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Name/title of the reward.
+                  uuid:
+                    type: string
+                    description: The unique ID of the reward.
+                  description:
+                    type: string
+                    description: Description of the reward.
+                  terms_and_conditions:
+                    type: string
+                    description: Terms and conditions of the reward.
+                  start_date:
+                    type: number
+                    description: When the reward can be redeemed, in epoch seconds.
+                  end_date:
+                    type: number
+                    description: When the reward can no longer be redeemed, in epoch seconds.
+                  redemption_method:
+                    type: string
+                    enum:
+                    - code
+                    - store_link
+                    - promo_code
+                    description: The method with which the reward should be redeemed (defaults to "code").
+                  status:
+                    type: string
+                    enum:
+                    - draft
+                    - published
+                    description: The status of the reward indicating whether the reward is live or not (defaults to "draft").
+                  interval:
+                    type: number
+                    description: How often the user can redeem the reward in days, if 0 then unlimited.
+                  limit:
+                    type: number
+                    description: Maximum amount of times a user can receive the reward.
+                  priority:
+                    type: number
+                    description: Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority.
+                  pos_instructions:
+                    type: string
+                    description: Instructions on how to redeem the reward (brand-facing).
+                  redemption_instructions:
+                    type: string
+                    description: Instructions on how to redeem the reward (user-facing).
+                  reward_group:
+                    type: string
+                    enum:
+                    - trait_or_program_reward
+                    - bonus_reward
+                    description: The reward group of the reward (defaults to "trait_or_program_reward").
+                  is_program_reward:
+                    type: boolean
+                    description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                  reward_type:
+                    type: string
+                    enum:
+                    - redemption
+                    - discount_percent_based
+                    - discount_value_based
+                    - access
+                    - achievement
+                    - puzzle_piece
+                    description: The type of reward.
+                  reward_value:
+                    type: number
+                    description: The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types.
+                  achievement_id:
+                    type: string
+                    description: The id of the reward achievement.
+                  controlled_by:
+                    type: string
+                    enum:
+                    - auto
+                    - brand
+                    description: Who controls the reward.
+                  image_url:
+                    type: string
+                    description: URL of the reward image.
+                  video_url:
+                    type: string
+                    description: URL of the reward video.
+                  default_loot_box_reward_image_url:
+                    type: string
+                    description: URL of the default lootbox reward image.
+                  redemption_steps:
+                    type: array
+                    items:
+                      type: string
+                    description: List of redemption steps.
+                  store_discount_url:
+                    type: string
+                    description: URL of the store discount, required if redemption method is store_link.
+                  promo_code:
+                    type: string
+                    description: Promo code, required if redemption method is promo_code.
+                  partner_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
+                  created_at:
+                    type: number
+                    description: When the reward was created, in epoch seconds.
+                  updated_at:
+                    type: number
+                    description: When the reward was updated, in epoch seconds.
+                additionalProperties: false
+                required:
+                - name
+                - uuid
+                - description
+                - terms_and_conditions
+                - start_date
+                - end_date
+                - redemption_method
+                - status
+                - interval
+                - limit
+                - priority
+                - pos_instructions
+                - redemption_instructions
+                - reward_group
+                - is_program_reward
+                - reward_type
+                - reward_value
+                - achievement_id
+                - controlled_by
+                - image_url
+                - video_url
+                - default_loot_box_reward_image_url
+                - redemption_steps
+                - store_discount_url
+                - promo_code
+                - partner_metadata
+                - created_at
+                - updated_at
+            additionalProperties: false
+            required:
+            - reward
+      description: ''
+    patch:
+      tags:
+      - Rewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: patch_v2_admin_rewards_reward_uuid
+      summary: Endpoint to update a reward.
+      parameters:
+      - name: reward_uuid
+        type: string
+        in: path
+        required: true
+        description: The unique Id of the reward.
+      - name: name
+        type: string
+        in: formData
+        description: Name/title of the reward.
+      - name: description
+        type: string
+        in: formData
+        description: Description of the reward.
+      - name: terms_and_conditions
+        type: string
+        in: formData
+        description: Terms and conditions of the reward.
+      - name: start_date
+        type: number
+        in: formData
+        description: When the reward can be redeemed, in epoch seconds.
+      - name: end_date
+        type: number
+        in: formData
+        description: When the reward can no longer be redeemed, in epoch seconds.
+      - name: redemption_method
+        type: string
+        enum:
+        - code
+        - store_link
+        - promo_code
+        - qr_code
+        - manual_redemption
+        in: formData
+        description: The method with which the reward should be redeemed (defaults to "code").
+      - name: status
+        type: string
+        enum:
+        - draft
+        - published
+        in: formData
+        description: The status of the reward indicating whether the reward is live or not (defaults to "draft").
+      - name: interval
+        type: number
+        in: formData
+        description: How often the user can redeem the reward in days, if 0 then unlimited.
+      - name: limit
+        type: number
+        in: formData
+        description: Maximum amount of times a user can receive the reward.
+      - name: priority
+        type: number
+        in: formData
+        description: Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority.
+      - name: pos_instructions
+        type: string
+        in: formData
+        description: Instructions on how to redeem the reward (brand-facing).
+      - name: redemption_instructions
+        type: string
+        in: formData
+        description: Instructions on how to redeem the reward (user-facing).
+      - name: reward_group
+        type: string
+        enum:
+        - trait_or_program_reward
+        - bonus_reward
+        in: formData
+        description: The reward group of the reward (defaults to "trait_or_program_reward").
+      - name: is_program_reward
+        type: boolean
+        in: formData
+        description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+      - name: trait_ids
+        type: array
+        items:
+          type: string
+        in: formData
+        description: The traits that grant access to this reward. Only applies to trait_or_program_rewards.
+      - name: reward_type
+        type: string
+        enum:
+        - redemption
+        - discount_percent_based
+        - discount_value_based
+        - access
+        - achievement
+        - puzzle_piece
+        in: formData
+        description: The type of reward (defaults to "redemption").
+      - name: reward_value
+        type: number
+        in: formData
+        description: The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types.
+      - name: achievement_id
+        type: number
+        in: formData
+        description: the id of the reward achievement.
+      - name: controlled_by
+        type: string
+        enum:
+        - auto
+        - brand
+        in: formData
+        description: Who controls the reward (defaults to "auto").
+      - name: image_url
+        type: string
+        in: formData
+        description: URL of the reward image.
+      - name: video_url
+        type: string
+        in: formData
+        description: URL of the reward video.
+      - name: default_loot_box_reward_image_url
+        type: string
+        in: formData
+        description: URL of the default lootbox reward image.
+      - name: redemption_steps
+        type: array
+        items:
+          type: string
+        in: formData
+        description: List of redemption steps.
+      - name: store_discount_url
+        type: string
+        in: formData
+        description: URL of the store discount, required if redemption method is store_link.
+      - name: promo_code
+        type: string
+        in: formData
+        description: Promo code, required if redemption method is promo_code.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              reward:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Name/title of the reward.
+                  uuid:
+                    type: string
+                    description: The unique ID of the reward.
+                  description:
+                    type: string
+                    description: Description of the reward.
+                  terms_and_conditions:
+                    type: string
+                    description: Terms and conditions of the reward.
+                  start_date:
+                    type: number
+                    description: When the reward can be redeemed, in epoch seconds.
+                  end_date:
+                    type: number
+                    description: When the reward can no longer be redeemed, in epoch seconds.
+                  redemption_method:
+                    type: string
+                    enum:
+                    - code
+                    - store_link
+                    - promo_code
+                    description: The method with which the reward should be redeemed (defaults to "code").
+                  status:
+                    type: string
+                    enum:
+                    - draft
+                    - published
+                    description: The status of the reward indicating whether the reward is live or not (defaults to "draft").
+                  interval:
+                    type: number
+                    description: How often the user can redeem the reward in days, if 0 then unlimited.
+                  limit:
+                    type: number
+                    description: Maximum amount of times a user can receive the reward.
+                  priority:
+                    type: number
+                    description: Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority.
+                  pos_instructions:
+                    type: string
+                    description: Instructions on how to redeem the reward (brand-facing).
+                  redemption_instructions:
+                    type: string
+                    description: Instructions on how to redeem the reward (user-facing).
+                  reward_group:
+                    type: string
+                    enum:
+                    - trait_or_program_reward
+                    - bonus_reward
+                    description: The reward group of the reward (defaults to "trait_or_program_reward").
+                  is_program_reward:
+                    type: boolean
+                    description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                  reward_type:
+                    type: string
+                    enum:
+                    - redemption
+                    - discount_percent_based
+                    - discount_value_based
+                    - access
+                    - achievement
+                    - puzzle_piece
+                    description: The type of reward.
+                  reward_value:
+                    type: number
+                    description: The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types.
+                  achievement_id:
+                    type: string
+                    description: The id of the reward achievement.
+                  controlled_by:
+                    type: string
+                    enum:
+                    - auto
+                    - brand
+                    description: Who controls the reward.
+                  image_url:
+                    type: string
+                    description: URL of the reward image.
+                  video_url:
+                    type: string
+                    description: URL of the reward video.
+                  default_loot_box_reward_image_url:
+                    type: string
+                    description: URL of the default lootbox reward image.
+                  redemption_steps:
+                    type: array
+                    items:
+                      type: string
+                    description: List of redemption steps.
+                  store_discount_url:
+                    type: string
+                    description: URL of the store discount, required if redemption method is store_link.
+                  promo_code:
+                    type: string
+                    description: Promo code, required if redemption method is promo_code.
+                  partner_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
+                  created_at:
+                    type: number
+                    description: When the reward was created, in epoch seconds.
+                  updated_at:
+                    type: number
+                    description: When the reward was updated, in epoch seconds.
+                additionalProperties: false
+                required:
+                - name
+                - uuid
+                - description
+                - terms_and_conditions
+                - start_date
+                - end_date
+                - redemption_method
+                - status
+                - interval
+                - limit
+                - priority
+                - pos_instructions
+                - redemption_instructions
+                - reward_group
+                - is_program_reward
+                - reward_type
+                - reward_value
+                - achievement_id
+                - controlled_by
+                - image_url
+                - video_url
+                - default_loot_box_reward_image_url
+                - redemption_steps
+                - store_discount_url
+                - promo_code
+                - partner_metadata
+                - created_at
+                - updated_at
+            additionalProperties: false
+            required:
+            - reward
+      description: ''
+  /v2/admin/rewards:
+    post:
+      tags:
+      - Rewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_rewards
+      summary: Endpoint to create a reward.
+      parameters:
+      - name: reward_group
+        type: string
+        enum:
+        - trait_or_program_reward
+        - bonus_reward
+        in: formData
+        required: true
+        description: The reward group of the reward (defaults to "trait_or_program_reward").
+      - name: start_date
+        type: number
+        in: formData
+        required: true
+        description: When the reward can be redeemed, in epoch seconds.
+      - name: name
+        type: string
+        in: formData
+        required: true
+        description: Name/title of the reward.
+      - name: description
+        type: string
+        in: formData
+        description: Description of the reward.
+      - name: terms_and_conditions
+        type: string
+        in: formData
+        description: Terms and conditions of the reward.
+      - name: end_date
+        type: number
+        in: formData
+        description: When the reward can no longer be redeemed, in epoch seconds.
+      - name: redemption_method
+        type: string
+        enum:
+        - code
+        - store_link
+        - promo_code
+        in: formData
+        description: The method with which the reward should be redeemed (defaults to "code").
+      - name: status
+        type: string
+        enum:
+        - draft
+        - published
+        in: formData
+        description: The status of the reward indicating whether the reward is live or not (defaults to "draft").
+      - name: interval
+        type: number
+        in: formData
+        description: How often the user can redeem the reward in days, if 0 then unlimited.
+      - name: limit
+        type: number
+        in: formData
+        description: Maximum amount of times a user can receive the reward.
+      - name: priority
+        type: number
+        in: formData
+        description: Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority.
+      - name: pos_instructions
+        type: string
+        in: formData
+        description: Instructions on how to redeem the reward (brand-facing).
+      - name: redemption_instructions
+        type: string
+        in: formData
+        description: Instructions on how to redeem the reward (user-facing).
+      - name: is_program_reward
+        type: boolean
+        in: formData
+        description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+      - name: trait_ids
+        type: array
+        items:
+          type: string
+        in: formData
+        description: The traits that grant access to this reward. Only applies to trait_or_program_rewards.
+      - name: reward_type
+        type: string
+        enum:
+        - redemption
+        - discount_percent_based
+        - discount_value_based
+        - access
+        - achievement
+        - puzzle_piece
+        in: formData
+        description: The type of reward (defaults to "redemption").
+      - name: reward_value
+        type: number
+        in: formData
+        description: The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types.
+      - name: achievement_id
+        type: number
+        in: formData
+        description: the id of the reward achievement.
+      - name: controlled_by
+        type: string
+        enum:
+        - auto
+        - brand
+        in: formData
+        description: Who controls the reward (defaults to "auto").
+      - name: image_url
+        type: string
+        in: formData
+        description: URL of the reward image.
+      - name: video_url
+        type: string
+        in: formData
+        description: URL of the reward video.
+      - name: default_loot_box_reward_image_url
+        type: string
+        in: formData
+        description: URL of the default lootbox reward image.
+      - name: redemption_steps
+        type: array
+        items:
+          type: string
+        in: formData
+        description: List of redemption steps.
+      - name: store_discount_url
+        type: string
+        in: formData
+        description: URL of the store discount, required if redemption method is store_link.
+      - name: promo_code
+        type: string
+        in: formData
+        description: Promo code, required if redemption method is promo_code.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              reward:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Name/title of the reward.
+                  uuid:
+                    type: string
+                    description: The unique ID of the reward.
+                  description:
+                    type: string
+                    description: Description of the reward.
+                  terms_and_conditions:
+                    type: string
+                    description: Terms and conditions of the reward.
+                  start_date:
+                    type: number
+                    description: When the reward can be redeemed, in epoch seconds.
+                  end_date:
+                    type: number
+                    description: When the reward can no longer be redeemed, in epoch seconds.
+                  redemption_method:
+                    type: string
+                    enum:
+                    - code
+                    - store_link
+                    - promo_code
+                    description: The method with which the reward should be redeemed (defaults to "code").
+                  status:
+                    type: string
+                    enum:
+                    - draft
+                    - published
+                    description: The status of the reward indicating whether the reward is live or not (defaults to "draft").
+                  interval:
+                    type: number
+                    description: How often the user can redeem the reward in days, if 0 then unlimited.
+                  limit:
+                    type: number
+                    description: Maximum amount of times a user can receive the reward.
+                  priority:
+                    type: number
+                    description: Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority.
+                  pos_instructions:
+                    type: string
+                    description: Instructions on how to redeem the reward (brand-facing).
+                  redemption_instructions:
+                    type: string
+                    description: Instructions on how to redeem the reward (user-facing).
+                  reward_group:
+                    type: string
+                    enum:
+                    - trait_or_program_reward
+                    - bonus_reward
+                    description: The reward group of the reward (defaults to "trait_or_program_reward").
+                  is_program_reward:
+                    type: boolean
+                    description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                  reward_type:
+                    type: string
+                    enum:
+                    - redemption
+                    - discount_percent_based
+                    - discount_value_based
+                    - access
+                    - achievement
+                    - puzzle_piece
+                    description: The type of reward.
+                  reward_value:
+                    type: number
+                    description: The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types.
+                  achievement_id:
+                    type: string
+                    description: The id of the reward achievement.
+                  controlled_by:
+                    type: string
+                    enum:
+                    - auto
+                    - brand
+                    description: Who controls the reward.
+                  image_url:
+                    type: string
+                    description: URL of the reward image.
+                  video_url:
+                    type: string
+                    description: URL of the reward video.
+                  default_loot_box_reward_image_url:
+                    type: string
+                    description: URL of the default lootbox reward image.
+                  redemption_steps:
+                    type: array
+                    items:
+                      type: string
+                    description: List of redemption steps.
+                  store_discount_url:
+                    type: string
+                    description: URL of the store discount, required if redemption method is store_link.
+                  promo_code:
+                    type: string
+                    description: Promo code, required if redemption method is promo_code.
+                  partner_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
+                  created_at:
+                    type: number
+                    description: When the reward was created, in epoch seconds.
+                  updated_at:
+                    type: number
+                    description: When the reward was updated, in epoch seconds.
+                additionalProperties: false
+                required:
+                - name
+                - uuid
+                - description
+                - terms_and_conditions
+                - start_date
+                - end_date
+                - redemption_method
+                - status
+                - interval
+                - limit
+                - priority
+                - pos_instructions
+                - redemption_instructions
+                - reward_group
+                - is_program_reward
+                - reward_type
+                - reward_value
+                - achievement_id
+                - controlled_by
+                - image_url
+                - video_url
+                - default_loot_box_reward_image_url
+                - redemption_steps
+                - store_discount_url
+                - promo_code
+                - partner_metadata
+                - created_at
+                - updated_at
+            additionalProperties: false
+            required:
+            - reward
+      description: ''
+  /v2/admin/rewards/batch-create:
+    post:
+      tags:
+      - Rewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_rewards_batch-create
+      summary: Endpoint to create a batch of rewards.
+      parameters:
+      - name: rewards
+        type: array
+        items:
+          type: string
+        in: formData
+        required: true
+        description: List of rewards to create.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              rewards:
+                type: array
+                items:
+                  type: string
+                description: List of created rewards.
+            additionalProperties: false
+            required:
+            - rewards
+      description: ''
+  /v2/admin/rewards/batch-update:
+    patch:
+      tags:
+      - Rewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: patch_v2_admin_rewards_batch-update
+      summary: Endpoint to edit a batch of rewards.
+      parameters:
+      - name: rewards
+        type: array
+        items:
+          type: string
+        in: formData
+        description: List of rewards to update.
+      - name: reward_ids_to_delete
+        type: array
+        items:
+          type: string
+        in: formData
+        description: List of reward IDs to delete.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              rewards:
+                type: array
+                items:
+                  type: string
+                description: List of updated rewards.
+            additionalProperties: false
+            required:
+            - rewards
+      description: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

@@ -1,0 +1,345 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities Redemptions API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Redemptions
+paths:
+  /wallets/{wallet_address}/redemptions:
+    get:
+      tags:
+      - Redemptions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_wallets_wallet_address_redemptions
+      summary: Retrieve redemption history, if any, for a given wallet_address.
+      parameters:
+      - name: wallet_address
+        type: string
+        in: path
+        required: true
+        description: the wallet address
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              redemptions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: number
+                      description: when the reward was redeemed, in epoch seconds
+                    token_id:
+                      type: string
+                      description: the token id of the reward associated with the redemption
+                    description:
+                      type: string
+                      description: the description of the reward redeemed
+                    code:
+                      type: string
+                      description: the code used to redeem the reward
+                  additionalProperties: false
+                  required:
+                  - date
+                  - token_id
+                  - description
+                  - code
+            additionalProperties: false
+            required:
+            - redemptions
+      description: Invoke this endpoint to return an array of rewards that were redeemed while associated with a specified wallet address.
+    post:
+      tags:
+      - Redemptions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_wallets_wallet_address_redemptions
+      summary: Generate a redemption code for a given reward by providing the wallet_address, token_id, and reward_id.
+      parameters:
+      - name: reward_id
+        type: string
+        in: formData
+        required: true
+        description: the reward uuid
+      - name: token_id
+        type: string
+        in: formData
+        required: true
+        description: the token id
+      - name: wallet_address
+        type: string
+        in: path
+        required: true
+        description: the wallet address
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              redemption:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                    description: redemption uuid
+                  code:
+                    type: string
+                    description: redemption code
+                  promo_code:
+                    type: string
+                    description: promo code of the redemption
+                  state:
+                    type: string
+                    description: state of the redemption
+                  expires_at:
+                    type: number
+                    description: the time the redemption expires, in epoch seconds
+                additionalProperties: false
+                required:
+                - uuid
+                - code
+                - promo_code
+                - state
+                - expires_at
+            additionalProperties: false
+            required:
+            - redemption
+        '401':
+          description: Could not generate code due to wallet_address not owning token.
+        '404':
+          description: Could not generate code due to invalid token_id, or reward_id.
+      description: Utilize this endpoint to generate a redemption code for a given reward.
+  /redemptions/{redemption_uuid}/redeem:
+    post:
+      tags:
+      - Redemptions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_redemptions_redemption_uuid_redeem
+      summary: Redeem a redemption code providing the uuid for the redemption record.
+      parameters:
+      - name: redemption_uuid
+        type: string
+        in: path
+        required: true
+        description: the uuid for the redemption code
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              redemption:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                    description: redemption uuid
+                  code:
+                    type: string
+                    description: redemption code
+                  promo_code:
+                    type: string
+                    description: promo code of the redemption
+                  state:
+                    type: string
+                    description: state of the redemption (redeemed, initiated, denied)
+                  expires_at:
+                    type: number
+                    description: the time the redemption expires, in epoch seconds
+                additionalProperties: false
+                required:
+                - uuid
+                - code
+                - promo_code
+                - state
+                - expires_at
+            additionalProperties: false
+            required:
+            - redemption
+        '404':
+          description: Redemption code not found for given uuid.
+        '422':
+          description: The reward is not redeemable.
+      description: Utilize this endpoint to redeem a redemption code via its corresponding uuid
+  /v2/program-memberships/{program_membership_id}/redemptions:
+    get:
+      tags:
+      - Redemptions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_v2_program-memberships_program_membership_id_redemptions
+      summary: Retrieve redemption history, if any, for a given program membership.
+      parameters:
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: the program membership id
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              redemptions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: number
+                      description: when the reward was redeemed, in epoch seconds
+                    description:
+                      type: string
+                      description: the description of the reward redeemed
+                    code:
+                      type: string
+                      description: the code used to redeem the reward
+                  additionalProperties: false
+                  required:
+                  - date
+                  - description
+                  - code
+            additionalProperties: false
+            required:
+            - redemptions
+      description: Invoke this endpoint to return an array of rewards that were redeemed while associated with a specified program membership.
+    post:
+      tags:
+      - Redemptions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_program-memberships_program_membership_id_redemptions
+      summary: Generate a redemption code for a given reward by providing the program_membership_id and reward_id.
+      parameters:
+      - name: reward_id
+        type: string
+        in: formData
+        required: true
+        description: the reward uuid
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: the program membership id
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              redemption:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                    description: redemption uuid
+                  code:
+                    type: string
+                    description: redemption code
+                  promo_code:
+                    type: string
+                    description: promo code of the redemption
+                  state:
+                    type: string
+                    description: state of the redemption
+                  expires_at:
+                    type: number
+                    description: the time the redemption expires, in epoch seconds
+                additionalProperties: false
+                required:
+                - uuid
+                - code
+                - promo_code
+                - state
+                - expires_at
+            additionalProperties: false
+            required:
+            - redemption
+        '404':
+          description: Could not generate code due to invalid program_membership_id or reward_id.
+      description: Utilize this endpoint to generate a redemption code for a given reward.
+  /v2/redemptions/{redemption_uuid}/redeem:
+    post:
+      tags:
+      - Redemptions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_redemptions_redemption_uuid_redeem
+      summary: Redeem a redemption code providing the uuid for the redemption record.
+      parameters:
+      - name: redemption_uuid
+        type: string
+        in: path
+        required: true
+        description: the uuid for the redemption code
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              redemption:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                    description: redemption uuid
+                  code:
+                    type: string
+                    description: redemption code
+                  promo_code:
+                    type: string
+                    description: promo code of the redemption
+                  state:
+                    type: string
+                    description: state of the redemption (redeemed, initiated, denied)
+                  expires_at:
+                    type: number
+                    description: the time the redemption expires, in epoch seconds
+                additionalProperties: false
+                required:
+                - uuid
+                - code
+                - promo_code
+                - state
+                - expires_at
+            additionalProperties: false
+            required:
+            - redemption
+        '404':
+          description: Redemption code not found for given uuid.
+        '422':
+          description: The reward is not redeemable.
+      description: Utilize this endpoint to redeem a redemption code via its corresponding uuid
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

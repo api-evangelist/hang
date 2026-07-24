@@ -1,0 +1,224 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities ProgramMembershipPuzzles API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: ProgramMembershipPuzzles
+paths:
+  /v2/program-memberships/{program_membership_id}/puzzles:
+    get:
+      tags:
+      - ProgramMembershipPuzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_v2_program-memberships_program_membership_id_puzzles
+      summary: Endpoint to retrieve puzzles for a program membership
+      parameters:
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: ID of the program membership to retrieve puzzles for
+      - name: started
+        type: boolean
+        in: query
+        description: A filter. Set true to only return puzzles where the program membership has made progress. Set false to only return puzzles where the program membership has not made progress. If left blank, all puzzles are returned.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the Puzzle object.
+                  program_id:
+                    type: number
+                    description: Unique identifier for the Loyalty Program object.
+                  name:
+                    type: string
+                    description: Name/title of the Puzzle object.
+                  description:
+                    type: string
+                    description: Description of the Puzzle object.
+                  earn_instructions:
+                    type: string
+                    description: Instructions for earning the puzzle.
+                  image_url:
+                    type: string
+                    description: URL of the combined Puzzle image.
+                  rewards:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of Reward objects.
+                additionalProperties: false
+                required:
+                - id
+                - program_id
+                - name
+                - description
+                - earn_instructions
+                - image_url
+                - rewards
+            additionalProperties: false
+            required:
+            - puzzle
+      description: ''
+  /v2/program-memberships/{program_membership_id}/puzzles/{puzzle_id}:
+    get:
+      tags:
+      - ProgramMembershipPuzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_v2_program-memberships_program_membership_id_puzzles_puzzle_id
+      summary: Endpoint to retrieve a single puzzle belonging to a program membership
+      parameters:
+      - name: puzzle_id
+        type: string
+        in: path
+        required: true
+        description: ID of the puzzle to retrieve
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: ID of the program membership to retrieve puzzle for
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the Puzzle object.
+                  program_id:
+                    type: number
+                    description: Unique identifier for the Loyalty Program object.
+                  name:
+                    type: string
+                    description: Name/title of the Puzzle object.
+                  description:
+                    type: string
+                    description: Description of the Puzzle object.
+                  earn_instructions:
+                    type: string
+                    description: Instructions for earning the puzzle.
+                  image_url:
+                    type: string
+                    description: URL of the combined Puzzle image.
+                  rewards:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of Reward objects.
+                additionalProperties: false
+                required:
+                - id
+                - program_id
+                - name
+                - description
+                - earn_instructions
+                - image_url
+                - rewards
+            additionalProperties: false
+            required:
+            - puzzle
+      description: ''
+  /v2/program-memberships/{program_membership_id}/puzzles/{puzzle_id}/complete:
+    post:
+      tags:
+      - ProgramMembershipPuzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_program-memberships_program_membership_id_puzzles_puzzle_id_complete
+      summary: Endpoint to redeem a completed puzzle belonging to a program membership
+      parameters:
+      - name: puzzle_id
+        type: string
+        in: path
+        required: true
+        description: ID of the puzzle to redeem
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: ID of the program membership to redeem the puzzle for
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the Puzzle object.
+                  program_id:
+                    type: number
+                    description: Unique identifier for the Loyalty Program object.
+                  name:
+                    type: string
+                    description: Name/title of the Puzzle object.
+                  description:
+                    type: string
+                    description: Description of the Puzzle object.
+                  earn_instructions:
+                    type: string
+                    description: Instructions for earning the puzzle.
+                  image_url:
+                    type: string
+                    description: URL of the combined Puzzle image.
+                  rewards:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of Reward objects.
+                additionalProperties: false
+                required:
+                - id
+                - program_id
+                - name
+                - description
+                - earn_instructions
+                - image_url
+                - rewards
+            additionalProperties: false
+            required:
+            - puzzle
+        '401':
+          description: The program membership is not authorized to redeem the puzzle with given puzzle_id.
+        '422':
+          description: The puzzle is not redeemable because it is not complete or the puzzle_id given is not correct.
+      description: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

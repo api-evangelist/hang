@@ -1,0 +1,98 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities Member Actions API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Member Actions
+paths:
+  /v2/admin/program-memberships/{program_membership_id}/member-actions/grant-reward:
+    post:
+      tags:
+      - Member Actions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-reward
+      summary: Endpoint to grant a reward to a program membership
+      parameters:
+      - name: nft_loyalty_reward_uuid
+        type: string
+        in: formData
+        required: true
+        description: The uuid of the reward
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: The program membership id
+      responses:
+        '200':
+          description: ok
+      description: ''
+  /v2/admin/program-memberships/{program_membership_id}/member-actions/grant-loot-box:
+    post:
+      tags:
+      - Member Actions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-loot-box
+      summary: Endpoint to grant a loot box to a program membership
+      parameters:
+      - name: loot_box_id
+        type: string
+        in: formData
+        required: true
+        description: The id of the loot box
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: The program membership id
+      responses:
+        '200':
+          description: ok
+      description: ''
+  /v2/admin/program-memberships/{program_membership_id}/member-actions/grant-points:
+    post:
+      tags:
+      - Member Actions
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-points
+      summary: Endpoint to grant points to a program membership
+      parameters:
+      - name: points
+        type: number
+        in: formData
+        required: true
+        description: The amount of points to grant
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: The program membership id
+      responses:
+        '200':
+          description: ok
+      description: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

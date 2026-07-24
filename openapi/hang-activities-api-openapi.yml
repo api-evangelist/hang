@@ -1,0 +1,126 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Activities
+paths:
+  /v2/program-memberships/{program_membership_id}/activities:
+    post:
+      tags:
+      - Activities
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_program-memberships_program_membership_id_activities
+      summary: Create a new activity.
+      parameters:
+      - name: activity[transaction_timestamp]
+        type: number
+        in: formData
+        required: true
+      - name: activity[value]
+        type: string
+        in: formData
+        required: true
+      - name: activity[activity_type_id]
+        type: string
+        in: formData
+        required: true
+      - name: idempotency_key
+        type: string
+        in: formData
+        required: true
+        description: used to prevent double-processing
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: the program membership id
+      - name: activity[line_items]
+        type: array
+        items:
+          type: string
+        in: formData
+      responses:
+        '200':
+          description: Activity recorded for post-processing
+          schema:
+            type: object
+            properties:
+              idempotency_key:
+                type: string
+                description: idempotency key sent for activity
+            additionalProperties: false
+            required:
+            - idempotency_key
+      description: ''
+  /v2/program-memberships/{program_membership_id}/activies/synchronous:
+    post:
+      tags:
+      - Activities
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_program-memberships_program_membership_id_activies_synchronous
+      summary: Create a new activity synchronously.
+      parameters:
+      - name: activity[transaction_timestamp]
+        type: number
+        in: formData
+        required: true
+      - name: activity[value]
+        type: string
+        in: formData
+        required: true
+      - name: activity[activity_type_id]
+        type: string
+        in: formData
+        required: true
+      - name: idempotency_key
+        type: string
+        in: formData
+        required: true
+        description: used to prevent double-processing
+      - name: program_membership_id
+        type: string
+        in: path
+        required: true
+        description: the program membership id
+      - name: activity[line_items]
+        type: array
+        items:
+          type: string
+        in: formData
+      responses:
+        '200':
+          description: Activity recorded for post-processing
+          schema:
+            type: object
+            properties:
+              idempotency_key:
+                type: string
+                description: idempotency key sent for activity
+            additionalProperties: false
+            required:
+            - idempotency_key
+      description: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

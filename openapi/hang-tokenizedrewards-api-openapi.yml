@@ -1,0 +1,108 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities TokenizedRewards API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: TokenizedRewards
+paths:
+  /tokenized-rewards/contracts/{contract_address}/wallets/{wallet_address}:
+    get:
+      tags:
+      - TokenizedRewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_tokenized-rewards_contracts_contract_address_wallets_wallet_address
+      summary: Retrieve all tokenized rewards and their balances for a given wallet address and contract address.
+      parameters:
+      - name: contract_address
+        type: string
+        in: path
+        required: true
+        description: The contract address
+      - name: wallet_address
+        type: string
+        in: path
+        required: true
+        description: The wallet address
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              rewards:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    token_id:
+                      type: string
+                      description: The id of the token
+                    burned_at:
+                      type: number
+                      description: The time of when the token was burned, if any, in epoch seconds
+                  additionalProperties: false
+                  required:
+                  - token_id
+                  - burned_at
+            additionalProperties: false
+            required:
+            - rewards
+      description: ''
+  /tokenized-rewards/burn:
+    post:
+      tags:
+      - TokenizedRewards
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_tokenized-rewards_burn
+      summary: Burn a tokenized reward for the given contract address and token id.
+      parameters:
+      - name: contract_address
+        type: string
+        in: formData
+        required: true
+        description: The contract address
+      - name: token_id
+        type: string
+        in: formData
+        required: true
+        description: The id of the token
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              burned_at:
+                type: number
+                description: The time at which the token was burned, in epoch seconds
+              redeemed_by:
+                type: string
+                description: The wallet address of the token holder
+            additionalProperties: false
+            required:
+            - burned_at
+            - redeemed_by
+      description: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

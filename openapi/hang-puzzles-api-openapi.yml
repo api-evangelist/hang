@@ -1,0 +1,360 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities Puzzles API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Puzzles
+paths:
+  /v2/admin/puzzle-pieces:
+    post:
+      tags:
+      - Puzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_puzzle-pieces
+      summary: Create a new piece for a Puzzle.
+      parameters:
+      - name: slot
+        type: number
+        in: formData
+        required: true
+        description: The slot/position of the puzzle piece.
+      - name: loyalty_reward_id
+        type: string
+        in: formData
+        required: true
+        description: The ID of the puzzle piece reward associated with this piece.
+      - name: puzzle_id
+        type: string
+        in: formData
+        required: true
+        description: The ID of the puzzle this piece would belong to.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle_piece:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the PuzzlePiece object.
+                  puzzle_id:
+                    type: string
+                    description: The ID of the puzzle this piece belongs to.
+                  loyalty_reward_id:
+                    type: string
+                    description: The ID of the puzzle piece reward associated with this piece.
+                  slot:
+                    type: number
+                    description: The slot/position of the puzzle piece.
+                additionalProperties: false
+                required:
+                - id
+                - puzzle_id
+                - loyalty_reward_id
+                - slot
+            additionalProperties: false
+            required:
+            - puzzle_piece
+      description: ''
+  /v2/admin/puzzle-pieces/{puzzle_piece_id}:
+    patch:
+      tags:
+      - Puzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: patch_v2_admin_puzzle-pieces_puzzle_piece_id
+      summary: Update an existing Puzzle Piece.
+      parameters:
+      - name: puzzle_piece_id
+        type: string
+        in: path
+        required: true
+        description: The ID of the puzzle piece to update.
+      - name: puzzle_id
+        type: string
+        in: formData
+        description: The ID of the puzzle this piece would belong to.
+      - name: loyalty_reward_id
+        type: string
+        in: formData
+        description: The ID of the puzzle piece reward associated with this piece.
+      - name: slot
+        type: number
+        in: formData
+        description: The slot/position of the puzzle piece.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle_piece:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the PuzzlePiece object.
+                  puzzle_id:
+                    type: string
+                    description: The ID of the puzzle this piece belongs to.
+                  loyalty_reward_id:
+                    type: string
+                    description: The ID of the puzzle piece reward associated with this piece.
+                  slot:
+                    type: number
+                    description: The slot/position of the puzzle piece.
+                additionalProperties: false
+                required:
+                - id
+                - puzzle_id
+                - loyalty_reward_id
+                - slot
+            additionalProperties: false
+            required:
+            - puzzle_piece
+      description: ''
+  /v2/admin/puzzles/{puzzle_id}:
+    get:
+      tags:
+      - Puzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: get_v2_admin_puzzles_puzzle_id
+      summary: Endpoint to retrieve a puzzle
+      parameters:
+      - name: puzzle_id
+        type: string
+        in: path
+        required: true
+        description: The ID of the puzzle to retrieve.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the Puzzle object.
+                  program_id:
+                    type: number
+                    description: Unique identifier for the Loyalty Program object.
+                  name:
+                    type: string
+                    description: Name/title of the Puzzle object.
+                  description:
+                    type: string
+                    description: Description of the Puzzle object.
+                  earn_instructions:
+                    type: string
+                    description: Instructions for earning the puzzle.
+                  image_url:
+                    type: string
+                    description: URL of the combined Puzzle image.
+                  rewards:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of Reward objects.
+                additionalProperties: false
+                required:
+                - id
+                - program_id
+                - name
+                - description
+                - earn_instructions
+                - image_url
+                - rewards
+            additionalProperties: false
+            required:
+            - puzzle
+      description: ''
+    patch:
+      tags:
+      - Puzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: patch_v2_admin_puzzles_puzzle_id
+      summary: Endpoint to update a puzzle
+      parameters:
+      - name: puzzle_id
+        type: number
+        in: path
+        required: true
+      - name: name
+        type: string
+        in: formData
+        description: Name/title of the Puzzle object.
+      - name: description
+        type: string
+        in: formData
+        description: Description of the Puzzle object.
+      - name: image_url
+        type: string
+        in: formData
+        description: URL of the image file.
+      - name: reward_ids
+        type: array
+        items:
+          type: string
+        in: formData
+        description: Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].
+      - name: earn_instructions
+        type: string
+        in: formData
+        description: Instructions for earning the puzzle.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the Puzzle object.
+                  program_id:
+                    type: number
+                    description: Unique identifier for the Loyalty Program object.
+                  name:
+                    type: string
+                    description: Name/title of the Puzzle object.
+                  description:
+                    type: string
+                    description: Description of the Puzzle object.
+                  earn_instructions:
+                    type: string
+                    description: Instructions for earning the puzzle.
+                  image_url:
+                    type: string
+                    description: URL of the combined Puzzle image.
+                  rewards:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of Reward objects.
+                additionalProperties: false
+                required:
+                - id
+                - program_id
+                - name
+                - description
+                - earn_instructions
+                - image_url
+                - rewards
+            additionalProperties: false
+            required:
+            - puzzle
+      description: ''
+  /v2/admin/puzzles:
+    post:
+      tags:
+      - Puzzles
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_puzzles
+      summary: Endpoint to create a puzzle
+      parameters:
+      - name: image_url
+        type: string
+        in: formData
+        required: true
+        description: URL of the image file.
+      - name: description
+        type: string
+        in: formData
+        required: true
+        description: Description of the Puzzle object.
+      - name: name
+        type: string
+        in: formData
+        required: true
+        description: Name/title of the Puzzle object.
+      - name: reward_ids
+        type: array
+        items:
+          type: string
+        in: formData
+        description: Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].
+      - name: earn_instructions
+        type: string
+        in: formData
+        description: Instructions for earning the puzzle.
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              puzzle:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the Puzzle object.
+                  program_id:
+                    type: number
+                    description: Unique identifier for the Loyalty Program object.
+                  name:
+                    type: string
+                    description: Name/title of the Puzzle object.
+                  description:
+                    type: string
+                    description: Description of the Puzzle object.
+                  earn_instructions:
+                    type: string
+                    description: Instructions for earning the puzzle.
+                  image_url:
+                    type: string
+                    description: URL of the combined Puzzle image.
+                  rewards:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of Reward objects.
+                additionalProperties: false
+                required:
+                - id
+                - program_id
+                - name
+                - description
+                - earn_instructions
+                - image_url
+                - rewards
+            additionalProperties: false
+            required:
+            - puzzle
+      description: ''
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

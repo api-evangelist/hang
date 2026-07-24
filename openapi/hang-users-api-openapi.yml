@@ -1,0 +1,72 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities Users API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Users
+paths:
+  /users:
+    post:
+      tags:
+      - Users
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_users
+      summary: Creates a new user with the given wallet_address and either a phone or an email address.
+      parameters:
+      - name: wallet_address
+        type: string
+        in: formData
+        required: true
+        description: the user's wallet_address
+      - name: phone
+        type: string
+        in: formData
+        description: the user's phone (must be provided if email is blank)
+      - name: email
+        type: string
+        in: formData
+        description: the user's email (must be provided if phone is blank)
+      responses:
+        '200':
+          description: User was created successfully
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the new user
+                additionalProperties: false
+                required:
+                - id
+            additionalProperties: false
+            required:
+            - user
+        '400':
+          description: Missing required parameters.
+        '409':
+          description: When any of the parameters passed in already exist in the system.
+      description: Invoke this endpoint to add a new user to your loyalty program.
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key

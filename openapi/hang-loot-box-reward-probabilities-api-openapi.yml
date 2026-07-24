@@ -1,0 +1,132 @@
+swagger: '2.0'
+info:
+  title: Hang Partner API (params in:formData) Activities Loot box reward probabilities API
+  description: '
+
+    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
+
+    &copy Hang 2023'
+  version: 2023.09.07
+  x-copyright: '&copy Hang 2023'
+basePath: /partner-api
+schemes:
+- https
+consumes:
+- application/x-www-form-urlencoded
+- multipart/form-data
+security:
+- ApiKeyAuth: []
+tags:
+- name: Loot box reward probabilities
+paths:
+  /v2/admin/loot_box_reward_probabilities:
+    post:
+      tags:
+      - Loot box reward probabilities
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: post_v2_admin_loot_box_reward_probabilities
+      summary: Create a probability for a loot box reward.
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              loot_box_reward_probability:
+                type: object
+                properties:
+                  program_tier_id:
+                    type: string
+                    description: ID of the program tier to which to this probability applies.
+                  probability:
+                    type: number
+                    description: Probability of the reward choice being selected. Scale is relative to other reward probabilities for the same loot box.
+                additionalProperties: false
+                required:
+                - program_tier_id
+                - probability
+            additionalProperties: false
+            required:
+            - loot_box_reward_probability
+      description: Invoke this endpoint to create a probability for a loot box reward choice.
+  /v2/admin/loot_box_reward_probabilities/{loot_box_reward_probability_id}:
+    patch:
+      tags:
+      - Loot box reward probabilities
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: patch_v2_admin_loot_box_reward_probabilities_loot_box_reward_probability_id
+      summary: Update a loot box reward probability.
+      parameters:
+      - name: loot_box_reward_probability_id
+        type: number
+        in: path
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              loot_box_reward_probability:
+                type: object
+                properties:
+                  program_tier_id:
+                    type: string
+                    description: ID of the program tier to which to this probability applies.
+                  probability:
+                    type: number
+                    description: Probability of the reward choice being selected. Scale is relative to other reward probabilities for the same loot box.
+                additionalProperties: false
+                required:
+                - program_tier_id
+                - probability
+            additionalProperties: false
+            required:
+            - loot_box_reward_probability
+      description: Invoke this endpoint to update the probability for a loot box reward choice.
+    delete:
+      tags:
+      - Loot box reward probabilities
+      consumes:
+      - application/x-www-form-urlencoded
+      - multipart/form-data
+      operationId: delete_v2_admin_loot_box_reward_probabilities_loot_box_reward_probability_id
+      summary: Delete a loot box reward probability.
+      parameters:
+      - name: loot_box_reward_probability_id
+        type: number
+        in: path
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              loot_box_reward_probability:
+                type: object
+                properties:
+                  program_tier_id:
+                    type: string
+                    description: ID of the program tier to which to this probability applies.
+                  probability:
+                    type: number
+                    description: Probability of the reward choice being selected. Scale is relative to other reward probabilities for the same loot box.
+                additionalProperties: false
+                required:
+                - program_tier_id
+                - probability
+            additionalProperties: false
+            required:
+            - loot_box_reward_probability
+      description: Invoke this endpoint to delete the probability for a loot box reward choice.
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key
