@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/hang-partner-api-openapi.yml
+skills:
+- file: hang-enroll-and-record-activity.md
+  name: Enroll a member and record a point-earning activity
+  api: openapi/hang-partner-api-openapi.yml
+  operations:
+  - post_v2_program-memberships
+  - get_v2_program-memberships_search
+  - post_v2_program-memberships_program_membership_id_activities
+  - get_v2_program-memberships_program_membership_id_level
+- file: hang-redeem-reward.md
+  name: Redeem a reward for a member
+  api: openapi/hang-partner-api-openapi.yml
+  operations:
+  - get_v2_program-memberships_program_membership_id_rewards
+  - post_v2_program-memberships_program_membership_id_redemptions
+  - post_v2_redemptions_redemption_uuid_redeem
+- file: hang-run-quest.md
+  name: Opt a member into a quest and claim the prize
+  api: openapi/hang-partner-api-openapi.yml
+  operations:
+  - get_v2_admin_quests
+  - post_v2_program-memberships_program_membership_id_quests_quest_id_opt-in
+  - get_v2_program-memberships_program_membership_id_quests_opt-ins
+  - post_opt-ins_opt_in_id_claim-quest-prize

@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Hang Partner API
+  version: 1.0.0
+extends: openapi/hang-partner-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: hang
+    x-apievangelist-category: [loyalty, rewards, membership, customer-engagement]
+    x-apievangelist-auth: api-key (X-API-Key header)
+    x-apievangelist-idempotency: idempotency_key on activity writes
+    x-apievangelist-base-url: https://loyalty.hang.xyz/partner-api
+    x-apievangelist-status-page: https://status.hang.com
+    x-apievangelist-webhooks: asyncapi/hang-webhooks.yml
+- target: $.host
+  update: loyalty.hang.xyz

@@ -1,7 +1,15 @@
 aid: hang
 name: Hang
-description: 'Hang is a company surfaced as a portfolio company of paradigm and added to the API Evangelist
-  network as a stub for enrichment. Sector: consumer. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Hang is a customer loyalty and engagement platform (originally a Paradigm-backed
+  Web3 brand-loyalty company, now positioned as an AI-driven "autonomous marketing
+  system") used by restaurant, beauty, apparel, and e-commerce brands to build and
+  run tier-based membership and rewards programs. Its Partner API powers program
+  memberships, points and activities, quests, challenges, puzzles, loot/mystery
+  boxes, rewards and redemptions, balance/gift cards, tokenized rewards, program
+  tiers and segments, plus point-of-sale integrations with Toast and Square and
+  real-time webhooks. Brands can embed a white-labeled rewards portal or drive the
+  whole loyalty experience programmatically through the REST API.
 url: https://raw.githubusercontent.com/api-evangelist/hang/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,18 +17,354 @@ x-backed-by:
 - paradigm
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://hang.com/og-image.png
 tags:
 - Company
 - Consumer
-apis: []
+- Loyalty
+- Rewards
+- Membership
+- Customer Engagement
+- Marketing
+- Restaurants
+- Point of Sale
+- Webhooks
+apis:
+- aid: hang:hang-activities-api
+  name: Hang Activities API
+  description: The Activities API from Hang — 2 operation(s) for activities.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-activities-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-loot-box-reward-choices-api
+  name: Hang Loot Box Reward Choices API
+  description: The Loot Box Reward Choices API from Hang — 2 operation(s) for loot box reward choices.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Loot Box Reward Choices
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-loot-box-reward-choices-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-loot-box-reward-probabilities-api
+  name: Hang Loot box reward probabilities API
+  description: >-
+    The Loot box reward probabilities API from Hang — 2 operation(s) for loot box reward probabilities.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Loot box reward probabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-loot-box-reward-probabilities-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-loot-boxes-api
+  name: Hang Loot Boxes API
+  description: The Loot Boxes API from Hang — 4 operation(s) for loot boxes.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Loot Boxes
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-loot-boxes-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-member-actions-api
+  name: Hang Member Actions API
+  description: The Member Actions API from Hang — 3 operation(s) for member actions.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Member Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-member-actions-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-memberships-api
+  name: Hang Memberships API
+  description: The Memberships API from Hang — 10 operation(s) for memberships.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-memberships-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-program-memberships-api
+  name: Hang Program memberships API
+  description: The Program memberships API from Hang — 3 operation(s) for program memberships.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Program memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-program-memberships-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-program-tiers-api
+  name: Hang Program Tiers API
+  description: The Program Tiers API from Hang — 1 operation(s) for program tiers.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Program Tiers
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-program-tiers-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-programmembershippuzzles-api
+  name: Hang ProgramMembershipPuzzles API
+  description: >-
+    The ProgramMembershipPuzzles API from Hang — 3 operation(s) for programmembershippuzzles.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - ProgramMembershipPuzzles
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-programmembershippuzzles-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-programs-api
+  name: Hang Programs API
+  description: The Programs API from Hang — 2 operation(s) for programs.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Programs
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-programs-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-puzzles-api
+  name: Hang Puzzles API
+  description: The Puzzles API from Hang — 4 operation(s) for puzzles.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Puzzles
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-puzzles-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-quests-api
+  name: Hang Quests API
+  description: The Quests API from Hang — 9 operation(s) for quests.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Quests
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-quests-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-redemptions-api
+  name: Hang Redemptions API
+  description: The Redemptions API from Hang — 4 operation(s) for redemptions.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Redemptions
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-redemptions-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-rewards-api
+  name: Hang Rewards API
+  description: The Rewards API from Hang — 5 operation(s) for rewards.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-rewards-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-tokenizedrewards-api
+  name: Hang TokenizedRewards API
+  description: The TokenizedRewards API from Hang — 2 operation(s) for tokenizedrewards.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - TokenizedRewards
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-tokenizedrewards-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-tokens-api
+  name: Hang Tokens API
+  description: The Tokens API from Hang — 7 operation(s) for tokens.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-tokens-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-users-api
+  name: Hang Users API
+  description: The Users API from Hang — 1 operation(s) for users.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-users-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
+- aid: hang:hang-wallet-integration-api
+  name: Hang Wallet Integration API
+  description: The Wallet Integration API from Hang — 2 operation(s) for wallet integration.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Wallet Integration
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-wallet-integration-api-openapi.yml
+  - type: APIReference
+    url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+  - type: Documentation
+    url: https://docs.hang.com/hang-platform
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/hang-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/hang-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/hang-domain-security.yml
+- type: Authentication
+  url: authentication/hang-authentication.yml
 - type: Website
   url: https://www.hang.com
+- type: DeveloperPortal
+  url: https://docs.hang.com/hang-platform
+- type: Documentation
+  url: https://docs.hang.com/hang-platform
+- type: APIReference
+  url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+- type: GettingStarted
+  url: https://docs.hang.com/hang-platform/api-usage/creating-program-memberships-for-new-users
+- type: Integrations
+  url: https://www.hang.com/integrations
+- type: StatusPage
+  url: https://status.hang.com
+- type: SignUp
+  url: https://copilot.hang.com/login
+- type: Login
+  url: https://copilot.hang.com/login
+- type: Pricing
+  url: https://www.hang.com/#pricing
+- type: TermsOfService
+  url: https://www.hang.com/terms
+- type: PrivacyPolicy
+  url: https://www.hang.com/privacy
+- type: Security
+  url: https://www.hang.com/security
+- type: Compliance
+  url: https://www.hang.com/security
+- type: LLMsTxt
+  url: llms/hang-llms.txt
+- type: MCPServer
+  url: mcp/hang-mcp.yml
+- type: ErrorCatalog
+  url: errors/hang-problem-types.yml
+- type: Conventions
+  url: conventions/hang-conventions.yml
+- type: Idempotency
+  url: conventions/hang-conventions.yml
+- type: Lifecycle
+  url: lifecycle/hang-lifecycle.yml
+- type: Conformance
+  url: conformance/hang-conformance.yml
+- type: DataModel
+  url: data-model/hang-data-model.yml
+- type: Webhooks
+  url: asyncapi/hang-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/hang-partner-api-overlay.yaml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

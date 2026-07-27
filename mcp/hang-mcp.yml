@@ -1,0 +1,242 @@
+# Hang Partner API — candidate MCP server (derived from OpenAPI)
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/hang-partner-api-openapi.yml
+note: No official hosted Hang MCP server found. Candidate tool list derived one-per-operation from the
+  Partner API OpenAPI; auth is X-API-Key.
+server:
+  name: hang-partner-api
+  transport: stdio
+auth:
+  type: apiKey
+  in: header
+  name: X-API-Key
+tools:
+- name: post_v2_program-memberships_program_membership_id_activities
+  description: Create a new activity.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_activities
+- name: post_v2_program-memberships_program_membership_id_activies_synchronous
+  description: Create a new activity synchronously.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_activies_synchronous
+- name: post_v2_program-memberships
+  description: Creates a new membership with a given wallet_address, external_user_id, or both.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships
+- name: post_membership_program_membership_id_social-media-credentials
+  description: updates membership with social media credentials
+  source_operation: openapi/hang-partner-api-openapi.yml#post_membership_program_membership_id_social-media-credentials
+- name: get_membership_program_membership_id
+  description: gets membership with social media credentials
+  source_operation: openapi/hang-partner-api-openapi.yml#get_membership_program_membership_id
+- name: get_membership_wallets_wallet_address
+  description: gets membership with social media credentials from wallet address
+  source_operation: openapi/hang-partner-api-openapi.yml#get_membership_wallets_wallet_address
+- name: post_v2_program-memberships_program_membership_id_add-trait
+  description: Endpoint to add a trait to a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_add-trait
+- name: post_v2_program-memberships_program_membership_id_remove-trait
+  description: Endpoint to remove a trait from a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_remove-trait
+- name: post_v2_program-memberships_program_membership_id_set-image
+  description: Endpoint to set an image for a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_set-image
+- name: patch_v2_program-memberships_program_membership_id
+  description: Endpoint to update a program membership with a wallet_address, on_chain_token_id, and/or
+    external_user_id
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_program-memberships_program_membership_id
+- name: get_v2_program-memberships_search
+  description: Endpoint to find a program membership by external_user_id
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_search
+- name: get_v2_program-memberships_program_membership_id_level
+  description: Retrieve the current level or tier, as well as earned points (XP) for a program membership.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_program_membership_id_level
+- name: get_programs_tiers
+  description: Fetch all tiers and corresponding benefits for the program linked to the API key used in
+    the request.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_programs_tiers
+- name: get_v2_admin_program
+  description: Endpoint to return program information using the current JWT.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_program
+- name: get_v2_program-memberships_program_membership_id_quests_opt-ins
+  description: Endpoint to retrieve all optIns for a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_program_membership_id_quests_opt-ins
+- name: get_v2_admin_quests
+  description: Get all quests for program.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_quests
+- name: post_v2_program-memberships_program_membership_id_quests_quest_id_opt-in
+  description: Opt a user into a quest.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_quests_quest_id_opt-in
+- name: post_opt-ins_opt_in_id_claim-quest-prize
+  description: Claim the prize(s) associated with a Quest.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_opt-ins_opt_in_id_claim-quest-prize
+- name: post_opt-ins_opt_in_id_claim-activity-prize
+  description: Claim the prize(s) associated with an Activity.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_opt-ins_opt_in_id_claim-activity-prize
+- name: post_v2_admin_quests_quest_id_quest-requirements
+  description: Create a new quest requirement.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_quests_quest_id_quest-requirements
+- name: get_v2_admin_quests_quest_id
+  description: Get quest by Id.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_quests_quest_id
+- name: patch_v2_admin_quests_quest_id
+  description: Updates the quest with the provided fields.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_quests_quest_id
+- name: patch_v2_admin_quest-requirements_quest_requirement_id
+  description: Update a quest requirement.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_quest-requirements_quest_requirement_id
+- name: delete_v2_program-memberships_program_membership_id_opt-ins_opt_in_id
+  description: 'ONLY WORKS IN DEV/STAGING: Clear the Quest Status of a given Opt-In ID.'
+  source_operation: openapi/hang-partner-api-openapi.yml#delete_v2_program-memberships_program_membership_id_opt-ins_opt_in_id
+- name: get_wallets_wallet_address_redemptions
+  description: Retrieve redemption history, if any, for a given wallet_address.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_wallets_wallet_address_redemptions
+- name: post_wallets_wallet_address_redemptions
+  description: Generate a redemption code for a given reward by providing the wallet_address, token_id,
+    and reward_id.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_wallets_wallet_address_redemptions
+- name: post_redemptions_redemption_uuid_redeem
+  description: Redeem a redemption code providing the uuid for the redemption record.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_redemptions_redemption_uuid_redeem
+- name: get_v2_program-memberships_program_membership_id_redemptions
+  description: Retrieve redemption history, if any, for a given program membership.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_program_membership_id_redemptions
+- name: post_v2_program-memberships_program_membership_id_redemptions
+  description: Generate a redemption code for a given reward by providing the program_membership_id and
+    reward_id.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_redemptions
+- name: get_v2_program-memberships_program_membership_id_rewards
+  description: Retrieve the rewards, if any, for a given program membership id.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_program_membership_id_rewards
+- name: get_v2_admin_rewards_reward_uuid
+  description: Endpoint to retrieve a reward with given unique id.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_rewards_reward_uuid
+- name: patch_v2_admin_rewards_reward_uuid
+  description: Endpoint to update a reward.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_rewards_reward_uuid
+- name: post_v2_admin_rewards
+  description: Endpoint to create a reward.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_rewards
+- name: post_v2_admin_rewards_batch-create
+  description: Endpoint to create a batch of rewards.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_rewards_batch-create
+- name: patch_v2_admin_rewards_batch-update
+  description: Endpoint to edit a batch of rewards.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_rewards_batch-update
+- name: get_tokenized-rewards_contracts_contract_address_wallets_wallet_address
+  description: Retrieve all tokenized rewards and their balances for a given wallet address and contract
+    address.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_tokenized-rewards_contracts_contract_address_wallets_wallet_address
+- name: post_tokenized-rewards_burn
+  description: Burn a tokenized reward for the given contract address and token id.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_tokenized-rewards_burn
+- name: get_wallets_wallet_address_tokens
+  description: Retrieve the tokens, if any, owned by a given wallet address.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_wallets_wallet_address_tokens
+- name: post_tokens_token_id_add-trait
+  description: Endpoint to add a trait to a token
+  source_operation: openapi/hang-partner-api-openapi.yml#post_tokens_token_id_add-trait
+- name: post_tokens_token_id_remove-trait
+  description: Endpoint to remove a trait from a token
+  source_operation: openapi/hang-partner-api-openapi.yml#post_tokens_token_id_remove-trait
+- name: post_tokens_token_id_set-token-image
+  description: Endpoint to set a tokens image
+  source_operation: openapi/hang-partner-api-openapi.yml#post_tokens_token_id_set-token-image
+- name: get_tokens_token_id_level
+  description: Retrieve the current level or tier, as well as earned points (XP) for a token.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_tokens_token_id_level
+- name: get_tokens_token_id_loot-boxes
+  description: Endpoint to fetch all loot boxes for a token
+  source_operation: openapi/hang-partner-api-openapi.yml#get_tokens_token_id_loot-boxes
+- name: posttokens_token_id_loot-boxes_loot_box_id_open
+  description: Endpoint to open a loot box
+  source_operation: openapi/hang-partner-api-openapi.yml#posttokens_token_id_loot-boxes_loot_box_id_open
+- name: post_users
+  description: Creates a new user with the given wallet_address and either a phone or an email address.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_users
+- name: post_v2_admin_loot_box_reward_choices
+  description: Create the reward choice and probabilities for a loot box.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_loot_box_reward_choices
+- name: patch_v2_admin_loot_box_reward_choices_loot_box_reward_choice_id
+  description: Update a loot box reward choice.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_loot_box_reward_choices_loot_box_reward_choice_id
+- name: post_v2_admin_loot_box_reward_probabilities
+  description: Create a probability for a loot box reward.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_loot_box_reward_probabilities
+- name: patch_v2_admin_loot_box_reward_probabilities_loot_box_reward_probability_id
+  description: Update a loot box reward probability.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_loot_box_reward_probabilities_loot_box_reward_probability_id
+- name: delete_v2_admin_loot_box_reward_probabilities_loot_box_reward_probability_id
+  description: Delete a loot box reward probability.
+  source_operation: openapi/hang-partner-api-openapi.yml#delete_v2_admin_loot_box_reward_probabilities_loot_box_reward_probability_id
+- name: get_v2_admin_loot-boxes
+  description: Endpoint to fetch all loot boxes for a program
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_loot-boxes
+- name: post_v2_admin_loot-boxes
+  description: Endpoint to create a loot box
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_loot-boxes
+- name: get_v2_admin_loot-boxes_loot_box_id
+  description: Get the Loot Box with the given ID.
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_loot-boxes_loot_box_id
+- name: patch_v2_admin_loot-boxes_loot_box_id
+  description: Updates the lootbox with the provided fields.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_loot-boxes_loot_box_id
+- name: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-reward
+  description: Endpoint to grant a reward to a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_program-memberships_program_membership_id_member-actions_grant-reward
+- name: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-loot-box
+  description: Endpoint to grant a loot box to a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_program-memberships_program_membership_id_member-actions_grant-loot-box
+- name: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-points
+  description: Endpoint to grant points to a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_program-memberships_program_membership_id_member-actions_grant-points
+- name: get_v2_admin_program-memberships
+  description: Get all program memberships
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_program-memberships
+- name: get_v2_admin_program-memberships_program_membership_id
+  description: Get the program membership with the specified Id
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_program-memberships_program_membership_id
+- name: patch_v2_admin_program_memberships_program_membership_id
+  description: Updates the program membership and associated user with the included fields.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_program_memberships_program_membership_id
+- name: get_v2_admin_program-tiers
+  description: Get all program tiers
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_program-tiers
+- name: post_v2_admin_puzzle-pieces
+  description: Create a new piece for a Puzzle.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_puzzle-pieces
+- name: patch_v2_admin_puzzle-pieces_puzzle_piece_id
+  description: Update an existing Puzzle Piece.
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_puzzle-pieces_puzzle_piece_id
+- name: get_v2_admin_puzzles_puzzle_id
+  description: Endpoint to retrieve a puzzle
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_admin_puzzles_puzzle_id
+- name: patch_v2_admin_puzzles_puzzle_id
+  description: Endpoint to update a puzzle
+  source_operation: openapi/hang-partner-api-openapi.yml#patch_v2_admin_puzzles_puzzle_id
+- name: post_v2_admin_puzzles
+  description: Endpoint to create a puzzle
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_admin_puzzles
+- name: get_v2_program-memberships_program_membership_id_loot-boxes
+  description: Endpoint to fetch all loot boxes for a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_program_membership_id_loot-boxes
+- name: post_v2_program-memberships_program_membership_id_loot-boxes_loot_box_id_open
+  description: Endpoint to open a loot box
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_loot-boxes_loot_box_id_open
+- name: get_v2_program-memberships_program_membership_id_puzzles
+  description: Endpoint to retrieve puzzles for a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_program_membership_id_puzzles
+- name: get_v2_program-memberships_program_membership_id_puzzles_puzzle_id
+  description: Endpoint to retrieve a single puzzle belonging to a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#get_v2_program-memberships_program_membership_id_puzzles_puzzle_id
+- name: post_v2_program-memberships_program_membership_id_puzzles_puzzle_id_complete
+  description: Endpoint to redeem a completed puzzle belonging to a program membership
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_program-memberships_program_membership_id_puzzles_puzzle_id_complete
+- name: post_v2_redemptions_redemption_uuid_redeem
+  description: Redeem a redemption code providing the uuid for the redemption record.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_v2_redemptions_redemption_uuid_redeem
+- name: post_integrations_search
+  description: Get a wallet integration with either a wallet or an email address.
+  source_operation: openapi/hang-partner-api-openapi.yml#post_integrations_search
+- name: post_integrations
+  description: Create or update a wallet integration with the email and wallet address
+  source_operation: openapi/hang-partner-api-openapi.yml#post_integrations

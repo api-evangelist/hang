@@ -1,0 +1,30 @@
+# Hang Partner API — lifecycle, status and SLA
+generated: '2026-07-19'
+method: searched
+source: https://docs.hang.com/hang-platform
+versioning:
+  scheme: uri-path + dated spec version
+  current: v2
+  path_prefix: /v2
+  spec_version: '2023.09.07'
+  docs: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
+status_page:
+  url: https://status.hang.com
+  provider: Atlassian Statuspage
+  components:
+  - Partner API
+  - Webhooks
+  - POS Data Sync
+  - Activity Processing Workers
+  - Management Portal
+  - Hang Copilot
+  - Analytics
+  - Online Ordering Service
+sla:
+  uptime_target: '99.9%'
+  source: https://www.hang.com/security
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No published deprecation policy or Sunset/Deprecation header support found.
+deprecated_operations: []

@@ -1,0 +1,86 @@
+# Hang Partner API — derived data model / ERD
+generated: '2026-07-19'
+method: derived
+source: openapi/hang-partner-api-openapi.yml
+note: Entity graph derived from Hang Partner API path resources and id-reference fields (Swagger 2.0 uses
+  inline formData params, so relationships are inferred from path structure and parameter names).
+entities:
+- ProgramMembership
+- Activity
+- Quest
+- Reward
+- Redemption
+- LootBox
+- Puzzle
+- BalanceCard
+- Token
+- TokenizedReward
+- Program
+- ProgramTier
+- ProgramSegment
+- Wallet
+- Membership
+- User
+- Promotion
+- Order
+relationships:
+- from: ProgramMembership
+  to: Program
+  type: belongs_to
+  via: program_id
+- from: ProgramMembership
+  to: ProgramTier
+  type: belongs_to
+  via: level/tier
+- from: ProgramMembership
+  to: Activity
+  type: has_many
+  via: program_membership_id
+- from: ProgramMembership
+  to: Redemption
+  type: has_many
+  via: program_membership_id
+- from: ProgramMembership
+  to: Reward
+  type: has_many
+  via: applicable-rewards
+- from: ProgramMembership
+  to: BalanceCard
+  type: has_many
+  via: program_membership_id
+- from: ProgramMembership
+  to: LootBox
+  type: has_many
+  via: program_membership_id
+- from: ProgramMembership
+  to: Quest
+  type: has_many
+  via: opt-ins
+- from: Quest
+  to: QuestOptIn
+  type: has_many
+  via: opt-ins
+- from: Redemption
+  to: Reward
+  type: belongs_to
+  via: reward_id
+- from: Puzzle
+  to: ProgramMembership
+  type: belongs_to
+  via: program_membership_id
+- from: Program
+  to: ProgramTier
+  type: has_many
+  via: program_id
+- from: Program
+  to: ProgramSegment
+  type: has_many
+  via: program_id
+- from: Token
+  to: Wallet
+  type: belongs_to
+  via: wallet_address
+- from: TokenizedReward
+  to: Token
+  type: has_many
+  via: contract

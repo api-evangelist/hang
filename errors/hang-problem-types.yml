@@ -1,0 +1,49 @@
+# Hang Partner API — error catalog (derived from OpenAPI 4xx/5xx responses)
+generated: '2026-07-19'
+method: derived
+source: openapi/hang-partner-api-openapi.yml
+format: json
+note: Hang Partner API returns plain JSON error bodies with a message; not RFC 9457 problem+json. Status
+  codes and example messages derived from OpenAPI 4xx/5xx responses.
+envelope:
+  content_type: application/json
+  fields:
+  - message
+problems:
+- status: 400
+  title: Missing or invalid parameters
+  occurrences: 2
+  example_messages:
+  - Missing required parameters.
+- status: 401
+  title: Unauthorized
+  occurrences: 2
+  example_messages:
+  - Could not generate code due to wallet_address not owning token.
+  - The program membership is not authorized to redeem the puzzle with given puzzle_id.
+- status: 404
+  title: Resource not found
+  occurrences: 7
+  example_messages:
+  - Could not find the program membership provided.
+  - Could not generate code due to invalid token_id, or reward_id.
+  - Redemption code not found for given uuid.
+  - Could not generate code due to invalid program_membership_id or reward_id.
+  - Could not find the token provided.
+- status: 409
+  title: Conflict — resource already exists
+  occurrences: 1
+  example_messages:
+  - When any of the parameters passed in already exist in the system.
+- status: 422
+  title: Unprocessable — request could not be fulfilled
+  occurrences: 3
+  example_messages:
+  - The reward is not redeemable.
+  - The puzzle is not redeemable because it is not complete or the puzzle_id given is not correct.
+- status: 500
+  title: Internal server error
+  occurrences: 2
+  example_messages:
+  - Something unexpected happened while trying to retrive the tier benefits.
+  - Could not retrieve rewards for program membership.

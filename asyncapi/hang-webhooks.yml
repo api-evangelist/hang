@@ -1,0 +1,27 @@
+# Hang Partner API — webhook / event surface
+generated: '2026-07-19'
+method: searched
+source: https://docs.hang.com/hang-platform/webhooks/use-incoming-webhooks-to-get-real-time-updates
+spec_type: Webhooks
+transport: HTTPS POST (JSON payload) to a partner-registered endpoint
+registration: >-
+  Manual — brands contact Hang to register the destination URL before events are delivered.
+envelope:
+  fields: [type, id, webhook_sent_at, <resource>]
+  naming_pattern: resource.event
+events:
+- type: program_membership.created
+  description: Occurs when a new program membership is created in Hang's system.
+  resource: program_membership
+  docs: https://docs.hang.com/hang-platform/webhooks/program_membership.created
+- type: program_membership.updated
+  description: Occurs when a program membership is updated in Hang's system.
+  resource: program_membership
+  docs: https://docs.hang.com/hang-platform/webhooks/program_membership.updated
+- type: quest_opt_in.updated
+  description: Occurs whenever a user makes progress on a quest that they're opted into.
+  resource: quest_opt_in
+  docs: https://docs.hang.com/hang-platform/webhooks/quest_opt_in.updated
+note: >-
+  Hang documents webhooks but does not publish an AsyncAPI document; captured here as a
+  webhook catalog (type: Webhooks). No event surface was fabricated.

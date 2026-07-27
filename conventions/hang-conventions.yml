@@ -1,0 +1,49 @@
+# Hang Partner API — cross-cutting API conventions
+generated: '2026-07-19'
+method: searched
+source: https://docs.hang.com/hang-platform
+spec: openapi/hang-partner-api-openapi.yml
+authentication:
+  style: api-key
+  location: header
+  parameter: X-API-Key
+  scope: per-program key issued by Hang
+  docs: https://docs.hang.com/hang-platform
+idempotency:
+  supported: true
+  mechanism: request parameter
+  parameter: idempotency_key
+  applies_to:
+  - POST /v2/program-memberships/{program_membership_id}/activities
+  - POST /v2/program-memberships/{program_membership_id}/activies/synchronous
+  purpose: prevents double-processing of point-changing activity events
+  note: >-
+    Idempotency is enforced on activity (point-earning) writes via a required
+    idempotency_key form field, so retries of the same activity do not double-credit.
+pagination:
+  style: offset
+  params:
+  - name: limit
+    in: query
+  - name: offset
+    in: query
+  note: List/search endpoints (e.g. program-membership bulk search, available rewards) accept limit + offset.
+versioning:
+  scheme: uri-path + dated spec version
+  path_prefix: /v2
+  base_path: /partner-api
+  spec_version: '2023.09.07'
+error_envelope:
+  content_type: application/json
+  fields: [message]
+  format: plain-json
+  note: Errors return a JSON body with a message field; not RFC 9457 problem+json.
+  see: errors/hang-problem-types.yml
+webhooks:
+  supported: true
+  registration: manual (contact Hang to register a webhook endpoint)
+  see: asyncapi/hang-webhooks.yml
+cross_links:
+  authentication: authentication/hang-authentication.yml
+  errors: errors/hang-problem-types.yml
+  lifecycle: lifecycle/hang-lifecycle.yml

@@ -1,0 +1,35 @@
+# Hang Partner API — standards conformance + published compliance posture
+generated: '2026-07-19'
+method: searched
+source: https://www.hang.com/security
+spec: openapi/hang-partner-api-openapi.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: API uses a per-program API key (X-API-Key header), not OAuth2.
+- id: openapi-3
+  conforms: false
+  evidence: Spec is published as Swagger 2.0 (OpenAPI 2.0).
+- id: swagger-2
+  conforms: true
+  evidence: openapi/hang-partner-api-openapi.yml is a valid Swagger 2.0 document.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors return plain JSON { message } bodies, not application/problem+json.
+- id: idempotency
+  conforms: true
+  evidence: Activity write operations accept an idempotency_key to prevent double-processing.
+- id: webhooks
+  conforms: true
+  evidence: Documented event webhooks (program_membership.created/updated, quest_opt_in.updated).
+compliance:
+  published: true
+  source: https://www.hang.com/security
+  certifications:
+  - SOC 2 Type II
+  - ISO 27001
+  - GDPR
+  - CCPA
+  encryption:
+    at_rest: AES-256
+    in_transit: TLS 1.3
