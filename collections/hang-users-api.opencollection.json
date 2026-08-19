@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Users API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new user with the given wallet_address and either a phone or an email address.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/users"
+          },
+          "docs": "Invoke this endpoint to add a new user to your loyalty program."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

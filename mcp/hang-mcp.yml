@@ -1,4 +1,3 @@
-# Hang Partner API — candidate MCP server (derived from OpenAPI)
 generated: '2026-07-19'
 method: derived
 status: candidate
@@ -240,3 +239,9 @@ tools:
 - name: post_integrations
   description: Create or update a wallet integration with the email and wallet address
   source_operation: openapi/hang-partner-api-openapi.yml#post_integrations
+deployment:
+  mode: none
+  verified: derived
+  tools: 74
+  checked: '2026-08-12'
+  source: catalog MCP census

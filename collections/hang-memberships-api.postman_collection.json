@@ -1,0 +1,1363 @@
+{
+  "item": [
+    {
+      "id": "30e286dd-4331-4411-9f44-4a41d984fa62",
+      "name": "Memberships",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f96fccb5-2b05-455c-903e-1471869bb6f7",
+          "name": "Creates a new membership with a given wallet_address, external_user_id, or both.",
+          "request": {
+            "name": "Creates a new membership with a given wallet_address, external_user_id, or both.",
+            "description": {
+              "content": "Invoke this endpoint to add a new membership to your loyalty program.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "external_user_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the user's external_user_id (must be provided if wallet_address is blank)"
+                },
+                {
+                  "key": "wallet_address",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the user's wallet_address (must be provided if external_user_id is blank)"
+                },
+                {
+                  "key": "email",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the user's email address"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "20d126f3-122d-47ef-8bab-097c8ef0fc7c",
+              "name": "Membership was created successfully, or an existing membership was found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "the user's external_user_id (must be provided if wallet_address is blank)",
+                        "type": "text/plain"
+                      },
+                      "key": "external_user_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the user's wallet_address (must be provided if external_user_id is blank)",
+                        "type": "text/plain"
+                      },
+                      "key": "wallet_address",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the user's email address",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"membership\": {\n    \"id\": \"string\",\n    \"external_user_id\": \"string\",\n    \"wallet_address\": \"string\",\n    \"on_chain_token_id\": \"string\",\n    \"created_at\": 9834.882854485475,\n    \"social_media_credentials\": {\n      \"twitter_username\": \"string\",\n      \"instagram_username\": \"string\",\n      \"tiktok_username\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6f195f3-3dc9-4b1c-b8fd-5d48404e3c27",
+              "name": "Missing required parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "the user's external_user_id (must be provided if wallet_address is blank)",
+                        "type": "text/plain"
+                      },
+                      "key": "external_user_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the user's wallet_address (must be provided if external_user_id is blank)",
+                        "type": "text/plain"
+                      },
+                      "key": "wallet_address",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the user's email address",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17a08d52-0b41-4b74-bed3-f4b2175c8573",
+          "name": "updates membership with social media credentials",
+          "request": {
+            "name": "updates membership with social media credentials",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "membership",
+                ":program_membership_id",
+                "social-media-credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "twitter_username",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "twitter handle associated with the program membership"
+                },
+                {
+                  "key": "instagram_username",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "instagram username associated with the program membership"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a9aa7916-dde9-441b-8d14-348bb102f640",
+              "name": "Membership was updated with social media credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "membership",
+                    ":program_membership_id",
+                    "social-media-credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "twitter handle associated with the program membership",
+                        "type": "text/plain"
+                      },
+                      "key": "twitter_username",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "instagram username associated with the program membership",
+                        "type": "text/plain"
+                      },
+                      "key": "instagram_username",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"membership\": {\n    \"id\": \"string\",\n    \"external_user_id\": \"string\",\n    \"wallet_address\": \"string\",\n    \"on_chain_token_id\": \"string\",\n    \"created_at\": 9834.882854485475,\n    \"social_media_credentials\": {\n      \"twitter_username\": \"string\",\n      \"instagram_username\": \"string\",\n      \"tiktok_username\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5652eab-1f72-408d-8e8b-e1260c392d27",
+          "name": "gets membership with social media credentials",
+          "request": {
+            "name": "gets membership with social media credentials",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "membership",
+                ":program_membership_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c495ad3-ea04-4558-ad33-1f2bf25da7fa",
+              "name": "Membership was retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "membership",
+                    ":program_membership_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"membership\": {\n    \"id\": \"string\",\n    \"external_user_id\": \"string\",\n    \"wallet_address\": \"string\",\n    \"on_chain_token_id\": \"string\",\n    \"created_at\": 9834.882854485475,\n    \"social_media_credentials\": {\n      \"twitter_username\": \"string\",\n      \"instagram_username\": \"string\",\n      \"tiktok_username\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77036c8a-1966-4003-845e-1a0ea6340df1",
+          "name": "gets membership with social media credentials from wallet address",
+          "request": {
+            "name": "gets membership with social media credentials from wallet address",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "membership",
+                "wallets",
+                ":wallet_address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wallet_address",
+                  "description": "(Required) user's wallet address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ac0c2ae-3438-4373-843c-ed6042a4823a",
+              "name": "Membership was retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "membership",
+                    "wallets",
+                    ":wallet_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet_address",
+                      "description": "(Required) user's wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"membership\": {\n    \"id\": \"string\",\n    \"external_user_id\": \"string\",\n    \"wallet_address\": \"string\",\n    \"on_chain_token_id\": \"string\",\n    \"created_at\": 9834.882854485475,\n    \"social_media_credentials\": {\n      \"twitter_username\": \"string\",\n      \"instagram_username\": \"string\",\n      \"tiktok_username\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71841fdc-95a1-42c0-85d8-877120c42703",
+          "name": "Endpoint to add a trait to a program membership",
+          "request": {
+            "name": "Endpoint to add a trait to a program membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "add-trait"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "trait_value",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) value of the trait"
+                },
+                {
+                  "key": "trait_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) name of the trait"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b42b1a6a-fef0-40d9-a621-173e5c6555de",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "add-trait"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"traits\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02841ede-9f3c-480a-a5a6-ae20de6ace10",
+          "name": "Endpoint to remove a trait from a program membership",
+          "request": {
+            "name": "Endpoint to remove a trait from a program membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "remove-trait"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "trait_value",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) value of the trait"
+                },
+                {
+                  "key": "trait_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) name of the trait"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "74c88ccc-a69f-4dec-986b-4a6b7b9dd32a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "remove-trait"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"traits\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7163d59f-1ab5-4d60-8b75-a54705a25786",
+          "name": "Endpoint to set an image for a program membership",
+          "request": {
+            "name": "Endpoint to set an image for a program membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "set-image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) url of the image"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5ed33409-4743-46fd-9a72-20d08300cb38",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "set-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) url of the image",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"membership\": {\n    \"id\": \"string\",\n    \"external_user_id\": \"string\",\n    \"wallet_address\": \"string\",\n    \"on_chain_token_id\": \"string\",\n    \"created_at\": 9834.882854485475,\n    \"social_media_credentials\": {\n      \"twitter_username\": \"string\",\n      \"instagram_username\": \"string\",\n      \"tiktok_username\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82e8d96b-3e06-4cc2-8722-f04aad4c7ef6",
+          "name": "Endpoint to update a program membership with a wallet_address, on_chain_token_id, and/or external_user_id",
+          "request": {
+            "name": "Endpoint to update a program membership with a wallet_address, on_chain_token_id, and/or external_user_id",
+            "description": {
+              "content": "Sets a wallet_address, on_chain_token_id, and/or external_user_id on the specified program_membership.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "program_membership_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wallet_address",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the wallet address to update the program membership with"
+                },
+                {
+                  "key": "on_chain_token_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the on chain token id to update the program membership with"
+                },
+                {
+                  "key": "external_user_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the external user id to update the program membership with"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a7f7736-c880-420f-891c-e2eaff2d378e",
+              "name": "Membership was updated with provided wallet_address, on_chain_token_id, and/or external_user_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "program_membership_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "the wallet address to update the program membership with",
+                        "type": "text/plain"
+                      },
+                      "key": "wallet_address",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the on chain token id to update the program membership with",
+                        "type": "text/plain"
+                      },
+                      "key": "on_chain_token_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the external user id to update the program membership with",
+                        "type": "text/plain"
+                      },
+                      "key": "external_user_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"membership\": {\n    \"id\": \"string\",\n    \"external_user_id\": \"string\",\n    \"wallet_address\": \"string\",\n    \"on_chain_token_id\": \"string\",\n    \"created_at\": 9834.882854485475,\n    \"social_media_credentials\": {\n      \"twitter_username\": \"string\",\n      \"instagram_username\": \"string\",\n      \"tiktok_username\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "161235fd-008e-4c0f-9ea7-da72382f9aa0",
+          "name": "Endpoint to find a program membership by external_user_id",
+          "request": {
+            "name": "Endpoint to find a program membership by external_user_id",
+            "description": {
+              "content": "Finds a program membership by external_user_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "external_user_id",
+                  "value": "<string>",
+                  "description": "the external user id to update the program membership with"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b41bf81-122b-43ad-bb19-9b0c7ac90fca",
+              "name": "Membership was found with provided wallet_address, on_chain_token_id, and/or external_user_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "external_user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"membership\": {\n    \"id\": \"string\",\n    \"external_user_id\": \"string\",\n    \"wallet_address\": \"string\",\n    \"on_chain_token_id\": \"string\",\n    \"created_at\": 9834.882854485475,\n    \"social_media_credentials\": {\n      \"twitter_username\": \"string\",\n      \"instagram_username\": \"string\",\n      \"tiktok_username\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "110ebf77-446e-4d29-983c-d636026b9c2b",
+          "name": "Retrieve the current level or tier, as well as earned points (XP) for a program membership.",
+          "request": {
+            "name": "Retrieve the current level or tier, as well as earned points (XP) for a program membership.",
+            "description": {
+              "content": "Invoke this endpoint to return the tier and earned points (XP) for a given program membership id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "level"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e76c0997-130a-4f47-bc12-e050d426e68a",
+              "name": "Returns details successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "level"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"level\": {\n    \"tier\": \"string\",\n    \"balance\": 5806.012901237086\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6373806d-39cb-488d-8aa8-75451a834cda",
+              "name": "Could not find the program membership provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "level"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6f22db2e-188d-481b-9085-8d30ceb3cd8d",
+    "name": "Hang Partner API (params in:formData) Activities Memberships API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

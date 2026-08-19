@@ -1,0 +1,288 @@
+{
+  "item": [
+    {
+      "id": "71ad9090-7f93-4abc-b0b9-475d17effb2d",
+      "name": "TokenizedRewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5207ab85-1066-44b2-a94c-2a8ab072fac0",
+          "name": "Retrieve all tokenized rewards and their balances for a given wallet address and contract address.",
+          "request": {
+            "name": "Retrieve all tokenized rewards and their balances for a given wallet address and contract address.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokenized-rewards",
+                "contracts",
+                ":contract_address",
+                "wallets",
+                ":wallet_address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contract_address",
+                  "description": "(Required) The contract address"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wallet_address",
+                  "description": "(Required) The wallet address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0730c624-a2e7-4585-b397-b5f7be5521c6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokenized-rewards",
+                    "contracts",
+                    ":contract_address",
+                    "wallets",
+                    ":wallet_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contract_address",
+                      "description": "(Required) The contract address"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet_address",
+                      "description": "(Required) The wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"rewards\": [\n    {\n      \"token_id\": \"string\",\n      \"burned_at\": 6332.431489776306\n    },\n    {\n      \"token_id\": \"string\",\n      \"burned_at\": 2947.018410459923\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bd0aa08-7f84-48d8-8ed2-807c85d25a83",
+          "name": "Burn a tokenized reward for the given contract address and token id.",
+          "request": {
+            "name": "Burn a tokenized reward for the given contract address and token id.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokenized-rewards",
+                "burn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "contract_address",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The contract address"
+                },
+                {
+                  "key": "token_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The id of the token"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "11e6f695-3f2e-4a66-bcb7-2d65012d0ea6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokenized-rewards",
+                    "burn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The contract address",
+                        "type": "text/plain"
+                      },
+                      "key": "contract_address",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The id of the token",
+                        "type": "text/plain"
+                      },
+                      "key": "token_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"burned_at\": 3528.854096053605,\n  \"redeemed_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e4157efc-ac34-49f3-abc6-e21cac3a8b3f",
+    "name": "Hang Partner API (params in:formData) Activities TokenizedRewards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1879 @@
+{
+  "item": [
+    {
+      "id": "f49d2908-c9cb-4fdc-a666-a3685990e3b0",
+      "name": "Quests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f802a4d9-8e0d-4b9f-8add-e6d6d7e4164f",
+          "name": "Endpoint to retrieve all optIns for a program membership",
+          "request": {
+            "name": "Endpoint to retrieve all optIns for a program membership",
+            "description": {
+              "content": "OptIns are user initiated and represent the acceptance of a Quest.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "quests",
+                "opt-ins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbf3e8a8-bb2c-44d2-9cab-96242c01664d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "quests",
+                    "opt-ins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"opt_ins\": [\n    {\n      \"id\": \"string\",\n      \"quest_id\": \"string\",\n      \"created_at\": 9905.643643049245,\n      \"updated_at\": 5436.460356935167,\n      \"expires_at\": 7266.841246765311,\n      \"status\": \"opted_in\",\n      \"progress\": [\n        {\n          \"activity_id\": \"string\",\n          \"value\": 9175.12878928999,\n          \"updated_at\": 2390.3208560137414,\n          \"fulfilled_at\": 2039.4778278268843,\n          \"prize_claimed_at\": 192.82504546580427\n        },\n        {\n          \"activity_id\": \"string\",\n          \"value\": 8461.137872808802,\n          \"updated_at\": 9289.952934527235,\n          \"fulfilled_at\": 4590.883839303271,\n          \"prize_claimed_at\": 2645.408851009574\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"quest_id\": \"string\",\n      \"created_at\": 5535.673250487114,\n      \"updated_at\": 3840.9133200305346,\n      \"expires_at\": 5685.277269275313,\n      \"status\": \"opted_in\",\n      \"progress\": [\n        {\n          \"activity_id\": \"string\",\n          \"value\": 6437.395707720924,\n          \"updated_at\": 3154.5784755132113,\n          \"fulfilled_at\": 1475.1011841119698,\n          \"prize_claimed_at\": 4176.572255667732\n        },\n        {\n          \"activity_id\": \"string\",\n          \"value\": 6079.152198018534,\n          \"updated_at\": 6635.623494499865,\n          \"fulfilled_at\": 7803.578025322116,\n          \"prize_claimed_at\": 111.5407225013898\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "056874f9-b0f9-4d2e-94af-d3b75f52dea5",
+          "name": "Get all quests for program.",
+          "request": {
+            "name": "Get all quests for program.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "quests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Amount of quests to return (max 20)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<number>",
+                  "description": "Index to start at."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1ebb010-3746-4e5c-b89d-25bdf44d70af",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "quests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"quests\": [\n    \"string\",\n    \"string\"\n  ],\n  \"total_records\": 4018.719411770869\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdd8fd06-f16a-461b-9c41-aa1e71884752",
+          "name": "Opt a user into a quest.",
+          "request": {
+            "name": "Opt a user into a quest.",
+            "description": {
+              "content": "OptIns are generally user initiated and represent the acceptance of a Quest.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "quests",
+                ":quest_id",
+                "opt-in"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the user's program membership id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quest_id",
+                  "description": "(Required) the ID for the quest being opted into"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "891a7886-42bb-43c2-af97-38094b044b75",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "quests",
+                    ":quest_id",
+                    "opt-in"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the user's program membership id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quest_id",
+                      "description": "(Required) the ID for the quest being opted into"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"opt_in\": {\n    \"id\": \"string\",\n    \"quest_id\": \"string\",\n    \"created_at\": 7480.424969258515,\n    \"updated_at\": 2714.6515400529756,\n    \"expires_at\": 3759.256992872312,\n    \"status\": \"non_redeemable\",\n    \"progress\": [\n      {\n        \"activity_id\": \"string\",\n        \"value\": 5841.80252751976,\n        \"updated_at\": 2468.5765390993497,\n        \"fulfilled_at\": 8478.774133691337,\n        \"prize_claimed_at\": 170.5797069504478\n      },\n      {\n        \"activity_id\": \"string\",\n        \"value\": 2326.8306616747304,\n        \"updated_at\": 9272.463409915013,\n        \"fulfilled_at\": 1199.8161696032362,\n        \"prize_claimed_at\": 8657.876715615135\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4fed19b-7f0e-4661-a60a-f514bd4c17d8",
+          "name": "Claim the prize(s) associated with a Quest.",
+          "request": {
+            "name": "Claim the prize(s) associated with a Quest.",
+            "description": {
+              "content": "Prizes can exist on both the Quest and Activity levels. Invoke this endpoint to claim the prizes at the Quest level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "opt-ins",
+                ":opt_in_id",
+                "claim-quest-prize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "opt_in_id",
+                  "description": "(Required) the id of the OptIn whose Quest's prize(s) is ready to be claimed."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95b0b115-d987-4e87-8fa3-f6e05cba7aff",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opt-ins",
+                    ":opt_in_id",
+                    "claim-quest-prize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "opt_in_id",
+                      "description": "(Required) the id of the OptIn whose Quest's prize(s) is ready to be claimed."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"prize\": {\n    \"point_reward_value\": 9759.65690527849,\n    \"sponsor_name\": \"string\",\n    \"lootbox\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"background_gradient_start_color\": \"string\",\n      \"background_gradient_stop_color\": \"string\",\n      \"container_images\": {\n        \"box_together\": \"string\",\n        \"box_top\": \"string\",\n        \"box_bottom\": \"string\"\n      },\n      \"lootbox_reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 5407.537142213272,\n          \"reward_uuid\": \"string\",\n          \"image\": \"string\",\n          \"probability\": 8220.291413537165,\n          \"reward\": {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 2667,\n              \"key_1\": 5619.038289817266,\n              \"key_2\": \"string\"\n            }\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 6688.000275339457,\n          \"reward_uuid\": \"string\",\n          \"image\": \"string\",\n          \"probability\": 9276.166769783158,\n          \"reward\": {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 411\n            }\n          }\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": 7821\n      }\n    },\n    \"reward\": {\n      \"uuid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"terms_and_conditions\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69611e46-e1b0-4caf-90d6-9d879bd40a54",
+          "name": "Claim the prize(s) associated with an Activity.",
+          "request": {
+            "name": "Claim the prize(s) associated with an Activity.",
+            "description": {
+              "content": "Prizes can exist on both the Quest and Activity levels. Invoke this endpoint to claim the prizes at the Activity level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "opt-ins",
+                ":opt_in_id",
+                "claim-activity-prize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "opt_in_id",
+                  "description": "(Required) the id of the OptIn whose Activity's prize(s) is ready to be claimed."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "activity_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) the id of the Activity whose prize(s) you wish to claim"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3bacdc1e-6d6d-47a1-96db-3ca61d581d9e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opt-ins",
+                    ":opt_in_id",
+                    "claim-activity-prize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "opt_in_id",
+                      "description": "(Required) the id of the OptIn whose Activity's prize(s) is ready to be claimed."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) the id of the Activity whose prize(s) you wish to claim",
+                        "type": "text/plain"
+                      },
+                      "key": "activity_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"prize\": {\n    \"point_reward_value\": 9759.65690527849,\n    \"sponsor_name\": \"string\",\n    \"lootbox\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"background_gradient_start_color\": \"string\",\n      \"background_gradient_stop_color\": \"string\",\n      \"container_images\": {\n        \"box_together\": \"string\",\n        \"box_top\": \"string\",\n        \"box_bottom\": \"string\"\n      },\n      \"lootbox_reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 5407.537142213272,\n          \"reward_uuid\": \"string\",\n          \"image\": \"string\",\n          \"probability\": 8220.291413537165,\n          \"reward\": {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 2667,\n              \"key_1\": 5619.038289817266,\n              \"key_2\": \"string\"\n            }\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 6688.000275339457,\n          \"reward_uuid\": \"string\",\n          \"image\": \"string\",\n          \"probability\": 9276.166769783158,\n          \"reward\": {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 411\n            }\n          }\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": 7821\n      }\n    },\n    \"reward\": {\n      \"uuid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"terms_and_conditions\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a1086ae-f72a-47d0-b3ed-00dcc48d1945",
+          "name": "Create a new quest requirement.",
+          "request": {
+            "name": "Create a new quest requirement.",
+            "description": {
+              "content": "Invoke this endpoint to add a new requirement to a quest.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "quests",
+                ":quest_id",
+                "quest-requirements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quest_id",
+                  "description": "(Required) the ID of the quest having a requirement added"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "value_threshold",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "(Required) the ActivityType value threshold needed to satisfy the QuestRequirement"
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) a description of the quest requirement"
+                },
+                {
+                  "key": "activity_type_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) the ID of the ActivityType that satisfies the QuestRequirement"
+                },
+                {
+                  "key": "prize_point_reward_value",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "the amount of points to reward for completing the QuestRequirement"
+                },
+                {
+                  "key": "prize_loot_box_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the ID of a lootbox to reward for completing the QuestRequirement"
+                },
+                {
+                  "key": "prize_nft_loyalty_reward_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "the ID of a reward to reward for completing the QuestRequirement"
+                },
+                {
+                  "key": "auto_claim_prize",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "a boolean indicating if the prize should be automatically claimed when the QuestRequirement is completed"
+                },
+                {
+                  "key": "activity_type_subtypes",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "an array of ActivityTypeSubtype IDs that can be used to fulfill the QuestRequirement"
+                },
+                {
+                  "key": "check_in_interval_days",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "If present, the cadence at which the user must perform the activity (e.g. a value of 3, with a value_threshold of 50 equates to spend $50 every 3 days)."
+                },
+                {
+                  "key": "cta_text",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Call to action description text."
+                },
+                {
+                  "key": "cta_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Call to action URL."
+                },
+                {
+                  "key": "order",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "If present, the order in which the requirement must be completed."
+                },
+                {
+                  "key": "restricted_to_ids",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "a list containing IDs that are allowed to fulfill the QuestRequirement"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "210e0f47-973a-4d92-9487-b44f0ff6ba07",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "quests",
+                    ":quest_id",
+                    "quest-requirements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quest_id",
+                      "description": "(Required) the ID of the quest having a requirement added"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) the ActivityType value threshold needed to satisfy the QuestRequirement",
+                        "type": "text/plain"
+                      },
+                      "key": "value_threshold",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) a description of the quest requirement",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) the ID of the ActivityType that satisfies the QuestRequirement",
+                        "type": "text/plain"
+                      },
+                      "key": "activity_type_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the amount of points to reward for completing the QuestRequirement",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_point_reward_value",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the ID of a lootbox to reward for completing the QuestRequirement",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_loot_box_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the ID of a reward to reward for completing the QuestRequirement",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_nft_loyalty_reward_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "a boolean indicating if the prize should be automatically claimed when the QuestRequirement is completed",
+                        "type": "text/plain"
+                      },
+                      "key": "auto_claim_prize",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "an array of ActivityTypeSubtype IDs that can be used to fulfill the QuestRequirement",
+                        "type": "text/plain"
+                      },
+                      "key": "activity_type_subtypes",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If present, the cadence at which the user must perform the activity (e.g. a value of 3, with a value_threshold of 50 equates to spend $50 every 3 days).",
+                        "type": "text/plain"
+                      },
+                      "key": "check_in_interval_days",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Call to action description text.",
+                        "type": "text/plain"
+                      },
+                      "key": "cta_text",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Call to action URL.",
+                        "type": "text/plain"
+                      },
+                      "key": "cta_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If present, the order in which the requirement must be completed.",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "a list containing IDs that are allowed to fulfill the QuestRequirement",
+                        "type": "text/plain"
+                      },
+                      "key": "restricted_to_ids",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"quest_requirement\": {\n    \"id\": \"string\",\n    \"quest_id\": \"string\",\n    \"created_at\": 1772.0219580223984,\n    \"description\": \"string\",\n    \"value_threshold\": \"string\",\n    \"order\": 8105.328286470635,\n    \"check_in_interval_days\": 1917.8234848245868,\n    \"image_url\": \"string\",\n    \"prize\": {\n      \"point_reward_value\": 4590.205291771601,\n      \"sponsor_name\": \"string\",\n      \"lootbox\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"background_gradient_start_color\": \"string\",\n        \"background_gradient_stop_color\": \"string\",\n        \"image_box_together_url\": \"string\",\n        \"reward_choices\": [\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 4808.383929149701,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 3783.8193315536128,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 7701.6048599812075,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 1600,\n                  \"key_1\": 5859\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 4549.787995301615\n                }\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 2802.999241380274,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 9207.22291626794,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 4367.689584261099,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 6325.268495117455\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": false,\n                  \"key_1\": 1827.1632901433632,\n                  \"key_2\": false,\n                  \"key_3\": 772.6978374168203\n                }\n              }\n            ]\n          }\n        ],\n        \"metadata\": {\n          \"key_0\": true,\n          \"key_1\": \"string\"\n        }\n      },\n      \"reward\": {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\"\n      }\n    },\n    \"cta_url\": \"string\",\n    \"cta_text\": \"string\",\n    \"restricted_to_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"activity_type_id\": \"string\",\n    \"activity_type_name\": \"string\",\n    \"activity_type_subtypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"partner_metadata\": {\n      \"key_0\": true\n    },\n    \"prize_nft_loyalty_reward_id\": \"string\",\n    \"prize_point_reward_value\": 439.48771477574036,\n    \"prize_loot_box_id\": \"string\",\n    \"auto_claim_prize\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88b024d4-0528-4c28-97d5-55d3b372603c",
+          "name": "Get quest by Id.",
+          "request": {
+            "name": "Get quest by Id.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "quests",
+                ":quest_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quest_id",
+                  "description": "(Required) The Id of the quest."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f989d4ce-fcb0-4460-8c7d-5c27f93e10a6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "quests",
+                    ":quest_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quest_id",
+                      "description": "(Required) The Id of the quest."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"quest\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"priority\": 5214.173666197705,\n    \"description\": \"string\",\n    \"sponsor_name\": \"string\",\n    \"image_url\": \"string\",\n    \"point_threshold_requirement\": 11.819962098404968,\n    \"opt_in_text\": \"string\",\n    \"time_to_complete_minutes\": 9431.978487920605,\n    \"starts_at\": 5520.463535516378,\n    \"ends_at\": 9878.272749417976,\n    \"status\": \"draft\",\n    \"max_num_of_completions_per_user\": 791.777288250548,\n    \"max_num_of_completions_for_program\": 8261.46393488224,\n    \"quest_type\": \"string\",\n    \"auto_opt_in_at_signup\": false,\n    \"partner_metadata\": {\n      \"key_0\": 7043.044462680677\n    },\n    \"created_at\": 7096.220407751203,\n    \"terms_and_conditions\": \"string\",\n    \"auto_claim_prize\": false,\n    \"enforce_order\": false,\n    \"claim_prize_header_text\": \"string\",\n    \"claim_prize_message\": \"string\",\n    \"claim_prize_cta\": \"string\",\n    \"remaining_num_of_completions_for_program\": 616.2310977642127,\n    \"quest_requirements\": [\n      \"string\",\n      \"string\"\n    ],\n    \"prize\": {\n      \"point_reward_value\": 5913.922278466647,\n      \"sponsor_name\": \"string\",\n      \"lootbox\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"background_gradient_start_color\": \"string\",\n        \"background_gradient_stop_color\": \"string\",\n        \"image_box_together_url\": \"string\",\n        \"reward_choices\": [\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 1384.8999705232213,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 3103.140025448606,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 2939.348441979496,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 6358.604985716897,\n                  \"key_1\": \"string\",\n                  \"key_2\": \"string\"\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 6554\n                }\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 2985.0174723695545,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 2903.9448102681563,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 8516.319225013542,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 8273.496028771788\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 717.6201705752916,\n                  \"key_1\": false\n                }\n              }\n            ]\n          }\n        ],\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": false\n        }\n      },\n      \"reward\": {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c04ec436-b190-40b9-9448-0fbd774dc501",
+          "name": "Updates the quest with the provided fields.",
+          "request": {
+            "name": "Updates the quest with the provided fields.",
+            "description": {
+              "content": "Quests are a group of activity-thresholds (ordered or unordered) that customers need to meet in order to either unlock rewards/points for each activity-threshold, and/or rewards/points for completing the quest. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "quests",
+                ":quest_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quest_id",
+                  "description": "(Required) The Id of the quest."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The name of the quest."
+                },
+                {
+                  "key": "opt_in_text",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The text to display when opting in to a quest."
+                },
+                {
+                  "key": "quest_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The type of quest."
+                },
+                {
+                  "key": "sponsor_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The name of the quest sponsor."
+                },
+                {
+                  "key": "starts_at",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "When the quest starts, in epoch seconds."
+                },
+                {
+                  "key": "ends_at",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "When the quest ends, in epoch seconds."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "A description of the quest."
+                },
+                {
+                  "key": "point_threshold_requirement",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The threshhold for required number of points."
+                },
+                {
+                  "key": "max_num_of_completions_per_user",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The maximum number of times a user can complete the quest."
+                },
+                {
+                  "key": "max_num_of_completions_for_program",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The maximum number of times the quest can be completed for the program."
+                },
+                {
+                  "key": "terms_and_conditions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The terms and conditions of the quest."
+                },
+                {
+                  "key": "auto_opt_in_at_signup",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Whether users should be automatically opted in to the quest at sign up."
+                },
+                {
+                  "key": "claim_prize_header_text",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Header text for claiming prize screen."
+                },
+                {
+                  "key": "claim_prize_message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Message text for claiming prize screen."
+                },
+                {
+                  "key": "claim_prize_cta",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Call to action text for claiming prize"
+                },
+                {
+                  "key": "prize_nft_loyalty_reward_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The id of the Loyalty Reward for completing quest."
+                },
+                {
+                  "key": "prize_point_reward_value",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The point value for completing the quest."
+                },
+                {
+                  "key": "prize_loot_box_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The id of the Loot Box for completing quest."
+                },
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The url of the image for the quest."
+                },
+                {
+                  "key": "status",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The status of the quest. (This can only be one of draft,published,archived)"
+                },
+                {
+                  "key": "quest_requirements",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "An array of quest requirements"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e833e328-db9e-4d85-95a7-01588868fcad",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "quests",
+                    ":quest_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quest_id",
+                      "description": "(Required) The Id of the quest."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The name of the quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The text to display when opting in to a quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "opt_in_text",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The type of quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "quest_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The name of the quest sponsor.",
+                        "type": "text/plain"
+                      },
+                      "key": "sponsor_name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "When the quest starts, in epoch seconds.",
+                        "type": "text/plain"
+                      },
+                      "key": "starts_at",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "When the quest ends, in epoch seconds.",
+                        "type": "text/plain"
+                      },
+                      "key": "ends_at",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A description of the quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The threshhold for required number of points.",
+                        "type": "text/plain"
+                      },
+                      "key": "point_threshold_requirement",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The maximum number of times a user can complete the quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "max_num_of_completions_per_user",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The maximum number of times the quest can be completed for the program.",
+                        "type": "text/plain"
+                      },
+                      "key": "max_num_of_completions_for_program",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The terms and conditions of the quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "terms_and_conditions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Whether users should be automatically opted in to the quest at sign up.",
+                        "type": "text/plain"
+                      },
+                      "key": "auto_opt_in_at_signup",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Header text for claiming prize screen.",
+                        "type": "text/plain"
+                      },
+                      "key": "claim_prize_header_text",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Message text for claiming prize screen.",
+                        "type": "text/plain"
+                      },
+                      "key": "claim_prize_message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Call to action text for claiming prize",
+                        "type": "text/plain"
+                      },
+                      "key": "claim_prize_cta",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The id of the Loyalty Reward for completing quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_nft_loyalty_reward_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The point value for completing the quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_point_reward_value",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The id of the Loot Box for completing quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_loot_box_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The url of the image for the quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The status of the quest. (This can only be one of draft,published,archived)",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "An array of quest requirements",
+                        "type": "text/plain"
+                      },
+                      "key": "quest_requirements",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"quest\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"priority\": 5214.173666197705,\n    \"description\": \"string\",\n    \"sponsor_name\": \"string\",\n    \"image_url\": \"string\",\n    \"point_threshold_requirement\": 11.819962098404968,\n    \"opt_in_text\": \"string\",\n    \"time_to_complete_minutes\": 9431.978487920605,\n    \"starts_at\": 5520.463535516378,\n    \"ends_at\": 9878.272749417976,\n    \"status\": \"draft\",\n    \"max_num_of_completions_per_user\": 791.777288250548,\n    \"max_num_of_completions_for_program\": 8261.46393488224,\n    \"quest_type\": \"string\",\n    \"auto_opt_in_at_signup\": false,\n    \"partner_metadata\": {\n      \"key_0\": 7043.044462680677\n    },\n    \"created_at\": 7096.220407751203,\n    \"terms_and_conditions\": \"string\",\n    \"auto_claim_prize\": false,\n    \"enforce_order\": false,\n    \"claim_prize_header_text\": \"string\",\n    \"claim_prize_message\": \"string\",\n    \"claim_prize_cta\": \"string\",\n    \"remaining_num_of_completions_for_program\": 616.2310977642127,\n    \"quest_requirements\": [\n      \"string\",\n      \"string\"\n    ],\n    \"prize\": {\n      \"point_reward_value\": 5913.922278466647,\n      \"sponsor_name\": \"string\",\n      \"lootbox\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"background_gradient_start_color\": \"string\",\n        \"background_gradient_stop_color\": \"string\",\n        \"image_box_together_url\": \"string\",\n        \"reward_choices\": [\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 1384.8999705232213,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 3103.140025448606,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 2939.348441979496,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 6358.604985716897,\n                  \"key_1\": \"string\",\n                  \"key_2\": \"string\"\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 6554\n                }\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 2985.0174723695545,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 2903.9448102681563,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 8516.319225013542,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 8273.496028771788\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 717.6201705752916,\n                  \"key_1\": false\n                }\n              }\n            ]\n          }\n        ],\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": false\n        }\n      },\n      \"reward\": {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8fa1df5-9bcd-430b-8ba5-7513cf65af95",
+          "name": "Update a quest requirement.",
+          "request": {
+            "name": "Update a quest requirement.",
+            "description": {
+              "content": "Invoke this endpoint to update a quest requirement.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "quest-requirements",
+                ":quest_requirement_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quest_requirement_id",
+                  "description": "(Required) The ID of the quest requirement."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "quest_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The ID of the associated quest."
+                },
+                {
+                  "key": "activity_type_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The ID of the activity type that satisfies the quest requirement."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "A description of the quest requirement."
+                },
+                {
+                  "key": "value_threshold",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The activity type value threshold needed to satisfy the quest requirement."
+                },
+                {
+                  "key": "prize_point_reward_value",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The amount of points earned by completing the quest requirement."
+                },
+                {
+                  "key": "prize_loot_box_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The ID of the lootbox earned by completing the quest requirement."
+                },
+                {
+                  "key": "prize_nft_loyalty_reward_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The ID of the reward earned by completing the quest requirement."
+                },
+                {
+                  "key": "auto_claim_prize",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "A boolean indicating if the prize should automatically be claimed when the quest requirement is completed."
+                },
+                {
+                  "key": "activity_type_subtypes",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "An array of activity type subtype IDs that can be used to fulfill the quest requirement."
+                },
+                {
+                  "key": "check_in_interval_days",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "If present, the cadence at which the user must perform the activity (e.g. a value of 3, with a value_threshold of 50 equates to spend $50 every 3 days)."
+                },
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The url of the image for the quest requirement."
+                },
+                {
+                  "key": "cta_text",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Call to action description text."
+                },
+                {
+                  "key": "cta_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Call to action URL."
+                },
+                {
+                  "key": "order",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "If present, the order in which the requirement must be completed."
+                },
+                {
+                  "key": "restricted_to_ids",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "A list containing IDs that are allowed to fulfill the quest requirement."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1965de4e-c42f-4ee6-bacd-c49a5257b8bb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "quest-requirements",
+                    ":quest_requirement_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quest_requirement_id",
+                      "description": "(Required) The ID of the quest requirement."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The ID of the associated quest.",
+                        "type": "text/plain"
+                      },
+                      "key": "quest_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the activity type that satisfies the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "activity_type_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A description of the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The activity type value threshold needed to satisfy the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "value_threshold",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The amount of points earned by completing the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_point_reward_value",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the lootbox earned by completing the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_loot_box_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the reward earned by completing the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "prize_nft_loyalty_reward_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A boolean indicating if the prize should automatically be claimed when the quest requirement is completed.",
+                        "type": "text/plain"
+                      },
+                      "key": "auto_claim_prize",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "An array of activity type subtype IDs that can be used to fulfill the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "activity_type_subtypes",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If present, the cadence at which the user must perform the activity (e.g. a value of 3, with a value_threshold of 50 equates to spend $50 every 3 days).",
+                        "type": "text/plain"
+                      },
+                      "key": "check_in_interval_days",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The url of the image for the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Call to action description text.",
+                        "type": "text/plain"
+                      },
+                      "key": "cta_text",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Call to action URL.",
+                        "type": "text/plain"
+                      },
+                      "key": "cta_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If present, the order in which the requirement must be completed.",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A list containing IDs that are allowed to fulfill the quest requirement.",
+                        "type": "text/plain"
+                      },
+                      "key": "restricted_to_ids",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"quest_requirement\": {\n    \"id\": \"string\",\n    \"quest_id\": \"string\",\n    \"created_at\": 1772.0219580223984,\n    \"description\": \"string\",\n    \"value_threshold\": \"string\",\n    \"order\": 8105.328286470635,\n    \"check_in_interval_days\": 1917.8234848245868,\n    \"image_url\": \"string\",\n    \"prize\": {\n      \"point_reward_value\": 4590.205291771601,\n      \"sponsor_name\": \"string\",\n      \"lootbox\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"background_gradient_start_color\": \"string\",\n        \"background_gradient_stop_color\": \"string\",\n        \"image_box_together_url\": \"string\",\n        \"reward_choices\": [\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 4808.383929149701,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 3783.8193315536128,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 7701.6048599812075,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 1600,\n                  \"key_1\": 5859\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": 4549.787995301615\n                }\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"title\": \"string\",\n            \"subtitle\": \"string\",\n            \"category\": \"string\",\n            \"point_reward_value\": 2802.999241380274,\n            \"reward_uuids\": [\n              \"string\",\n              \"string\"\n            ],\n            \"quantity\": 9207.22291626794,\n            \"image\": \"string\",\n            \"video\": \"string\",\n            \"probability\": 4367.689584261099,\n            \"current_tier_id\": \"string\",\n            \"rewards\": [\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": \"string\",\n                  \"key_1\": 6325.268495117455\n                }\n              },\n              {\n                \"uuid\": \"string\",\n                \"name\": \"string\",\n                \"description\": \"string\",\n                \"image_url\": \"string\",\n                \"terms_and_conditions\": \"string\",\n                \"metadata\": {\n                  \"key_0\": false,\n                  \"key_1\": 1827.1632901433632,\n                  \"key_2\": false,\n                  \"key_3\": 772.6978374168203\n                }\n              }\n            ]\n          }\n        ],\n        \"metadata\": {\n          \"key_0\": true,\n          \"key_1\": \"string\"\n        }\n      },\n      \"reward\": {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\"\n      }\n    },\n    \"cta_url\": \"string\",\n    \"cta_text\": \"string\",\n    \"restricted_to_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"activity_type_id\": \"string\",\n    \"activity_type_name\": \"string\",\n    \"activity_type_subtypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"partner_metadata\": {\n      \"key_0\": true\n    },\n    \"prize_nft_loyalty_reward_id\": \"string\",\n    \"prize_point_reward_value\": 439.48771477574036,\n    \"prize_loot_box_id\": \"string\",\n    \"auto_claim_prize\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36488304-73c6-45f7-8614-77b3143f84ad",
+          "name": "ONLY WORKS IN DEV/STAGING: Clear the Quest Status of a given Opt-In ID.",
+          "request": {
+            "name": "ONLY WORKS IN DEV/STAGING: Clear the Quest Status of a given Opt-In ID.",
+            "description": {
+              "content": "Deletes the Quest Opt In and Quest Activity Aggregates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "opt-ins",
+                ":opt_in_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the user's program membership id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "opt_in_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea1a2c74-bd95-48d7-b18e-dc3423e94fd6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "opt-ins",
+                    ":opt_in_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the user's program membership id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "opt_in_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c36fbd6-2ac6-4ddc-922a-3c806bc9934f",
+    "name": "Hang Partner API (params in:formData) Activities Quests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "item": [
+    {
+      "id": "c88767a0-0d9e-4d26-a914-0bfcc72bddaa",
+      "name": "Wallet Integration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a017ddd-c396-4ddb-aa54-c27018b06b71",
+          "name": "Get a wallet integration with either a wallet or an email address.",
+          "request": {
+            "name": "Get a wallet integration with either a wallet or an email address.",
+            "description": {
+              "content": "Get the email address associated with the specified wallet address or vice versa.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wallet_address",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) wallet_address to associate with the email address"
+                },
+                {
+                  "key": "email",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) email address to associate with the wallet address"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "62ffda47-b5e1-4f15-aa28-fb887ee5cb90",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"email\": \"string\",\n  \"wallet_address\": \"string\",\n  \"provider\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "daeb8d05-7d35-474e-a5bf-848caa3f3e0d",
+          "name": "Create or update a wallet integration with the email and wallet address",
+          "request": {
+            "name": "Create or update a wallet integration with the email and wallet address",
+            "description": {
+              "content": "Create or update a wallet integration with the email and wallet address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "wallet_address",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) wallet_address to associate with the email address"
+                },
+                {
+                  "key": "email",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) email address to associate with the wallet address"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "880683cd-53db-4aba-87e0-d8af272c590f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"email\": \"string\",\n  \"wallet_address\": \"string\",\n  \"provider\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "be3305ca-d640-4c8e-bcd0-aee4d51b0d38",
+    "name": "Hang Partner API (params in:formData) Activities Wallet Integration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

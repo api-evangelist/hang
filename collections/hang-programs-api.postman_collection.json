@@ -1,0 +1,251 @@
+{
+  "item": [
+    {
+      "id": "96865a79-e3a6-4be4-a294-2425e889604b",
+      "name": "Programs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e30588f5-5b2c-4552-b6f3-2ffeb9fdd64b",
+          "name": "Fetch all tiers and corresponding benefits for the program linked to the API key used in the request.",
+          "request": {
+            "name": "Fetch all tiers and corresponding benefits for the program linked to the API key used in the request.",
+            "description": {
+              "content": "Tiers represent a status level that a user can achieve based on their activity within a loyalty program. Each tier has a minimum threshold that a user must reach before being able to unlock the tier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "programs",
+                "tiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66de2dda-34e3-4605-9dbb-020ccbf74863",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "programs",
+                    "tiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"tiers\": [\n    {\n      \"id\": \"string\",\n      \"order\": 7422.494870686359,\n      \"tier_metric_minimum_threshold\": 3154.8890179511313,\n      \"display_name\": \"string\",\n      \"marketing_benefit_text\": \"string\",\n      \"image_url\": \"string\",\n      \"benefits\": {\n        \"id\": \"string\",\n        \"order\": \"string\",\n        \"text\": \"string\",\n        \"short_text\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"order\": 27.55868431589814,\n      \"tier_metric_minimum_threshold\": 6021.05619169244,\n      \"display_name\": \"string\",\n      \"marketing_benefit_text\": \"string\",\n      \"image_url\": \"string\",\n      \"benefits\": {\n        \"id\": \"string\",\n        \"order\": \"string\",\n        \"text\": \"string\",\n        \"short_text\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdda097c-3629-4ba6-bd22-e4437a598578",
+              "name": "Something unexpected happened while trying to retrive the tier benefits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "programs",
+                    "tiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f1d23f7-4f4b-4a19-821a-7a0679bd3e72",
+          "name": "Endpoint to return program information using the current JWT.",
+          "request": {
+            "name": "Endpoint to return program information using the current JWT.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "program"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ebb8272-029f-4d8b-bf4a-b1dc8063a7e8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "program"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"program\": {\n    \"should_use_progression_v2\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "363d09d0-8935-483f-9835-520727a0e597",
+    "name": "Hang Partner API (params in:formData) Activities Programs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

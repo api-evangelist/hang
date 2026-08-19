@@ -1,0 +1,872 @@
+{
+  "item": [
+    {
+      "id": "891c08d4-b262-4a5b-bea4-1163ec147aaa",
+      "name": "Tokens",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a40a8e4-37b5-47f8-9fef-e8016f8dc7eb",
+          "name": "Retrieve the tokens, if any, owned by a given wallet address.",
+          "request": {
+            "name": "Retrieve the tokens, if any, owned by a given wallet address.",
+            "description": {
+              "content": "Certain resources within the Partner API require a token id to be suppiled. This endpoint returns an array of token ids for a given wallet address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wallets",
+                ":wallet_address",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wallet_address",
+                  "description": "(Required) the wallet address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3321409-9123-46bd-9d48-d2cb7fcc7714",
+              "name": "Returns the array of tokens successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallets",
+                    ":wallet_address",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet_address",
+                      "description": "(Required) the wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"tokens\": [\n    {\n      \"tokens\": {\n        \"token_id\": \"string\",\n        \"image\": \"string\",\n        \"traits\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"tier_metric_value\": 8798.150872152128,\n        \"current_tier\": {\n          \"id\": \"string\",\n          \"order\": 4315.204772762827,\n          \"tier_metric_minimum_threshold\": \"string\",\n          \"display_name\": \"string\",\n          \"marketing_benefit_text\": \"string\",\n          \"primary_color\": \"string\"\n        }\n      }\n    },\n    {\n      \"tokens\": {\n        \"token_id\": \"string\",\n        \"image\": \"string\",\n        \"traits\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"tier_metric_value\": 9700.90617961696,\n        \"current_tier\": {\n          \"id\": \"string\",\n          \"order\": 6701.0524847134075,\n          \"tier_metric_minimum_threshold\": \"string\",\n          \"display_name\": \"string\",\n          \"marketing_benefit_text\": \"string\",\n          \"primary_color\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa7f37d0-8762-4a63-9e54-7c66fc423201",
+          "name": "Endpoint to add a trait to a token",
+          "request": {
+            "name": "Endpoint to add a trait to a token",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                ":token_id",
+                "add-trait"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token_id",
+                  "description": "(Required) the token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "trait_value",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) value of the trait"
+                },
+                {
+                  "key": "trait_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) name of the trait"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4bf4391b-caf7-497b-a00e-b7f2cf4375a6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_id",
+                    "add-trait"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_id",
+                      "description": "(Required) the token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"token_id\": \"string\",\n  \"image\": \"string\",\n  \"traits\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0904faa8-6cc2-4ecf-9c03-fc9f7b5a91c7",
+          "name": "Endpoint to remove a trait from a token",
+          "request": {
+            "name": "Endpoint to remove a trait from a token",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                ":token_id",
+                "remove-trait"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token_id",
+                  "description": "(Required) the token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "trait_value",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) value of the trait"
+                },
+                {
+                  "key": "trait_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) name of the trait"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0cadbd09-d0d9-4d70-b0e8-48f3986ba399",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_id",
+                    "remove-trait"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_id",
+                      "description": "(Required) the token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"token_id\": \"string\",\n  \"image\": \"string\",\n  \"traits\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ada79e54-f088-4582-b406-3048a087a0a4",
+          "name": "Endpoint to set a tokens image",
+          "request": {
+            "name": "Endpoint to set a tokens image",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                ":token_id",
+                "set-token-image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token_id",
+                  "description": "(Required) the token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) image url for the token"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71fc4edc-b2b0-42b2-9b40-971124c862bf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_id",
+                    "set-token-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_id",
+                      "description": "(Required) the token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) image url for the token",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"token_id\": \"string\",\n  \"image\": \"string\",\n  \"traits\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6da3e3b2-1d8b-41f2-84f4-d2baec4f9270",
+          "name": "Retrieve the current level or tier, as well as earned points (XP) for a token.",
+          "request": {
+            "name": "Retrieve the current level or tier, as well as earned points (XP) for a token.",
+            "description": {
+              "content": "Invoke this endpoint to return the tier and earned points (XP) for a given token id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                ":token_id",
+                "level"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "token_id",
+                  "description": "(Required) the token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf55a26f-e836-4551-a53f-e253ec06292f",
+              "name": "Returns details successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_id",
+                    "level"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "token_id",
+                      "description": "(Required) the token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"level\": {\n    \"tier\": \"string\",\n    \"balance\": 8103.909792776053\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b640619-6bc6-4276-8233-0891d7fd744c",
+              "name": "Could not find the token provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_id",
+                    "level"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "token_id",
+                      "description": "(Required) the token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1907ff2d-5246-486d-b9c8-2f230579ad77",
+          "name": "Endpoint to fetch all loot boxes for a token",
+          "request": {
+            "name": "Endpoint to fetch all loot boxes for a token",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                ":token_id",
+                "loot-boxes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token_id",
+                  "description": "(Required) the token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8b9a97f-3d34-4eae-a43c-1a215a0bff3f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_id",
+                    "loot-boxes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_id",
+                      "description": "(Required) the token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"allocated_loot_boxes\": [\n    {\n      \"loot_box_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"available_since\": 3545.265565762492,\n      \"redeemed_at\": 9558.015898817166,\n      \"allocated_reward_choice\": {\n        \"id\": \"string\",\n        \"reward_uuid\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 8652.465702180929,\n        \"image\": \"string\"\n      },\n      \"reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 3528.8214375596103,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 3040.205573984488,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\"\n        }\n      ],\n      \"loot_box_container_images\": {\n        \"box_together\": \"string\",\n        \"box_top\": \"string\",\n        \"box_bottom\": \"string\"\n      }\n    },\n    {\n      \"loot_box_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"available_since\": 9667.456064193733,\n      \"redeemed_at\": 8837.224050732431,\n      \"allocated_reward_choice\": {\n        \"id\": \"string\",\n        \"reward_uuid\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 3220.340638981446,\n        \"image\": \"string\"\n      },\n      \"reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 1039.8575778747943,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 9190.241373601204,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\"\n        }\n      ],\n      \"loot_box_container_images\": {\n        \"box_together\": \"string\",\n        \"box_top\": \"string\",\n        \"box_bottom\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6edbb9c0-3432-4f06-8150-3d0cd8c8f2cb",
+          "name": "Endpoint to open a loot box",
+          "request": {
+            "name": "Endpoint to open a loot box",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                ":token_id",
+                "loot-boxes",
+                ":loot_box_id",
+                "open"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loot_box_id",
+                  "description": "(Required) the loot box id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token_id",
+                  "description": "(Required) the token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "770768bb-4721-4ee1-ac6b-2aad29e04b8d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":token_id",
+                    "loot-boxes",
+                    ":loot_box_id",
+                    "open"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loot_box_id",
+                      "description": "(Required) the loot box id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token_id",
+                      "description": "(Required) the token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_box_reward_outcome\": {\n    \"loot_box_reward_choice_id\": \"string\",\n    \"loot_box_reward_choice_title\": \"string\",\n    \"loot_box_reward_choice_subtitle\": \"string\",\n    \"loot_box_reward_choice_category\": \"string\",\n    \"loot_box_reward_choice_point_reward_value\": 9183.855331973376,\n    \"loot_box_reward_choice_image\": \"string\",\n    \"loot_box_sponsor_name\": \"string\",\n    \"loot_box_sponsor_description\": \"string\",\n    \"reward_uuid\": \"string\",\n    \"reward_name\": \"string\",\n    \"reward_description\": \"string\",\n    \"reward_image_url\": \"string\",\n    \"reward_redemption_instruction\": \"string\",\n    \"reward_terms_and_conditions\": \"string\",\n    \"reward_end_date\": \"string\",\n    \"reward_store_discount_url\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d54defb6-4df1-4571-9520-7b8661b54ee0",
+    "name": "Hang Partner API (params in:formData) Activities Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

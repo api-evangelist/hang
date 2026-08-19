@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Tokens API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the tokens, if any, owned by a given wallet address.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/wallets/:wallet_address/tokens",
+            "params": [
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "path",
+                "description": "the wallet address"
+              }
+            ]
+          },
+          "docs": "Certain resources within the Partner API require a token id to be suppiled. This endpoint returns an array of token ids for a given wallet address."
+        },
+        {
+          "info": {
+            "name": "Endpoint to add a trait to a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tokens/:token_id/add-trait",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "the token id"
+              }
+            ]
+          },
+          "docs": "Endpoint to add a trait to a token"
+        },
+        {
+          "info": {
+            "name": "Endpoint to remove a trait from a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tokens/:token_id/remove-trait",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "the token id"
+              }
+            ]
+          },
+          "docs": "Endpoint to remove a trait from a token"
+        },
+        {
+          "info": {
+            "name": "Endpoint to set a tokens image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tokens/:token_id/set-token-image",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "the token id"
+              }
+            ]
+          },
+          "docs": "Endpoint to set a tokens image"
+        },
+        {
+          "info": {
+            "name": "Retrieve the current level or tier, as well as earned points (XP) for a token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tokens/:token_id/level",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "the token id"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to return the tier and earned points (XP) for a given token id."
+        },
+        {
+          "info": {
+            "name": "Endpoint to fetch all loot boxes for a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tokens/:token_id/loot-boxes",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "the token id"
+              }
+            ]
+          },
+          "docs": "Endpoint to fetch all loot boxes for a token"
+        },
+        {
+          "info": {
+            "name": "Endpoint to open a loot box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tokens/:token_id/loot-boxes/:loot_box_id/open",
+            "params": [
+              {
+                "name": "loot_box_id",
+                "value": "",
+                "type": "path",
+                "description": "the loot box id"
+              },
+              {
+                "name": "token_id",
+                "value": "",
+                "type": "path",
+                "description": "the token id"
+              }
+            ]
+          },
+          "docs": "Endpoint to open a loot box"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

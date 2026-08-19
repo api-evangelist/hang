@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Loot Box Reward Choices API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loot Box Reward Choices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create the reward choice and probabilities for a loot box.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/loot_box_reward_choices"
+          },
+          "docs": "Invoke this endpoint to create the reward choice for a loot box and its corresponding probabilities."
+        },
+        {
+          "info": {
+            "name": "Update a loot box reward choice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/loot_box_reward_choices/:loot_box_reward_choice_id",
+            "params": [
+              {
+                "name": "loot_box_reward_choice_id",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the loot box reward choice."
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to update the reward choice for a loot box."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

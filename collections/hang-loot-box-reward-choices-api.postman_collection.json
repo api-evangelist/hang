@@ -1,0 +1,557 @@
+{
+  "item": [
+    {
+      "id": "3c9a3f52-be4a-411d-be4a-cfe25f086998",
+      "name": "Loot Box Reward Choices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6df19fe-acc9-4fc6-9537-d66e59b57828",
+          "name": "Create the reward choice and probabilities for a loot box.",
+          "request": {
+            "name": "Create the reward choice and probabilities for a loot box.",
+            "description": {
+              "content": "Invoke this endpoint to create the reward choice for a loot box and its corresponding probabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "loot_box_reward_choices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Title of the loot box reward choice"
+                },
+                {
+                  "key": "loot_box_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The Id of the loot box."
+                },
+                {
+                  "key": "subtitle",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Subtitle of the loot box reward choice"
+                },
+                {
+                  "key": "category",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Category of the loot box reward choice"
+                },
+                {
+                  "key": "point_reward_value",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Point reward value for the loot box"
+                },
+                {
+                  "key": "video_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL for the video associated with the loot box reward choice (must be less than 100 MB)"
+                },
+                {
+                  "key": "quantity",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Quantity of the loot box reward choice"
+                },
+                {
+                  "key": "reward_uuid",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "UUID of the reward for the loot box reward choice"
+                },
+                {
+                  "key": "default_image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Default image URL for the loot box reward choice"
+                },
+                {
+                  "key": "probability_details",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Probability details associated with the loot box reward choice"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "02f16cb9-39b3-45cc-b173-9517d0db1b35",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "loot_box_reward_choices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Title of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The Id of the loot box.",
+                        "type": "text/plain"
+                      },
+                      "key": "loot_box_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Subtitle of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "subtitle",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Category of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "category",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Point reward value for the loot box",
+                        "type": "text/plain"
+                      },
+                      "key": "point_reward_value",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL for the video associated with the loot box reward choice (must be less than 100 MB)",
+                        "type": "text/plain"
+                      },
+                      "key": "video_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Quantity of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "quantity",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "UUID of the reward for the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_uuid",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Default image URL for the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "default_image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Probability details associated with the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "probability_details",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_box_reward_choice\": {\n    \"id\": \"string\",\n    \"title\": \"string\",\n    \"subtitle\": \"string\",\n    \"category\": \"string\",\n    \"point_reward_value\": 3093.426139646027,\n    \"reward_uuids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"quantity\": 8658.782109268486,\n    \"image\": \"string\",\n    \"video\": \"string\",\n    \"probability\": 3349.0253244577884,\n    \"current_tier_id\": \"string\",\n    \"rewards\": [\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\",\n        \"metadata\": {\n          \"key_0\": \"string\",\n          \"key_1\": 4769,\n          \"key_2\": 5472,\n          \"key_3\": \"string\"\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\",\n        \"metadata\": {\n          \"key_0\": 8873,\n          \"key_1\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2368144b-e8f8-43e9-ad7b-65574fda2dcf",
+          "name": "Update a loot box reward choice.",
+          "request": {
+            "name": "Update a loot box reward choice.",
+            "description": {
+              "content": "Invoke this endpoint to update the reward choice for a loot box.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "loot_box_reward_choices",
+                ":loot_box_reward_choice_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loot_box_reward_choice_id",
+                  "description": "(Required) The Id of the loot box reward choice."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "loot_box_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The Id of the loot box."
+                },
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Title of the loot box reward choice"
+                },
+                {
+                  "key": "subtitle",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Subtitle of the loot box reward choice"
+                },
+                {
+                  "key": "category",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Category of the loot box reward choice"
+                },
+                {
+                  "key": "point_reward_value",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Point reward value for the loot box reward choice"
+                },
+                {
+                  "key": "video_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the video that gives more details about the selected loot box reward"
+                },
+                {
+                  "key": "quantity",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Quantity of the loot box reward choice"
+                },
+                {
+                  "key": "reward_uuid",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "UUID of the reward for the loot box reward choice"
+                },
+                {
+                  "key": "default_image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Default image URL for the loot box reward choice"
+                },
+                {
+                  "key": "probability_details",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Probability details associated with the loot box reward choice"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a2c98915-e956-43d2-9ffe-36083ca1ee94",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "loot_box_reward_choices",
+                    ":loot_box_reward_choice_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loot_box_reward_choice_id",
+                      "description": "(Required) The Id of the loot box reward choice."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The Id of the loot box.",
+                        "type": "text/plain"
+                      },
+                      "key": "loot_box_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Title of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Subtitle of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "subtitle",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Category of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "category",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Point reward value for the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "point_reward_value",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the video that gives more details about the selected loot box reward",
+                        "type": "text/plain"
+                      },
+                      "key": "video_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Quantity of the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "quantity",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "UUID of the reward for the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_uuid",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Default image URL for the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "default_image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Probability details associated with the loot box reward choice",
+                        "type": "text/plain"
+                      },
+                      "key": "probability_details",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_box_reward_outcome\": {\n    \"id\": \"string\",\n    \"title\": \"string\",\n    \"subtitle\": \"string\",\n    \"category\": \"string\",\n    \"point_reward_value\": 7917.866089742972,\n    \"reward_uuids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"quantity\": 316.10121253029865,\n    \"image\": \"string\",\n    \"video\": \"string\",\n    \"probability\": 1623.3299623824028,\n    \"current_tier_id\": \"string\",\n    \"rewards\": [\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\",\n        \"metadata\": {\n          \"key_0\": false,\n          \"key_1\": true\n        }\n      },\n      {\n        \"uuid\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"image_url\": \"string\",\n        \"terms_and_conditions\": \"string\",\n        \"metadata\": {\n          \"key_0\": 1000.1994401347158,\n          \"key_1\": 8698,\n          \"key_2\": 7705.712835615231,\n          \"key_3\": true\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e41386cd-6807-40f0-a4b6-e679bc13fa1c",
+    "name": "Hang Partner API (params in:formData) Activities Loot Box Reward Choices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

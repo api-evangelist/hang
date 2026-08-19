@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "1f528e7b-f2bb-4bd7-8f34-adc08d24d08d",
+      "name": "Program Tiers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87f4821c-3705-49f7-bf88-310880d3cfd7",
+          "name": "Get all program tiers",
+          "request": {
+            "name": "Get all program tiers",
+            "description": {
+              "content": "Tiers represent a status level that a user can achieve based on their activity within a loyalty program. Each tier has a minimum threshold that a user must reach before being able to unlock the tier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "program-tiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38e0daac-1dd0-4171-adda-90dc25db4a3f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "program-tiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"tiers\": [\n    {\n      \"id\": \"string\",\n      \"order\": 5066.955875900844,\n      \"tier_metric_minimum_threshold\": 937.2629045162317,\n      \"display_name\": \"string\",\n      \"marketing_benefit_text\": \"string\",\n      \"image_url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"order\": 9144.965351600687,\n      \"tier_metric_minimum_threshold\": 3944.505139904585,\n      \"display_name\": \"string\",\n      \"marketing_benefit_text\": \"string\",\n      \"image_url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9191c98f-0599-448c-9aa2-9d43517c215d",
+    "name": "Hang Partner API (params in:formData) Activities Program Tiers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

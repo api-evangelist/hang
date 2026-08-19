@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Puzzles API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Puzzles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new piece for a Puzzle.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/puzzle-pieces"
+          },
+          "docs": "Create a new piece for a Puzzle."
+        },
+        {
+          "info": {
+            "name": "Update an existing Puzzle Piece.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/puzzle-pieces/:puzzle_piece_id",
+            "params": [
+              {
+                "name": "puzzle_piece_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the puzzle piece to update."
+              }
+            ]
+          },
+          "docs": "Update an existing Puzzle Piece."
+        },
+        {
+          "info": {
+            "name": "Endpoint to retrieve a puzzle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/puzzles/:puzzle_id",
+            "params": [
+              {
+                "name": "puzzle_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the puzzle to retrieve."
+              }
+            ]
+          },
+          "docs": "Endpoint to retrieve a puzzle"
+        },
+        {
+          "info": {
+            "name": "Endpoint to update a puzzle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/puzzles/:puzzle_id",
+            "params": [
+              {
+                "name": "puzzle_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Endpoint to update a puzzle"
+        },
+        {
+          "info": {
+            "name": "Endpoint to create a puzzle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/puzzles"
+          },
+          "docs": "Endpoint to create a puzzle"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

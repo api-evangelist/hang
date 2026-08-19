@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Programs API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Programs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch all tiers and corresponding benefits for the program linked to the API key used in the request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/programs/tiers"
+          },
+          "docs": "Tiers represent a status level that a user can achieve based on their activity within a loyalty program. Each tier has a minimum threshold that a user must reach before being able to unlock the tier."
+        },
+        {
+          "info": {
+            "name": "Endpoint to return program information using the current JWT.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/program"
+          },
+          "docs": "Endpoint to return program information using the current JWT."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

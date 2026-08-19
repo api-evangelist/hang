@@ -1,0 +1,791 @@
+{
+  "item": [
+    {
+      "id": "094e5c70-3442-41df-b097-4284a7805d5e",
+      "name": "Loot Boxes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5ac2b88-0c9d-4549-b086-dedbb328fe9c",
+          "name": "Endpoint to fetch all loot boxes for a program",
+          "request": {
+            "name": "Endpoint to fetch all loot boxes for a program",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "loot-boxes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Amount of loot boxes to return (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Index to start at."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c6aae34-1111-4c92-99a4-4280b4785f4f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "loot-boxes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_boxes\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sponsor_name\": \"string\",\n      \"sponsor_description\": \"string\",\n      \"recurring_interval_minutes\": 5183.376349683326,\n      \"image_box_together_url\": \"string\",\n      \"background_gradient_start_color\": \"string\",\n      \"background_gradient_stop_color\": \"string\",\n      \"reward_sequence_animation_type\": \"SHUFFLE\",\n      \"is_sign_up_reward\": true,\n      \"partner_metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 8321\n      },\n      \"created_at\": 3854.497092998196,\n      \"updated_at\": 9760.105730439835,\n      \"loot_box_reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 1209.7990429840877,\n          \"reward_uuids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"quantity\": 2612.654343575008,\n          \"image\": \"string\",\n          \"video\": \"string\",\n          \"probability\": 8556.816414625846,\n          \"current_tier_id\": \"string\",\n          \"rewards\": [\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": true,\n                \"key_1\": 6474,\n                \"key_2\": false\n              }\n            },\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": false,\n                \"key_1\": false,\n                \"key_2\": 8593.510586429382,\n                \"key_3\": 4678\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 6216.754921626461,\n          \"reward_uuids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"quantity\": 4071.9511039128074,\n          \"image\": \"string\",\n          \"video\": \"string\",\n          \"probability\": 9357.784179428168,\n          \"current_tier_id\": \"string\",\n          \"rewards\": [\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": 6694\n              }\n            },\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": 4248,\n                \"key_1\": false,\n                \"key_2\": 975.4445439198689,\n                \"key_3\": 7689.8283586706375,\n                \"key_4\": true\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"sponsor_name\": \"string\",\n      \"sponsor_description\": \"string\",\n      \"recurring_interval_minutes\": 1535.4831910242794,\n      \"image_box_together_url\": \"string\",\n      \"background_gradient_start_color\": \"string\",\n      \"background_gradient_stop_color\": \"string\",\n      \"reward_sequence_animation_type\": \"SHUFFLE\",\n      \"is_sign_up_reward\": false,\n      \"partner_metadata\": {\n        \"key_0\": true\n      },\n      \"created_at\": 2226.604151787892,\n      \"updated_at\": 1396.1318542078727,\n      \"loot_box_reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 2872.116043281361,\n          \"reward_uuids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"quantity\": 2851.928388795363,\n          \"image\": \"string\",\n          \"video\": \"string\",\n          \"probability\": 1444.6812858570024,\n          \"current_tier_id\": \"string\",\n          \"rewards\": [\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": true\n              }\n            },\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": \"string\",\n                \"key_1\": 2956.98457947434\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"point_reward_value\": 4549.55620147201,\n          \"reward_uuids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"quantity\": 8580.39104384169,\n          \"image\": \"string\",\n          \"video\": \"string\",\n          \"probability\": 8057.501065011887,\n          \"current_tier_id\": \"string\",\n          \"rewards\": [\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": \"string\",\n                \"key_1\": \"string\",\n                \"key_2\": \"string\"\n              }\n            },\n            {\n              \"uuid\": \"string\",\n              \"name\": \"string\",\n              \"description\": \"string\",\n              \"image_url\": \"string\",\n              \"terms_and_conditions\": \"string\",\n              \"metadata\": {\n                \"key_0\": \"string\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"total_records\": 352.22708909417923\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce99c475-2bda-4230-bbd3-a22c069a3915",
+          "name": "Endpoint to create a loot box",
+          "request": {
+            "name": "Endpoint to create a loot box",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "loot-boxes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Description of the Lootbox object."
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Name/title of the Lootbox object."
+                },
+                {
+                  "key": "sponsor_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Lootbox sponsor name."
+                },
+                {
+                  "key": "sponsor_description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Lootbox sponsor description."
+                },
+                {
+                  "key": "recurring_interval_minutes",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Interval indicating how often a Lootbox can be granted."
+                },
+                {
+                  "key": "image_box_together_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the combined Lootbox image."
+                },
+                {
+                  "key": "background_gradient_start_color",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Hexadecimal color value for the start of the gradient."
+                },
+                {
+                  "key": "background_gradient_stop_color",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Hexadecimal color value for the end of the gradient."
+                },
+                {
+                  "key": "reward_sequence_animation_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Animation type dictating how a rewarded Lootbox is presented. (This can only be one of SHUFFLE,VIDEO)"
+                },
+                {
+                  "key": "is_sign_up_reward",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Boolean flag indicating if the Lootbox should be rewarded at signup."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8f8b36c3-84e9-4cfb-990c-934fbc4adc67",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "loot-boxes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_box\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"sponsor_name\": \"string\",\n    \"sponsor_description\": \"string\",\n    \"recurring_interval_minutes\": 4106.673368487649,\n    \"image_box_together_url\": \"string\",\n    \"background_gradient_start_color\": \"string\",\n    \"background_gradient_stop_color\": \"string\",\n    \"reward_sequence_animation_type\": \"SHUFFLE\",\n    \"is_sign_up_reward\": false,\n    \"partner_metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": 1931\n    },\n    \"created_at\": 2397.6028295095743,\n    \"updated_at\": 4480.282083430615,\n    \"loot_box_reward_choices\": [\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 6350.654987269553,\n        \"reward_uuids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quantity\": 9075.9228954952,\n        \"image\": \"string\",\n        \"video\": \"string\",\n        \"probability\": 3699.6658761686886,\n        \"current_tier_id\": \"string\",\n        \"rewards\": [\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 7182.521456753508\n            }\n          },\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": true,\n              \"key_1\": 2861.1091428700684\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 8684.768772737474,\n        \"reward_uuids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quantity\": 6404.20502185452,\n        \"image\": \"string\",\n        \"video\": \"string\",\n        \"probability\": 4823.840871320164,\n        \"current_tier_id\": \"string\",\n        \"rewards\": [\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 1889.5618862530116,\n              \"key_1\": 95,\n              \"key_2\": \"string\"\n            }\n          },\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 4757.675299140289\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09f0b06b-84d1-4952-9c4a-694ffbc5a213",
+          "name": "Get the Loot Box with the given ID.",
+          "request": {
+            "name": "Get the Loot Box with the given ID.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "loot-boxes",
+                ":loot_box_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loot_box_id",
+                  "description": "(Required) the ID of the Loot Box"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83b10029-7b12-4416-9a78-8ac160c510c2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "loot-boxes",
+                    ":loot_box_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loot_box_id",
+                      "description": "(Required) the ID of the Loot Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_box\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"sponsor_name\": \"string\",\n    \"sponsor_description\": \"string\",\n    \"recurring_interval_minutes\": 4106.673368487649,\n    \"image_box_together_url\": \"string\",\n    \"background_gradient_start_color\": \"string\",\n    \"background_gradient_stop_color\": \"string\",\n    \"reward_sequence_animation_type\": \"SHUFFLE\",\n    \"is_sign_up_reward\": false,\n    \"partner_metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": 1931\n    },\n    \"created_at\": 2397.6028295095743,\n    \"updated_at\": 4480.282083430615,\n    \"loot_box_reward_choices\": [\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 6350.654987269553,\n        \"reward_uuids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quantity\": 9075.9228954952,\n        \"image\": \"string\",\n        \"video\": \"string\",\n        \"probability\": 3699.6658761686886,\n        \"current_tier_id\": \"string\",\n        \"rewards\": [\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 7182.521456753508\n            }\n          },\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": true,\n              \"key_1\": 2861.1091428700684\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 8684.768772737474,\n        \"reward_uuids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quantity\": 6404.20502185452,\n        \"image\": \"string\",\n        \"video\": \"string\",\n        \"probability\": 4823.840871320164,\n        \"current_tier_id\": \"string\",\n        \"rewards\": [\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 1889.5618862530116,\n              \"key_1\": 95,\n              \"key_2\": \"string\"\n            }\n          },\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 4757.675299140289\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e60b9c38-cde2-4b0c-bb1e-1db9d9046df5",
+          "name": "Updates the lootbox with the provided fields.",
+          "request": {
+            "name": "Updates the lootbox with the provided fields.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "loot-boxes",
+                ":loot_box_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "loot_box_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Description of the Lootbox object."
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Name/title of the Lootbox object."
+                },
+                {
+                  "key": "sponsor_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Lootbox sponsor name."
+                },
+                {
+                  "key": "sponsor_description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Lootbox sponsor description."
+                },
+                {
+                  "key": "recurring_interval_minutes",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Interval indicating how often a Lootbox can be granted."
+                },
+                {
+                  "key": "image_box_together_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the combined Lootbox image."
+                },
+                {
+                  "key": "background_gradient_start_color",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Hexadecimal color value for the start of the gradient."
+                },
+                {
+                  "key": "background_gradient_stop_color",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Hexadecimal color value for the end of the gradient."
+                },
+                {
+                  "key": "reward_sequence_animation_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Animation type dictating how a rewarded Lootbox is presented. (This can only be one of SHUFFLE,VIDEO)"
+                },
+                {
+                  "key": "is_sign_up_reward",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Boolean flag indicating if the Lootbox should be rewarded at signup."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "791c87e4-634e-485e-8636-81e182e7ae3e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "loot-boxes",
+                    ":loot_box_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "loot_box_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_box\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"sponsor_name\": \"string\",\n    \"sponsor_description\": \"string\",\n    \"recurring_interval_minutes\": 4106.673368487649,\n    \"image_box_together_url\": \"string\",\n    \"background_gradient_start_color\": \"string\",\n    \"background_gradient_stop_color\": \"string\",\n    \"reward_sequence_animation_type\": \"SHUFFLE\",\n    \"is_sign_up_reward\": false,\n    \"partner_metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": 1931\n    },\n    \"created_at\": 2397.6028295095743,\n    \"updated_at\": 4480.282083430615,\n    \"loot_box_reward_choices\": [\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 6350.654987269553,\n        \"reward_uuids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quantity\": 9075.9228954952,\n        \"image\": \"string\",\n        \"video\": \"string\",\n        \"probability\": 3699.6658761686886,\n        \"current_tier_id\": \"string\",\n        \"rewards\": [\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 7182.521456753508\n            }\n          },\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": true,\n              \"key_1\": 2861.1091428700684\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 8684.768772737474,\n        \"reward_uuids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"quantity\": 6404.20502185452,\n        \"image\": \"string\",\n        \"video\": \"string\",\n        \"probability\": 4823.840871320164,\n        \"current_tier_id\": \"string\",\n        \"rewards\": [\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 1889.5618862530116,\n              \"key_1\": 95,\n              \"key_2\": \"string\"\n            }\n          },\n          {\n            \"uuid\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"image_url\": \"string\",\n            \"terms_and_conditions\": \"string\",\n            \"metadata\": {\n              \"key_0\": 4757.675299140289\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0acf873a-44cf-49c8-9666-79493406ae39",
+          "name": "Endpoint to fetch all loot boxes for a program membership",
+          "request": {
+            "name": "Endpoint to fetch all loot boxes for a program membership",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "loot-boxes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61af048f-e705-4155-a8fd-cdc27590f0f1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "loot-boxes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"allocated_loot_boxes\": [\n    {\n      \"loot_box_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"available_since\": 3773.587470774009,\n      \"redeemed_at\": 4075.0549137444814,\n      \"allocated_reward_choice\": {\n        \"id\": \"string\",\n        \"reward_uuid\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 4752.297411524341,\n        \"image\": \"string\",\n        \"reward_metadata\": {\n          \"key_0\": \"string\"\n        }\n      },\n      \"reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 4404.3252645543225,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"reward_metadata\": {\n            \"key_0\": false,\n            \"key_1\": true\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 2089.8944208330404,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"reward_metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": 5823,\n            \"key_2\": 8428.116474983151,\n            \"key_3\": 6745.5008839391985\n          }\n        }\n      ],\n      \"loot_box_container_images\": {\n        \"box_together\": \"string\",\n        \"box_top\": \"string\",\n        \"box_bottom\": \"string\"\n      },\n      \"metadata\": {\n        \"key_0\": true\n      },\n      \"sponsor_description\": \"string\"\n    },\n    {\n      \"loot_box_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"available_since\": 4643.712423316395,\n      \"redeemed_at\": 3681.047165587008,\n      \"allocated_reward_choice\": {\n        \"id\": \"string\",\n        \"reward_uuid\": \"string\",\n        \"title\": \"string\",\n        \"subtitle\": \"string\",\n        \"category\": \"string\",\n        \"point_reward_value\": 2269.816186381042,\n        \"image\": \"string\",\n        \"reward_metadata\": {\n          \"key_0\": true,\n          \"key_1\": 5635\n        }\n      },\n      \"reward_choices\": [\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 6609.86603902194,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"reward_metadata\": {\n            \"key_0\": 6140.417804203564\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"reward_uuid\": \"string\",\n          \"probability\": 5207.280334995023,\n          \"title\": \"string\",\n          \"subtitle\": \"string\",\n          \"category\": \"string\",\n          \"reward_metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": 6060.896634839568\n          }\n        }\n      ],\n      \"loot_box_container_images\": {\n        \"box_together\": \"string\",\n        \"box_top\": \"string\",\n        \"box_bottom\": \"string\"\n      },\n      \"metadata\": {\n        \"key_0\": 883.9601317382462\n      },\n      \"sponsor_description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d713a07-c80f-44b3-a647-01247686a8c4",
+          "name": "Endpoint to open a loot box",
+          "request": {
+            "name": "Endpoint to open a loot box",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "loot-boxes",
+                ":loot_box_id",
+                "open"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loot_box_id",
+                  "description": "(Required) the loot box id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83942407-4b8c-433b-bb63-89796abb6845",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "loot-boxes",
+                    ":loot_box_id",
+                    "open"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loot_box_id",
+                      "description": "(Required) the loot box id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"loot_box_reward_outcome\": {\n    \"loot_box_reward_choice_id\": \"string\",\n    \"loot_box_reward_choice_title\": \"string\",\n    \"loot_box_reward_choice_subtitle\": \"string\",\n    \"loot_box_reward_choice_category\": \"string\",\n    \"loot_box_reward_choice_point_reward_value\": 1126.1006817809282,\n    \"loot_box_reward_choice_image\": \"string\",\n    \"loot_box_sponsor_name\": \"string\",\n    \"loot_box_sponsor_description\": \"string\",\n    \"loot_box_metadata\": \"string\",\n    \"reward_uuid\": \"string\",\n    \"reward_name\": \"string\",\n    \"reward_description\": \"string\",\n    \"reward_image_url\": \"string\",\n    \"reward_redemption_instruction\": \"string\",\n    \"reward_terms_and_conditions\": \"string\",\n    \"reward_end_date\": \"string\",\n    \"reward_store_discount_url\": \"string\",\n    \"reward_metadata\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "68628079-8f9c-46b6-993a-6d5d4bf263f8",
+    "name": "Hang Partner API (params in:formData) Activities Loot Boxes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

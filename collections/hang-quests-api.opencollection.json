@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Quests API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Endpoint to retrieve all optIns for a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/quests/opt-ins",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "OptIns are user initiated and represent the acceptance of a Quest."
+        },
+        {
+          "info": {
+            "name": "Get all quests for program.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/quests",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Amount of quests to return (max 20)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Index to start at."
+              }
+            ]
+          },
+          "docs": "Get all quests for program."
+        },
+        {
+          "info": {
+            "name": "Opt a user into a quest.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/quests/:quest_id/opt-in",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the user's program membership id"
+              },
+              {
+                "name": "quest_id",
+                "value": "",
+                "type": "path",
+                "description": "the ID for the quest being opted into"
+              }
+            ]
+          },
+          "docs": "OptIns are generally user initiated and represent the acceptance of a Quest."
+        },
+        {
+          "info": {
+            "name": "Claim the prize(s) associated with a Quest.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/opt-ins/:opt_in_id/claim-quest-prize",
+            "params": [
+              {
+                "name": "opt_in_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of the OptIn whose Quest's prize(s) is ready to be claimed."
+              }
+            ]
+          },
+          "docs": "Prizes can exist on both the Quest and Activity levels. Invoke this endpoint to claim the prizes at the Quest level."
+        },
+        {
+          "info": {
+            "name": "Claim the prize(s) associated with an Activity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/opt-ins/:opt_in_id/claim-activity-prize",
+            "params": [
+              {
+                "name": "opt_in_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of the OptIn whose Activity's prize(s) is ready to be claimed."
+              }
+            ]
+          },
+          "docs": "Prizes can exist on both the Quest and Activity levels. Invoke this endpoint to claim the prizes at the Activity level."
+        },
+        {
+          "info": {
+            "name": "Create a new quest requirement.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/quests/:quest_id/quest-requirements",
+            "params": [
+              {
+                "name": "quest_id",
+                "value": "",
+                "type": "path",
+                "description": "the ID of the quest having a requirement added"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to add a new requirement to a quest."
+        },
+        {
+          "info": {
+            "name": "Get quest by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/quests/:quest_id",
+            "params": [
+              {
+                "name": "quest_id",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the quest."
+              }
+            ]
+          },
+          "docs": "Get quest by Id."
+        },
+        {
+          "info": {
+            "name": "Updates the quest with the provided fields.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/quests/:quest_id",
+            "params": [
+              {
+                "name": "quest_id",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the quest."
+              }
+            ]
+          },
+          "docs": "Quests are a group of activity-thresholds (ordered or unordered) that customers need to meet in order to either unlock rewards/points for each activity-threshold, and/or rewards/points for completing the quest. "
+        },
+        {
+          "info": {
+            "name": "Update a quest requirement.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/quest-requirements/:quest_requirement_id",
+            "params": [
+              {
+                "name": "quest_requirement_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the quest requirement."
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to update a quest requirement."
+        },
+        {
+          "info": {
+            "name": "ONLY WORKS IN DEV/STAGING: Clear the Quest Status of a given Opt-In ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/opt-ins/:opt_in_id",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the user's program membership id"
+              },
+              {
+                "name": "opt_in_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the Quest Opt In and Quest Activity Aggregates"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

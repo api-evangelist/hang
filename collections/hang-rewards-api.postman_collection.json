@@ -1,0 +1,1546 @@
+{
+  "item": [
+    {
+      "id": "14c4d653-5407-41af-b101-ef1edcc6e000",
+      "name": "Rewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c70b260a-0239-4582-b108-cfe6ee929150",
+          "name": "Retrieve the rewards, if any, for a given program membership id.",
+          "request": {
+            "name": "Retrieve the rewards, if any, for a given program membership id.",
+            "description": {
+              "content": "Invoke this endpoint to return an array of rewards that are associated with a given program membership id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "program-memberships",
+                ":program_membership_id",
+                "rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_membership_id",
+                  "description": "(Required) the program membership id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99e1e413-2c49-4502-a271-73f3eb3bc23e",
+              "name": "Returns rewards successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"rewards\": [\n    {\n      \"uuid\": \"string\",\n      \"name\": \"string\",\n      \"redemption_instruction\": \"string\",\n      \"redemption_method\": \"achievement\",\n      \"redemption_count\": 4475.2687320855985,\n      \"interval\": 128.35494676847526,\n      \"limit\": 9906.778435855384,\n      \"start_date\": 2125.4891751137584,\n      \"end_date\": 779.1920082502712,\n      \"reward_type\": \"access\",\n      \"last_redeemed_at\": 9195.860920724928,\n      \"image_url\": \"string\",\n      \"achievement_id\": 9294.900824647602\n    },\n    {\n      \"uuid\": \"string\",\n      \"name\": \"string\",\n      \"redemption_instruction\": \"string\",\n      \"redemption_method\": \"store_link\",\n      \"redemption_count\": 2236.75367599358,\n      \"interval\": 8213.764943545602,\n      \"limit\": 6022.412682148544,\n      \"start_date\": 5602.213988269721,\n      \"end_date\": 6031.67840603755,\n      \"reward_type\": \"access\",\n      \"last_redeemed_at\": 4715.882259142027,\n      \"image_url\": \"string\",\n      \"achievement_id\": 9645.42197237821\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54a41ada-76eb-4cf1-891b-42e51b49da84",
+              "name": "Could not find the program membership provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e299b6a0-f68a-4790-a508-bda1aaff6ef7",
+              "name": "Could not retrieve rewards for program membership.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "program-memberships",
+                    ":program_membership_id",
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_membership_id",
+                      "description": "(Required) the program membership id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "128f7afe-6f41-4fbd-884d-7afa0de291c9",
+          "name": "Endpoint to retrieve a reward with given unique id.",
+          "request": {
+            "name": "Endpoint to retrieve a reward with given unique id.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "rewards",
+                ":reward_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reward_uuid",
+                  "description": "(Required) The unique Id of the reward."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7c578a0-15e3-49e1-911e-d5c11e3dbd56",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "rewards",
+                    ":reward_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reward_uuid",
+                      "description": "(Required) The unique Id of the reward."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"reward\": {\n    \"name\": \"string\",\n    \"uuid\": \"string\",\n    \"description\": \"string\",\n    \"terms_and_conditions\": \"string\",\n    \"start_date\": 7661.993109258819,\n    \"end_date\": 2846.143893914729,\n    \"redemption_method\": \"code\",\n    \"status\": \"draft\",\n    \"interval\": 95.18569088697859,\n    \"limit\": 3061.64646582596,\n    \"priority\": 6973.646426328058,\n    \"pos_instructions\": \"string\",\n    \"redemption_instructions\": \"string\",\n    \"reward_group\": \"bonus_reward\",\n    \"is_program_reward\": false,\n    \"reward_type\": \"achievement\",\n    \"reward_value\": 6022.244774465932,\n    \"achievement_id\": \"string\",\n    \"controlled_by\": \"brand\",\n    \"image_url\": \"string\",\n    \"video_url\": \"string\",\n    \"default_loot_box_reward_image_url\": \"string\",\n    \"redemption_steps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"store_discount_url\": \"string\",\n    \"promo_code\": \"string\",\n    \"partner_metadata\": {\n      \"key_0\": 7048,\n      \"key_1\": \"string\",\n      \"key_2\": 5532.378946700055\n    },\n    \"created_at\": 1787.0824690955767,\n    \"updated_at\": 6957.164350039518\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7a22ce8-23cc-4e09-bb71-60446f1e2528",
+          "name": "Endpoint to update a reward.",
+          "request": {
+            "name": "Endpoint to update a reward.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "rewards",
+                ":reward_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reward_uuid",
+                  "description": "(Required) The unique Id of the reward."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Name/title of the reward."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Description of the reward."
+                },
+                {
+                  "key": "terms_and_conditions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Terms and conditions of the reward."
+                },
+                {
+                  "key": "start_date",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "When the reward can be redeemed, in epoch seconds."
+                },
+                {
+                  "key": "end_date",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "When the reward can no longer be redeemed, in epoch seconds."
+                },
+                {
+                  "key": "redemption_method",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The method with which the reward should be redeemed (defaults to \"code\"). (This can only be one of code,store_link,promo_code,qr_code,manual_redemption)"
+                },
+                {
+                  "key": "status",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The status of the reward indicating whether the reward is live or not (defaults to \"draft\"). (This can only be one of draft,published)"
+                },
+                {
+                  "key": "interval",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "How often the user can redeem the reward in days, if 0 then unlimited."
+                },
+                {
+                  "key": "limit",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Maximum amount of times a user can receive the reward."
+                },
+                {
+                  "key": "priority",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority."
+                },
+                {
+                  "key": "pos_instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Instructions on how to redeem the reward (brand-facing)."
+                },
+                {
+                  "key": "redemption_instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Instructions on how to redeem the reward (user-facing)."
+                },
+                {
+                  "key": "reward_group",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The reward group of the reward (defaults to \"trait_or_program_reward\"). (This can only be one of trait_or_program_reward,bonus_reward)"
+                },
+                {
+                  "key": "is_program_reward",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards."
+                },
+                {
+                  "key": "trait_ids",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "The traits that grant access to this reward. Only applies to trait_or_program_rewards."
+                },
+                {
+                  "key": "reward_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The type of reward (defaults to \"redemption\"). (This can only be one of redemption,discount_percent_based,discount_value_based,access,achievement,puzzle_piece)"
+                },
+                {
+                  "key": "reward_value",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types."
+                },
+                {
+                  "key": "achievement_id",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "the id of the reward achievement."
+                },
+                {
+                  "key": "controlled_by",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Who controls the reward (defaults to \"auto\"). (This can only be one of auto,brand)"
+                },
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the reward image."
+                },
+                {
+                  "key": "video_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the reward video."
+                },
+                {
+                  "key": "default_loot_box_reward_image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the default lootbox reward image."
+                },
+                {
+                  "key": "redemption_steps",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "List of redemption steps."
+                },
+                {
+                  "key": "store_discount_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the store discount, required if redemption method is store_link."
+                },
+                {
+                  "key": "promo_code",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Promo code, required if redemption method is promo_code."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2675afa1-222e-4d69-a9c2-6cb618a2201c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "rewards",
+                    ":reward_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reward_uuid",
+                      "description": "(Required) The unique Id of the reward."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Name/title of the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Description of the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Terms and conditions of the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "terms_and_conditions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "When the reward can be redeemed, in epoch seconds.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "When the reward can no longer be redeemed, in epoch seconds.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The method with which the reward should be redeemed (defaults to \"code\"). (This can only be one of code,store_link,promo_code,qr_code,manual_redemption)",
+                        "type": "text/plain"
+                      },
+                      "key": "redemption_method",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The status of the reward indicating whether the reward is live or not (defaults to \"draft\"). (This can only be one of draft,published)",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "How often the user can redeem the reward in days, if 0 then unlimited.",
+                        "type": "text/plain"
+                      },
+                      "key": "interval",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Maximum amount of times a user can receive the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Instructions on how to redeem the reward (brand-facing).",
+                        "type": "text/plain"
+                      },
+                      "key": "pos_instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Instructions on how to redeem the reward (user-facing).",
+                        "type": "text/plain"
+                      },
+                      "key": "redemption_instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The reward group of the reward (defaults to \"trait_or_program_reward\"). (This can only be one of trait_or_program_reward,bonus_reward)",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_group",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_program_reward",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The traits that grant access to this reward. Only applies to trait_or_program_rewards.",
+                        "type": "text/plain"
+                      },
+                      "key": "trait_ids",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The type of reward (defaults to \"redemption\"). (This can only be one of redemption,discount_percent_based,discount_value_based,access,achievement,puzzle_piece)",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types.",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_value",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the id of the reward achievement.",
+                        "type": "text/plain"
+                      },
+                      "key": "achievement_id",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Who controls the reward (defaults to \"auto\"). (This can only be one of auto,brand)",
+                        "type": "text/plain"
+                      },
+                      "key": "controlled_by",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the reward image.",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the reward video.",
+                        "type": "text/plain"
+                      },
+                      "key": "video_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the default lootbox reward image.",
+                        "type": "text/plain"
+                      },
+                      "key": "default_loot_box_reward_image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "List of redemption steps.",
+                        "type": "text/plain"
+                      },
+                      "key": "redemption_steps",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the store discount, required if redemption method is store_link.",
+                        "type": "text/plain"
+                      },
+                      "key": "store_discount_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Promo code, required if redemption method is promo_code.",
+                        "type": "text/plain"
+                      },
+                      "key": "promo_code",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"reward\": {\n    \"name\": \"string\",\n    \"uuid\": \"string\",\n    \"description\": \"string\",\n    \"terms_and_conditions\": \"string\",\n    \"start_date\": 7661.993109258819,\n    \"end_date\": 2846.143893914729,\n    \"redemption_method\": \"code\",\n    \"status\": \"draft\",\n    \"interval\": 95.18569088697859,\n    \"limit\": 3061.64646582596,\n    \"priority\": 6973.646426328058,\n    \"pos_instructions\": \"string\",\n    \"redemption_instructions\": \"string\",\n    \"reward_group\": \"bonus_reward\",\n    \"is_program_reward\": false,\n    \"reward_type\": \"achievement\",\n    \"reward_value\": 6022.244774465932,\n    \"achievement_id\": \"string\",\n    \"controlled_by\": \"brand\",\n    \"image_url\": \"string\",\n    \"video_url\": \"string\",\n    \"default_loot_box_reward_image_url\": \"string\",\n    \"redemption_steps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"store_discount_url\": \"string\",\n    \"promo_code\": \"string\",\n    \"partner_metadata\": {\n      \"key_0\": 7048,\n      \"key_1\": \"string\",\n      \"key_2\": 5532.378946700055\n    },\n    \"created_at\": 1787.0824690955767,\n    \"updated_at\": 6957.164350039518\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e50c3024-f620-43e2-bfd9-7110967e3311",
+          "name": "Endpoint to create a reward.",
+          "request": {
+            "name": "Endpoint to create a reward.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "reward_group",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The reward group of the reward (defaults to \"trait_or_program_reward\"). (This can only be one of trait_or_program_reward,bonus_reward)"
+                },
+                {
+                  "key": "start_date",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "(Required) When the reward can be redeemed, in epoch seconds."
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Name/title of the reward."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Description of the reward."
+                },
+                {
+                  "key": "terms_and_conditions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Terms and conditions of the reward."
+                },
+                {
+                  "key": "end_date",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "When the reward can no longer be redeemed, in epoch seconds."
+                },
+                {
+                  "key": "redemption_method",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The method with which the reward should be redeemed (defaults to \"code\"). (This can only be one of code,store_link,promo_code)"
+                },
+                {
+                  "key": "status",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The status of the reward indicating whether the reward is live or not (defaults to \"draft\"). (This can only be one of draft,published)"
+                },
+                {
+                  "key": "interval",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "How often the user can redeem the reward in days, if 0 then unlimited."
+                },
+                {
+                  "key": "limit",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Maximum amount of times a user can receive the reward."
+                },
+                {
+                  "key": "priority",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority."
+                },
+                {
+                  "key": "pos_instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Instructions on how to redeem the reward (brand-facing)."
+                },
+                {
+                  "key": "redemption_instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Instructions on how to redeem the reward (user-facing)."
+                },
+                {
+                  "key": "is_program_reward",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards."
+                },
+                {
+                  "key": "trait_ids",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "The traits that grant access to this reward. Only applies to trait_or_program_rewards."
+                },
+                {
+                  "key": "reward_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The type of reward (defaults to \"redemption\"). (This can only be one of redemption,discount_percent_based,discount_value_based,access,achievement,puzzle_piece)"
+                },
+                {
+                  "key": "reward_value",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types."
+                },
+                {
+                  "key": "achievement_id",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "the id of the reward achievement."
+                },
+                {
+                  "key": "controlled_by",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Who controls the reward (defaults to \"auto\"). (This can only be one of auto,brand)"
+                },
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the reward image."
+                },
+                {
+                  "key": "video_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the reward video."
+                },
+                {
+                  "key": "default_loot_box_reward_image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the default lootbox reward image."
+                },
+                {
+                  "key": "redemption_steps",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "List of redemption steps."
+                },
+                {
+                  "key": "store_discount_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the store discount, required if redemption method is store_link."
+                },
+                {
+                  "key": "promo_code",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Promo code, required if redemption method is promo_code."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "225c1cb8-2da7-43d4-ab27-d6f14fd40f3e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The reward group of the reward (defaults to \"trait_or_program_reward\"). (This can only be one of trait_or_program_reward,bonus_reward)",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_group",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) When the reward can be redeemed, in epoch seconds.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Name/title of the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Description of the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Terms and conditions of the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "terms_and_conditions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "When the reward can no longer be redeemed, in epoch seconds.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The method with which the reward should be redeemed (defaults to \"code\"). (This can only be one of code,store_link,promo_code)",
+                        "type": "text/plain"
+                      },
+                      "key": "redemption_method",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The status of the reward indicating whether the reward is live or not (defaults to \"draft\"). (This can only be one of draft,published)",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "How often the user can redeem the reward in days, if 0 then unlimited.",
+                        "type": "text/plain"
+                      },
+                      "key": "interval",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Maximum amount of times a user can receive the reward.",
+                        "type": "text/plain"
+                      },
+                      "key": "limit",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Priority of the reward, influences how the reward is displayed to the user. Rewards are displayed in ascending order of priority.",
+                        "type": "text/plain"
+                      },
+                      "key": "priority",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Instructions on how to redeem the reward (brand-facing).",
+                        "type": "text/plain"
+                      },
+                      "key": "pos_instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Instructions on how to redeem the reward (user-facing).",
+                        "type": "text/plain"
+                      },
+                      "key": "redemption_instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_program_reward",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The traits that grant access to this reward. Only applies to trait_or_program_rewards.",
+                        "type": "text/plain"
+                      },
+                      "key": "trait_ids",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The type of reward (defaults to \"redemption\"). (This can only be one of redemption,discount_percent_based,discount_value_based,access,achievement,puzzle_piece)",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The discount amount for this reward. Only applies to discount_percent_based and discount_value_based reward types.",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_value",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "the id of the reward achievement.",
+                        "type": "text/plain"
+                      },
+                      "key": "achievement_id",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Who controls the reward (defaults to \"auto\"). (This can only be one of auto,brand)",
+                        "type": "text/plain"
+                      },
+                      "key": "controlled_by",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the reward image.",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the reward video.",
+                        "type": "text/plain"
+                      },
+                      "key": "video_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the default lootbox reward image.",
+                        "type": "text/plain"
+                      },
+                      "key": "default_loot_box_reward_image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "List of redemption steps.",
+                        "type": "text/plain"
+                      },
+                      "key": "redemption_steps",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the store discount, required if redemption method is store_link.",
+                        "type": "text/plain"
+                      },
+                      "key": "store_discount_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Promo code, required if redemption method is promo_code.",
+                        "type": "text/plain"
+                      },
+                      "key": "promo_code",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"reward\": {\n    \"name\": \"string\",\n    \"uuid\": \"string\",\n    \"description\": \"string\",\n    \"terms_and_conditions\": \"string\",\n    \"start_date\": 7661.993109258819,\n    \"end_date\": 2846.143893914729,\n    \"redemption_method\": \"code\",\n    \"status\": \"draft\",\n    \"interval\": 95.18569088697859,\n    \"limit\": 3061.64646582596,\n    \"priority\": 6973.646426328058,\n    \"pos_instructions\": \"string\",\n    \"redemption_instructions\": \"string\",\n    \"reward_group\": \"bonus_reward\",\n    \"is_program_reward\": false,\n    \"reward_type\": \"achievement\",\n    \"reward_value\": 6022.244774465932,\n    \"achievement_id\": \"string\",\n    \"controlled_by\": \"brand\",\n    \"image_url\": \"string\",\n    \"video_url\": \"string\",\n    \"default_loot_box_reward_image_url\": \"string\",\n    \"redemption_steps\": [\n      \"string\",\n      \"string\"\n    ],\n    \"store_discount_url\": \"string\",\n    \"promo_code\": \"string\",\n    \"partner_metadata\": {\n      \"key_0\": 7048,\n      \"key_1\": \"string\",\n      \"key_2\": 5532.378946700055\n    },\n    \"created_at\": 1787.0824690955767,\n    \"updated_at\": 6957.164350039518\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fdf9d34-b8f9-462c-b2d1-9c7ef17b0e15",
+          "name": "Endpoint to create a batch of rewards.",
+          "request": {
+            "name": "Endpoint to create a batch of rewards.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "rewards",
+                "batch-create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "rewards",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "(Required) List of rewards to create."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b235f0d-1019-4883-b5b8-2ee70704767e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "rewards",
+                    "batch-create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) List of rewards to create.",
+                        "type": "text/plain"
+                      },
+                      "key": "rewards",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"rewards\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9ade026-57fb-4f0c-81e7-23d8b2684eec",
+          "name": "Endpoint to edit a batch of rewards.",
+          "request": {
+            "name": "Endpoint to edit a batch of rewards.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "rewards",
+                "batch-update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "rewards",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "List of rewards to update."
+                },
+                {
+                  "key": "reward_ids_to_delete",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "List of reward IDs to delete."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "39cf47ee-b3bf-4426-ac89-268207fb4f61",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "rewards",
+                    "batch-update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "List of rewards to update.",
+                        "type": "text/plain"
+                      },
+                      "key": "rewards",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "List of reward IDs to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_ids_to_delete",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"rewards\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fbbbd647-26f7-411f-910f-6dc52df32b12",
+    "name": "Hang Partner API (params in:formData) Activities Rewards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

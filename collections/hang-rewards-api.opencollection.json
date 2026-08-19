@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Rewards API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the rewards, if any, for a given program membership id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/rewards",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to return an array of rewards that are associated with a given program membership id."
+        },
+        {
+          "info": {
+            "name": "Endpoint to retrieve a reward with given unique id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/rewards/:reward_uuid",
+            "params": [
+              {
+                "name": "reward_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique Id of the reward."
+              }
+            ]
+          },
+          "docs": "Endpoint to retrieve a reward with given unique id."
+        },
+        {
+          "info": {
+            "name": "Endpoint to update a reward.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/rewards/:reward_uuid",
+            "params": [
+              {
+                "name": "reward_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The unique Id of the reward."
+              }
+            ]
+          },
+          "docs": "Endpoint to update a reward."
+        },
+        {
+          "info": {
+            "name": "Endpoint to create a reward.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/rewards"
+          },
+          "docs": "Endpoint to create a reward."
+        },
+        {
+          "info": {
+            "name": "Endpoint to create a batch of rewards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/rewards/batch-create"
+          },
+          "docs": "Endpoint to create a batch of rewards."
+        },
+        {
+          "info": {
+            "name": "Endpoint to edit a batch of rewards.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/rewards/batch-update"
+          },
+          "docs": "Endpoint to edit a batch of rewards."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

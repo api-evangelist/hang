@@ -1,0 +1,805 @@
+{
+  "item": [
+    {
+      "id": "d32185b4-17bd-404b-a03f-2a2a9e210ca1",
+      "name": "Puzzles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d1d0825-0dd6-47a5-abb2-7eb4129cec3f",
+          "name": "Create a new piece for a Puzzle.",
+          "request": {
+            "name": "Create a new piece for a Puzzle.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "puzzle-pieces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "slot",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "(Required) The slot/position of the puzzle piece."
+                },
+                {
+                  "key": "loyalty_reward_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The ID of the puzzle piece reward associated with this piece."
+                },
+                {
+                  "key": "puzzle_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) The ID of the puzzle this piece would belong to."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9dc8349d-5cb1-46b4-82f7-d82ea43706a9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "puzzle-pieces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) The slot/position of the puzzle piece.",
+                        "type": "text/plain"
+                      },
+                      "key": "slot",
+                      "value": "<number>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The ID of the puzzle piece reward associated with this piece.",
+                        "type": "text/plain"
+                      },
+                      "key": "loyalty_reward_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) The ID of the puzzle this piece would belong to.",
+                        "type": "text/plain"
+                      },
+                      "key": "puzzle_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"puzzle_piece\": {\n    \"id\": \"string\",\n    \"puzzle_id\": \"string\",\n    \"loyalty_reward_id\": \"string\",\n    \"slot\": 4612.866417005652\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f72776eb-4e74-4022-b6d6-09ad316ffe4c",
+          "name": "Update an existing Puzzle Piece.",
+          "request": {
+            "name": "Update an existing Puzzle Piece.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "puzzle-pieces",
+                ":puzzle_piece_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "puzzle_piece_id",
+                  "description": "(Required) The ID of the puzzle piece to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "puzzle_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The ID of the puzzle this piece would belong to."
+                },
+                {
+                  "key": "loyalty_reward_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The ID of the puzzle piece reward associated with this piece."
+                },
+                {
+                  "key": "slot",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": "The slot/position of the puzzle piece."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7201ff06-8294-4c97-a7ba-1e7bfd82bc63",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "puzzle-pieces",
+                    ":puzzle_piece_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "puzzle_piece_id",
+                      "description": "(Required) The ID of the puzzle piece to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The ID of the puzzle this piece would belong to.",
+                        "type": "text/plain"
+                      },
+                      "key": "puzzle_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The ID of the puzzle piece reward associated with this piece.",
+                        "type": "text/plain"
+                      },
+                      "key": "loyalty_reward_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The slot/position of the puzzle piece.",
+                        "type": "text/plain"
+                      },
+                      "key": "slot",
+                      "value": "<number>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"puzzle_piece\": {\n    \"id\": \"string\",\n    \"puzzle_id\": \"string\",\n    \"loyalty_reward_id\": \"string\",\n    \"slot\": 4612.866417005652\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d16d5ff9-3d03-4407-a431-6b345f22f41d",
+          "name": "Endpoint to retrieve a puzzle",
+          "request": {
+            "name": "Endpoint to retrieve a puzzle",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "puzzles",
+                ":puzzle_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "puzzle_id",
+                  "description": "(Required) The ID of the puzzle to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f3dc84f-0cf3-49b6-8865-f1261480ab7c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "puzzles",
+                    ":puzzle_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "puzzle_id",
+                      "description": "(Required) The ID of the puzzle to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"puzzle\": {\n    \"id\": \"string\",\n    \"program_id\": 8272.844280357484,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"earn_instructions\": \"string\",\n    \"image_url\": \"string\",\n    \"rewards\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e3fa11f-a04a-41f7-9ec2-dddd52522f4c",
+          "name": "Endpoint to update a puzzle",
+          "request": {
+            "name": "Endpoint to update a puzzle",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "puzzles",
+                ":puzzle_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "puzzle_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Name/title of the Puzzle object."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Description of the Puzzle object."
+                },
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "URL of the image file."
+                },
+                {
+                  "key": "reward_ids",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3]."
+                },
+                {
+                  "key": "earn_instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Instructions for earning the puzzle."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "602a3ac6-4ebe-496e-b462-d5d4542d352e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "puzzles",
+                    ":puzzle_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "puzzle_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Name/title of the Puzzle object.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Description of the Puzzle object.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL of the image file.",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_ids",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Instructions for earning the puzzle.",
+                        "type": "text/plain"
+                      },
+                      "key": "earn_instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"puzzle\": {\n    \"id\": \"string\",\n    \"program_id\": 8272.844280357484,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"earn_instructions\": \"string\",\n    \"image_url\": \"string\",\n    \"rewards\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f82d9ad6-3f48-4941-84f6-f7a45abc0dbe",
+          "name": "Endpoint to create a puzzle",
+          "request": {
+            "name": "Endpoint to create a puzzle",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "admin",
+                "puzzles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) URL of the image file."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Description of the Puzzle object."
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Name/title of the Puzzle object."
+                },
+                {
+                  "key": "reward_ids",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3]."
+                },
+                {
+                  "key": "earn_instructions",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Instructions for earning the puzzle."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71f6ecf2-090b-4a40-acc1-0f3c0c63587c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "admin",
+                    "puzzles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) URL of the image file.",
+                        "type": "text/plain"
+                      },
+                      "key": "image_url",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Description of the Puzzle object.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Name/title of the Puzzle object.",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].",
+                        "type": "text/plain"
+                      },
+                      "key": "reward_ids",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Instructions for earning the puzzle.",
+                        "type": "text/plain"
+                      },
+                      "key": "earn_instructions",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"puzzle\": {\n    \"id\": \"string\",\n    \"program_id\": 8272.844280357484,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"earn_instructions\": \"string\",\n    \"image_url\": \"string\",\n    \"rewards\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner-api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1aec1357-c739-4ee4-b89d-00d4c1c7596f",
+    "name": "Hang Partner API (params in:formData) Activities Puzzles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\n<p>The Partner API allows you to request various resources that can power your loyalty program.</p>\n&copy Hang 2023",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Wallet Integration API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallet Integration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a wallet integration with either a wallet or an email address.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/integrations/search"
+          },
+          "docs": "Get the email address associated with the specified wallet address or vice versa."
+        },
+        {
+          "info": {
+            "name": "Create or update a wallet integration with the email and wallet address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/integrations"
+          },
+          "docs": "Create or update a wallet integration with the email and wallet address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

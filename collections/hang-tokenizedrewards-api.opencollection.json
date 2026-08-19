@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities TokenizedRewards API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TokenizedRewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all tokenized rewards and their balances for a given wallet address and contract address.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tokenized-rewards/contracts/:contract_address/wallets/:wallet_address",
+            "params": [
+              {
+                "name": "contract_address",
+                "value": "",
+                "type": "path",
+                "description": "The contract address"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "path",
+                "description": "The wallet address"
+              }
+            ]
+          },
+          "docs": "Retrieve all tokenized rewards and their balances for a given wallet address and contract address."
+        },
+        {
+          "info": {
+            "name": "Burn a tokenized reward for the given contract address and token id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tokenized-rewards/burn"
+          },
+          "docs": "Burn a tokenized reward for the given contract address and token id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

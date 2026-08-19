@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new activity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/activities",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Create a new activity."
+        },
+        {
+          "info": {
+            "name": "Create a new activity synchronously.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/activies/synchronous",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Create a new activity synchronously."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

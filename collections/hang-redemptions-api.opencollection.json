@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Redemptions API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Redemptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve redemption history, if any, for a given wallet_address.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/wallets/:wallet_address/redemptions",
+            "params": [
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "path",
+                "description": "the wallet address"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to return an array of rewards that were redeemed while associated with a specified wallet address."
+        },
+        {
+          "info": {
+            "name": "Generate a redemption code for a given reward by providing the wallet_address, token_id, and reward_id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/wallets/:wallet_address/redemptions",
+            "params": [
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "path",
+                "description": "the wallet address"
+              }
+            ]
+          },
+          "docs": "Utilize this endpoint to generate a redemption code for a given reward."
+        },
+        {
+          "info": {
+            "name": "Redeem a redemption code providing the uuid for the redemption record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/redemptions/:redemption_uuid/redeem",
+            "params": [
+              {
+                "name": "redemption_uuid",
+                "value": "",
+                "type": "path",
+                "description": "the uuid for the redemption code"
+              }
+            ]
+          },
+          "docs": "Utilize this endpoint to redeem a redemption code via its corresponding uuid"
+        },
+        {
+          "info": {
+            "name": "Retrieve redemption history, if any, for a given program membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/redemptions",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to return an array of rewards that were redeemed while associated with a specified program membership."
+        },
+        {
+          "info": {
+            "name": "Generate a redemption code for a given reward by providing the program_membership_id and reward_id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/redemptions",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Utilize this endpoint to generate a redemption code for a given reward."
+        },
+        {
+          "info": {
+            "name": "Redeem a redemption code providing the uuid for the redemption record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/redemptions/:redemption_uuid/redeem",
+            "params": [
+              {
+                "name": "redemption_uuid",
+                "value": "",
+                "type": "path",
+                "description": "the uuid for the redemption code"
+              }
+            ]
+          },
+          "docs": "Utilize this endpoint to redeem a redemption code via its corresponding uuid"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

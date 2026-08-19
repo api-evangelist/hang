@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Loot box reward probabilities API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loot box reward probabilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a probability for a loot box reward.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/loot_box_reward_probabilities"
+          },
+          "docs": "Invoke this endpoint to create a probability for a loot box reward choice."
+        },
+        {
+          "info": {
+            "name": "Update a loot box reward probability.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/loot_box_reward_probabilities/:loot_box_reward_probability_id",
+            "params": [
+              {
+                "name": "loot_box_reward_probability_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to update the probability for a loot box reward choice."
+        },
+        {
+          "info": {
+            "name": "Delete a loot box reward probability.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v2/admin/loot_box_reward_probabilities/:loot_box_reward_probability_id",
+            "params": [
+              {
+                "name": "loot_box_reward_probability_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to delete the probability for a loot box reward choice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

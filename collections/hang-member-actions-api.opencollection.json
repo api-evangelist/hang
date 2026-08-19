@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Member Actions API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Member Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Endpoint to grant a reward to a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/program-memberships/:program_membership_id/member-actions/grant-reward",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "The program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to grant a reward to a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to grant a loot box to a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/program-memberships/:program_membership_id/member-actions/grant-loot-box",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "The program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to grant a loot box to a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to grant points to a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/program-memberships/:program_membership_id/member-actions/grant-points",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "The program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to grant points to a program membership"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

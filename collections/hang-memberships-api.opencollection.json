@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Memberships API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new membership with a given wallet_address, external_user_id, or both.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships"
+          },
+          "docs": "Invoke this endpoint to add a new membership to your loyalty program."
+        },
+        {
+          "info": {
+            "name": "updates membership with social media credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/membership/:program_membership_id/social-media-credentials",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "program membership id"
+              }
+            ]
+          },
+          "docs": "updates membership with social media credentials"
+        },
+        {
+          "info": {
+            "name": "gets membership with social media credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/membership/:program_membership_id",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "program membership id"
+              }
+            ]
+          },
+          "docs": "gets membership with social media credentials"
+        },
+        {
+          "info": {
+            "name": "gets membership with social media credentials from wallet address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/membership/wallets/:wallet_address",
+            "params": [
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "path",
+                "description": "user's wallet address"
+              }
+            ]
+          },
+          "docs": "gets membership with social media credentials from wallet address"
+        },
+        {
+          "info": {
+            "name": "Endpoint to add a trait to a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/add-trait",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to add a trait to a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to remove a trait from a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/remove-trait",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to remove a trait from a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to set an image for a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/set-image",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to set an image for a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to update a program membership with a wallet_address, on_chain_token_id, and/or external_user_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Sets a wallet_address, on_chain_token_id, and/or external_user_id on the specified program_membership."
+        },
+        {
+          "info": {
+            "name": "Endpoint to find a program membership by external_user_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/search",
+            "params": [
+              {
+                "name": "external_user_id",
+                "value": "",
+                "type": "query",
+                "description": "the external user id to update the program membership with"
+              }
+            ]
+          },
+          "docs": "Finds a program membership by external_user_id."
+        },
+        {
+          "info": {
+            "name": "Retrieve the current level or tier, as well as earned points (XP) for a program membership.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/level",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Invoke this endpoint to return the tier and earned points (XP) for a given program membership id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

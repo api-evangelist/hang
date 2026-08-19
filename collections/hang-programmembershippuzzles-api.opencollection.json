@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities ProgramMembershipPuzzles API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProgramMembershipPuzzles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Endpoint to retrieve puzzles for a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/puzzles",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the program membership to retrieve puzzles for"
+              },
+              {
+                "name": "started",
+                "value": "",
+                "type": "query",
+                "description": "A filter. Set true to only return puzzles where the program membership has made progress. Set false to only return puzzles where the program membership has not made progress. If left blank, all puzzles are returned."
+              }
+            ]
+          },
+          "docs": "Endpoint to retrieve puzzles for a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to retrieve a single puzzle belonging to a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/puzzles/:puzzle_id",
+            "params": [
+              {
+                "name": "puzzle_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the puzzle to retrieve"
+              },
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the program membership to retrieve puzzle for"
+              }
+            ]
+          },
+          "docs": "Endpoint to retrieve a single puzzle belonging to a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to redeem a completed puzzle belonging to a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/puzzles/:puzzle_id/complete",
+            "params": [
+              {
+                "name": "puzzle_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the puzzle to redeem"
+              },
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the program membership to redeem the puzzle for"
+              }
+            ]
+          },
+          "docs": "Endpoint to redeem a completed puzzle belonging to a program membership"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

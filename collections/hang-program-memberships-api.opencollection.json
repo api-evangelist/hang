@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Program memberships API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Program memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all program memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/program-memberships",
+            "params": [
+              {
+                "name": "search_query",
+                "value": "",
+                "type": "query",
+                "description": "First name, last name, phone, or email of the users we want to look up."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Index to start at."
+              }
+            ]
+          },
+          "docs": "Program Memberships represent a member of the loyalty program. Includes user data. Sorted by creation date."
+        },
+        {
+          "info": {
+            "name": "Get the program membership with the specified Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/program-memberships/:program_membership_id",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Program Membership represents a member of the loyalty program. Includes user data."
+        },
+        {
+          "info": {
+            "name": "Updates the program membership and associated user with the included fields.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/program_memberships/:program_membership_id",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Updates the program membership and associated user with the included fields."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

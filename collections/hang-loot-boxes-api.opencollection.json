@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hang Partner API (params in:formData) Activities Loot Boxes API",
+    "version": "2023.09.07"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loot Boxes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Endpoint to fetch all loot boxes for a program",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/loot-boxes",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Amount of loot boxes to return (max 100)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Index to start at."
+              }
+            ]
+          },
+          "docs": "Endpoint to fetch all loot boxes for a program"
+        },
+        {
+          "info": {
+            "name": "Endpoint to create a loot box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/admin/loot-boxes"
+          },
+          "docs": "Endpoint to create a loot box"
+        },
+        {
+          "info": {
+            "name": "Get the Loot Box with the given ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/admin/loot-boxes/:loot_box_id",
+            "params": [
+              {
+                "name": "loot_box_id",
+                "value": "",
+                "type": "path",
+                "description": "the ID of the Loot Box"
+              }
+            ]
+          },
+          "docs": "Get the Loot Box with the given ID."
+        },
+        {
+          "info": {
+            "name": "Updates the lootbox with the provided fields.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v2/admin/loot-boxes/:loot_box_id",
+            "params": [
+              {
+                "name": "loot_box_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Updates the lootbox with the provided fields."
+        },
+        {
+          "info": {
+            "name": "Endpoint to fetch all loot boxes for a program membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/loot-boxes",
+            "params": [
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to fetch all loot boxes for a program membership"
+        },
+        {
+          "info": {
+            "name": "Endpoint to open a loot box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/program-memberships/:program_membership_id/loot-boxes/:loot_box_id/open",
+            "params": [
+              {
+                "name": "loot_box_id",
+                "value": "",
+                "type": "path",
+                "description": "the loot box id"
+              },
+              {
+                "name": "program_membership_id",
+                "value": "",
+                "type": "path",
+                "description": "the program membership id"
+              }
+            ]
+          },
+          "docs": "Endpoint to open a loot box"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
