@@ -41,6 +41,17 @@ tags:
 - Membership
 - Customer Engagement
 - Marketing
+- Restaurant
+- Point-of-Sale
+- Webhook
+tags_raw:
+- Company
+- Consumer
+- Loyalty
+- Rewards
+- Membership
+- Customer Engagement
+- Marketing
 - Restaurants
 - Point of Sale
 - Webhooks
@@ -277,6 +288,8 @@ apis:
   humanURL: https://docs.hang.com/hang-platform
   baseURL: https://loyalty.hang.xyz/partner-api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
