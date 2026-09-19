@@ -146,6 +146,8 @@ apis:
   humanURL: https://docs.hang.com/hang-platform
   baseURL: https://loyalty.hang.xyz/partner-api
   tags:
+  - Membership
+  tags_raw:
   - Memberships
   properties:
   - type: OpenAPI
