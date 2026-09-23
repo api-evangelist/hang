@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities Loot Box Reward Choices API
-  description: '
+  title: Hang Partner API (params in:formData) Loot Box Reward…
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,303 +18,370 @@ paths:
     post:
       tags:
       - Loot Box Reward Choices
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_admin_loot_box_reward_choices
-      summary: Create the reward choice and probabilities for a loot box.
-      parameters:
-      - name: title
-        type: string
-        in: formData
-        required: true
-        description: Title of the loot box reward choice
-      - name: loot_box_id
-        type: string
-        in: formData
-        required: true
-        description: The Id of the loot box.
-      - name: subtitle
-        type: string
-        in: formData
-        description: Subtitle of the loot box reward choice
-      - name: category
-        type: string
-        in: formData
-        description: Category of the loot box reward choice
-      - name: point_reward_value
-        type: number
-        in: formData
-        description: Point reward value for the loot box
-      - name: video_url
-        type: string
-        in: formData
-        description: URL for the video associated with the loot box reward choice (must be less than 100 MB)
-      - name: quantity
-        type: number
-        in: formData
-        description: Quantity of the loot box reward choice
-      - name: reward_uuid
-        type: string
-        in: formData
-        description: UUID of the reward for the loot box reward choice
-      - name: default_image_url
-        type: string
-        in: formData
-        description: Default image URL for the loot box reward choice
-      - name: probability_details
-        type: array
-        items:
-          type: string
-        in: formData
-        description: Probability details associated with the loot box reward choice
+      summary: Create the reward choice and probabilities for a loot box
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              loot_box_reward_choice:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: ID for lootbox reward choice.
-                  title:
-                    type: string
-                    description: Title for lootbox reward choice.
-                  subtitle:
-                    type: string
-                    description: Subtitle for lootbox reward choice.
-                  category:
-                    type: string
-                    description: Category for lootbox reward choice.
-                  point_reward_value:
-                    type: number
-                    description: Points for lootbox reward choice.
-                  reward_uuids:
-                    items:
-                      type: string
-                    type: array
-                    description: Reward UUIDs for the loot box reward choice.
-                  quantity:
-                    type: number
-                    description: Max amount of this loot box reward choice to be awarded.
-                  image:
-                    type: string
-                    description: Image for lootbox reward choice.
-                  video:
-                    type: string
-                    description: Video for lootbox reward choice.
-                  probability:
-                    type: number
-                    description: Probability for lootbox reward choice.
-                  current_tier_id:
-                    type: string
-                    description: Program tier this reward choice probability applies to.
-                  rewards:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        uuid:
+                  loot_box_reward_choice:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: ID for lootbox reward choice.
+                      title:
+                        type: string
+                        description: Title for lootbox reward choice.
+                      subtitle:
+                        type: string
+                        description: Subtitle for lootbox reward choice.
+                      category:
+                        type: string
+                        description: Category for lootbox reward choice.
+                      point_reward_value:
+                        type: number
+                        description: Points for lootbox reward choice.
+                      reward_uuids:
+                        items:
                           type: string
-                          description: Unique identifier for the Reward object.
-                        name:
-                          type: string
-                          description: Reward name.
-                        description:
-                          type: string
-                          description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
-                        image_url:
-                          type: string
-                          description: An absolute URL of the reward's image.
-                        terms_and_conditions:
-                          type: string
-                          description: Terms and condition for the rewards.
-                        metadata:
+                        type: array
+                        description: Reward UUIDs for the loot box reward choice.
+                      quantity:
+                        type: number
+                        description: Max amount of this loot box reward choice to be awarded.
+                      image:
+                        type: string
+                        description: Image for lootbox reward choice.
+                      video:
+                        type: string
+                        description: Video for lootbox reward choice.
+                      probability:
+                        type: number
+                        description: Probability for lootbox reward choice.
+                      current_tier_id:
+                        type: string
+                        description: Program tier this reward choice probability applies to.
+                      rewards:
+                        type: array
+                        items:
                           type: object
-                          additionalProperties: true
-                          description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
-                      additionalProperties: false
-                      required:
-                      - uuid
-                      - name
-                      - description
-                      - image_url
-                      - terms_and_conditions
-                      - metadata
+                          properties:
+                            uuid:
+                              type: string
+                              description: Unique identifier for the Reward object.
+                            name:
+                              type: string
+                              description: Reward name.
+                            description:
+                              type: string
+                              description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                            image_url:
+                              type: string
+                              description: An absolute URL of the reward's image.
+                            terms_and_conditions:
+                              type: string
+                              description: Terms and condition for the rewards.
+                            metadata:
+                              type: object
+                              additionalProperties: true
+                              description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
+                          additionalProperties: false
+                          required:
+                          - uuid
+                          - name
+                          - description
+                          - image_url
+                          - terms_and_conditions
+                          - metadata
+                    additionalProperties: false
+                    required:
+                    - id
+                    - title
+                    - subtitle
+                    - category
+                    - point_reward_value
+                    - reward_uuids
+                    - quantity
+                    - image
+                    - video
+                    - probability
+                    - current_tier_id
+                    - rewards
                 additionalProperties: false
                 required:
-                - id
-                - title
-                - subtitle
-                - category
-                - point_reward_value
-                - reward_uuids
-                - quantity
-                - image
-                - video
-                - probability
-                - current_tier_id
-                - rewards
-            additionalProperties: false
-            required:
-            - loot_box_reward_choice
+                - loot_box_reward_choice
       description: Invoke this endpoint to create the reward choice for a loot box and its corresponding probabilities.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Title of the loot box reward choice
+                loot_box_id:
+                  type: string
+                  description: The Id of the loot box.
+                subtitle:
+                  type: string
+                  description: Subtitle of the loot box reward choice
+                category:
+                  type: string
+                  description: Category of the loot box reward choice
+                point_reward_value:
+                  type: number
+                  description: Point reward value for the loot box
+                video_url:
+                  type: string
+                  description: URL for the video associated with the loot box reward choice (must be less than 100 MB)
+                quantity:
+                  type: number
+                  description: Quantity of the loot box reward choice
+                reward_uuid:
+                  type: string
+                  description: UUID of the reward for the loot box reward choice
+                default_image_url:
+                  type: string
+                  description: Default image URL for the loot box reward choice
+                probability_details:
+                  type: array
+                  items:
+                    type: string
+                  description: Probability details associated with the loot box reward choice
+              required:
+              - title
+              - loot_box_id
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Title of the loot box reward choice
+                loot_box_id:
+                  type: string
+                  description: The Id of the loot box.
+                subtitle:
+                  type: string
+                  description: Subtitle of the loot box reward choice
+                category:
+                  type: string
+                  description: Category of the loot box reward choice
+                point_reward_value:
+                  type: number
+                  description: Point reward value for the loot box
+                video_url:
+                  type: string
+                  description: URL for the video associated with the loot box reward choice (must be less than 100 MB)
+                quantity:
+                  type: number
+                  description: Quantity of the loot box reward choice
+                reward_uuid:
+                  type: string
+                  description: UUID of the reward for the loot box reward choice
+                default_image_url:
+                  type: string
+                  description: Default image URL for the loot box reward choice
+                probability_details:
+                  type: array
+                  items:
+                    type: string
+                  description: Probability details associated with the loot box reward choice
+              required:
+              - title
+              - loot_box_id
   /v2/admin/loot_box_reward_choices/{loot_box_reward_choice_id}:
     patch:
       tags:
       - Loot Box Reward Choices
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: patch_v2_admin_loot_box_reward_choices_loot_box_reward_choice_id
-      summary: Update a loot box reward choice.
+      summary: Update a loot box reward choice
       parameters:
       - name: loot_box_reward_choice_id
-        type: string
         in: path
         required: true
         description: The Id of the loot box reward choice.
-      - name: loot_box_id
-        type: string
-        in: formData
-        description: The Id of the loot box.
-      - name: title
-        type: string
-        in: formData
-        description: Title of the loot box reward choice
-      - name: subtitle
-        type: string
-        in: formData
-        description: Subtitle of the loot box reward choice
-      - name: category
-        type: string
-        in: formData
-        description: Category of the loot box reward choice
-      - name: point_reward_value
-        type: number
-        in: formData
-        description: Point reward value for the loot box reward choice
-      - name: video_url
-        type: string
-        in: formData
-        description: URL of the video that gives more details about the selected loot box reward
-      - name: quantity
-        type: number
-        in: formData
-        description: Quantity of the loot box reward choice
-      - name: reward_uuid
-        type: string
-        in: formData
-        description: UUID of the reward for the loot box reward choice
-      - name: default_image_url
-        type: string
-        in: formData
-        description: Default image URL for the loot box reward choice
-      - name: probability_details
-        type: array
-        items:
+        schema:
           type: string
-        in: formData
-        description: Probability details associated with the loot box reward choice
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              loot_box_reward_outcome:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: ID for lootbox reward choice.
-                  title:
-                    type: string
-                    description: Title for lootbox reward choice.
-                  subtitle:
-                    type: string
-                    description: Subtitle for lootbox reward choice.
-                  category:
-                    type: string
-                    description: Category for lootbox reward choice.
-                  point_reward_value:
-                    type: number
-                    description: Points for lootbox reward choice.
-                  reward_uuids:
-                    items:
-                      type: string
-                    type: array
-                    description: Reward UUIDs for the loot box reward choice.
-                  quantity:
-                    type: number
-                    description: Max amount of this loot box reward choice to be awarded.
-                  image:
-                    type: string
-                    description: Image for lootbox reward choice.
-                  video:
-                    type: string
-                    description: Video for lootbox reward choice.
-                  probability:
-                    type: number
-                    description: Probability for lootbox reward choice.
-                  current_tier_id:
-                    type: string
-                    description: Program tier this reward choice probability applies to.
-                  rewards:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        uuid:
+                  loot_box_reward_outcome:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: ID for lootbox reward choice.
+                      title:
+                        type: string
+                        description: Title for lootbox reward choice.
+                      subtitle:
+                        type: string
+                        description: Subtitle for lootbox reward choice.
+                      category:
+                        type: string
+                        description: Category for lootbox reward choice.
+                      point_reward_value:
+                        type: number
+                        description: Points for lootbox reward choice.
+                      reward_uuids:
+                        items:
                           type: string
-                          description: Unique identifier for the Reward object.
-                        name:
-                          type: string
-                          description: Reward name.
-                        description:
-                          type: string
-                          description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
-                        image_url:
-                          type: string
-                          description: An absolute URL of the reward's image.
-                        terms_and_conditions:
-                          type: string
-                          description: Terms and condition for the rewards.
-                        metadata:
+                        type: array
+                        description: Reward UUIDs for the loot box reward choice.
+                      quantity:
+                        type: number
+                        description: Max amount of this loot box reward choice to be awarded.
+                      image:
+                        type: string
+                        description: Image for lootbox reward choice.
+                      video:
+                        type: string
+                        description: Video for lootbox reward choice.
+                      probability:
+                        type: number
+                        description: Probability for lootbox reward choice.
+                      current_tier_id:
+                        type: string
+                        description: Program tier this reward choice probability applies to.
+                      rewards:
+                        type: array
+                        items:
                           type: object
-                          additionalProperties: true
-                          description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
-                      additionalProperties: false
-                      required:
-                      - uuid
-                      - name
-                      - description
-                      - image_url
-                      - terms_and_conditions
-                      - metadata
+                          properties:
+                            uuid:
+                              type: string
+                              description: Unique identifier for the Reward object.
+                            name:
+                              type: string
+                              description: Reward name.
+                            description:
+                              type: string
+                              description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                            image_url:
+                              type: string
+                              description: An absolute URL of the reward's image.
+                            terms_and_conditions:
+                              type: string
+                              description: Terms and condition for the rewards.
+                            metadata:
+                              type: object
+                              additionalProperties: true
+                              description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
+                          additionalProperties: false
+                          required:
+                          - uuid
+                          - name
+                          - description
+                          - image_url
+                          - terms_and_conditions
+                          - metadata
+                    additionalProperties: false
+                    required:
+                    - id
+                    - title
+                    - subtitle
+                    - category
+                    - point_reward_value
+                    - reward_uuids
+                    - quantity
+                    - image
+                    - video
+                    - probability
+                    - current_tier_id
+                    - rewards
                 additionalProperties: false
                 required:
-                - id
-                - title
-                - subtitle
-                - category
-                - point_reward_value
-                - reward_uuids
-                - quantity
-                - image
-                - video
-                - probability
-                - current_tier_id
-                - rewards
-            additionalProperties: false
-            required:
-            - loot_box_reward_outcome
+                - loot_box_reward_outcome
       description: Invoke this endpoint to update the reward choice for a loot box.
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                loot_box_id:
+                  type: string
+                  description: The Id of the loot box.
+                title:
+                  type: string
+                  description: Title of the loot box reward choice
+                subtitle:
+                  type: string
+                  description: Subtitle of the loot box reward choice
+                category:
+                  type: string
+                  description: Category of the loot box reward choice
+                point_reward_value:
+                  type: number
+                  description: Point reward value for the loot box reward choice
+                video_url:
+                  type: string
+                  description: URL of the video that gives more details about the selected loot box reward
+                quantity:
+                  type: number
+                  description: Quantity of the loot box reward choice
+                reward_uuid:
+                  type: string
+                  description: UUID of the reward for the loot box reward choice
+                default_image_url:
+                  type: string
+                  description: Default image URL for the loot box reward choice
+                probability_details:
+                  type: array
+                  items:
+                    type: string
+                  description: Probability details associated with the loot box reward choice
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                loot_box_id:
+                  type: string
+                  description: The Id of the loot box.
+                title:
+                  type: string
+                  description: Title of the loot box reward choice
+                subtitle:
+                  type: string
+                  description: Subtitle of the loot box reward choice
+                category:
+                  type: string
+                  description: Category of the loot box reward choice
+                point_reward_value:
+                  type: number
+                  description: Point reward value for the loot box reward choice
+                video_url:
+                  type: string
+                  description: URL of the video that gives more details about the selected loot box reward
+                quantity:
+                  type: number
+                  description: Quantity of the loot box reward choice
+                reward_uuid:
+                  type: string
+                  description: UUID of the reward for the loot box reward choice
+                default_image_url:
+                  type: string
+                  description: Default image URL for the loot box reward choice
+                probability_details:
+                  type: array
+                  items:
+                    type: string
+                  description: Probability details associated with the loot box reward choice
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

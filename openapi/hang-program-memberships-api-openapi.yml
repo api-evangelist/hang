@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities Program memberships API
-  description: '
+  title: Hang Partner API (params in:formData) Program memberships…
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,177 +18,194 @@ paths:
     get:
       tags:
       - Program memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_v2_admin_program-memberships
       summary: Get all program memberships
       parameters:
       - name: search_query
-        type: string
         in: query
         description: First name, last name, phone, or email of the users we want to look up.
+        schema:
+          type: string
       - name: offset
-        type: number
         in: query
         description: Index to start at.
+        schema:
+          type: number
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              program_memberships:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                      description: Unique identifier for the program membership.
-                    first_name:
-                      type: string
-                      description: First name of the user.
-                    last_name:
-                      type: string
-                      description: Last name of the user.
-                    email:
-                      type: string
-                      description: Email of the user.
-                    phone:
-                      type: string
-                      description: Phone number of the user.
-                    created_at:
-                      type: number
-                      description: When the membership was created, in epoch seconds.
-                  additionalProperties: false
-                  required:
-                  - id
-                  - first_name
-                  - last_name
-                  - email
-                  - phone
-                  - created_at
-              total_records:
-                type: number
-            additionalProperties: false
-            required:
-            - program_memberships
-            - total_records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_memberships:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the program membership.
+                        first_name:
+                          type: string
+                          description: First name of the user.
+                        last_name:
+                          type: string
+                          description: Last name of the user.
+                        email:
+                          type: string
+                          description: Email of the user.
+                        phone:
+                          type: string
+                          description: Phone number of the user.
+                        created_at:
+                          type: number
+                          description: When the membership was created, in epoch seconds.
+                      additionalProperties: false
+                      required:
+                      - id
+                      - first_name
+                      - last_name
+                      - email
+                      - phone
+                      - created_at
+                  total_records:
+                    type: number
+                additionalProperties: false
+                required:
+                - program_memberships
+                - total_records
       description: Program Memberships represent a member of the loyalty program. Includes user data. Sorted by creation date.
   /v2/admin/program-memberships/{program_membership_id}:
     get:
       tags:
       - Program memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_v2_admin_program-memberships_program_membership_id
       summary: Get the program membership with the specified Id
       parameters:
       - name: program_membership_id
-        type: number
         in: path
         required: true
+        schema:
+          type: number
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              program_membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: Unique identifier for the program membership.
-                  first_name:
-                    type: string
-                    description: First name of the user.
-                  last_name:
-                    type: string
-                    description: Last name of the user.
-                  email:
-                    type: string
-                    description: Email of the user.
-                  phone:
-                    type: string
-                    description: Phone number of the user.
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
+                  program_membership:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the program membership.
+                      first_name:
+                        type: string
+                        description: First name of the user.
+                      last_name:
+                        type: string
+                        description: Last name of the user.
+                      email:
+                        type: string
+                        description: Email of the user.
+                      phone:
+                        type: string
+                        description: Phone number of the user.
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - first_name
+                    - last_name
+                    - email
+                    - phone
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - first_name
-                - last_name
-                - email
-                - phone
-                - created_at
-            additionalProperties: false
-            required:
-            - program_membership
+                - program_membership
       description: Program Membership represents a member of the loyalty program. Includes user data.
   /v2/admin/program_memberships/{program_membership_id}:
     patch:
       tags:
       - Program memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: patch_v2_admin_program_memberships_program_membership_id
-      summary: Updates the program membership and associated user with the included fields.
+      summary: Updates the program membership and associated user with the included fields
       parameters:
-      - name: email
-        type: string
-        in: formData
-        required: true
-        description: Email address of the user.
       - name: program_membership_id
-        type: number
         in: path
         required: true
+        schema:
+          type: number
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              program_membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: Unique identifier for the program membership.
-                  first_name:
-                    type: string
-                    description: First name of the user.
-                  last_name:
-                    type: string
-                    description: Last name of the user.
-                  email:
-                    type: string
-                    description: Email of the user.
-                  phone:
-                    type: string
-                    description: Phone number of the user.
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
+                  program_membership:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the program membership.
+                      first_name:
+                        type: string
+                        description: First name of the user.
+                      last_name:
+                        type: string
+                        description: Last name of the user.
+                      email:
+                        type: string
+                        description: Email of the user.
+                      phone:
+                        type: string
+                        description: Phone number of the user.
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - first_name
+                    - last_name
+                    - email
+                    - phone
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - first_name
-                - last_name
-                - email
-                - phone
-                - created_at
-            additionalProperties: false
-            required:
-            - program_membership
+                - program_membership
       description: ''
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email address of the user.
+              required:
+              - email
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email address of the user.
+              required:
+              - email
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

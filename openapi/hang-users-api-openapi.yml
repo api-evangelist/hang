@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities Users API
-  description: '
+  title: Hang Partner API (params in:formData) Users API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,50 +18,68 @@ paths:
     post:
       tags:
       - Users
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_users
-      summary: Creates a new user with the given wallet_address and either a phone or an email address.
-      parameters:
-      - name: wallet_address
-        type: string
-        in: formData
-        required: true
-        description: the user's wallet_address
-      - name: phone
-        type: string
-        in: formData
-        description: the user's phone (must be provided if email is blank)
-      - name: email
-        type: string
-        in: formData
-        description: the user's email (must be provided if phone is blank)
+      summary: Creates a new user with the given wallet_address and either a phone or an email…
       responses:
         '200':
           description: User was created successfully
-          schema:
-            type: object
-            properties:
-              user:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the new user
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the new user
+                    additionalProperties: false
+                    required:
+                    - id
                 additionalProperties: false
                 required:
-                - id
-            additionalProperties: false
-            required:
-            - user
+                - user
         '400':
           description: Missing required parameters.
         '409':
           description: When any of the parameters passed in already exist in the system.
       description: Invoke this endpoint to add a new user to your loyalty program.
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: the user's wallet_address
+                phone:
+                  type: string
+                  description: the user's phone (must be provided if email is blank)
+                email:
+                  type: string
+                  description: the user's email (must be provided if phone is blank)
+              required:
+              - wallet_address
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: the user's wallet_address
+                phone:
+                  type: string
+                  description: the user's phone (must be provided if email is blank)
+                email:
+                  type: string
+                  description: the user's email (must be provided if phone is blank)
+              required:
+              - wallet_address
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

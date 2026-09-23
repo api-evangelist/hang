@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities Memberships API
-  description: '
+  title: Hang Partner API (params in:formData) Memberships API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,645 +18,741 @@ paths:
     post:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_program-memberships
-      summary: Creates a new membership with a given wallet_address, external_user_id, or both.
-      parameters:
-      - name: external_user_id
-        type: string
-        in: formData
-        description: the user's external_user_id (must be provided if wallet_address is blank)
-      - name: wallet_address
-        type: string
-        in: formData
-        description: the user's wallet_address (must be provided if external_user_id is blank)
-      - name: email
-        type: string
-        in: formData
-        description: the user's email address
+      summary: Creates a new membership with a given wallet_address, external_user_id, or both
       responses:
         '200':
           description: Membership was created successfully, or an existing membership was found
-          schema:
-            type: object
-            properties:
-              membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the membership
-                  external_user_id:
-                    type: string
-                    description: The external user id for the membership
-                  wallet_address:
-                    type: string
-                    description: The wallet address for the membership
-                  on_chain_token_id:
-                    type: string
-                    description: The on chain token id for the membership
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
-                  social_media_credentials:
+                  membership:
                     type: object
                     properties:
-                      twitter_username:
+                      id:
                         type: string
-                        description: The instagram handle for the membership
-                      instagram_username:
+                        description: The ID of the membership
+                      external_user_id:
                         type: string
-                        description: The instagram handle for the membership
-                      tiktok_username:
+                        description: The external user id for the membership
+                      wallet_address:
                         type: string
-                        description: The tiktok username associated with the membership
+                        description: The wallet address for the membership
+                      on_chain_token_id:
+                        type: string
+                        description: The on chain token id for the membership
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                      social_media_credentials:
+                        type: object
+                        properties:
+                          twitter_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          instagram_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          tiktok_username:
+                            type: string
+                            description: The tiktok username associated with the membership
+                        additionalProperties: false
+                        required:
+                        - twitter_username
+                        - instagram_username
+                        - tiktok_username
                     additionalProperties: false
                     required:
-                    - twitter_username
-                    - instagram_username
-                    - tiktok_username
+                    - id
+                    - external_user_id
+                    - wallet_address
+                    - on_chain_token_id
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - external_user_id
-                - wallet_address
-                - on_chain_token_id
-                - created_at
-            additionalProperties: false
-            required:
-            - membership
+                - membership
         '400':
           description: Missing required parameters.
       description: Invoke this endpoint to add a new membership to your loyalty program.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                external_user_id:
+                  type: string
+                  description: the user's external_user_id (must be provided if wallet_address is blank)
+                wallet_address:
+                  type: string
+                  description: the user's wallet_address (must be provided if external_user_id is blank)
+                email:
+                  type: string
+                  description: the user's email address
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                external_user_id:
+                  type: string
+                  description: the user's external_user_id (must be provided if wallet_address is blank)
+                wallet_address:
+                  type: string
+                  description: the user's wallet_address (must be provided if external_user_id is blank)
+                email:
+                  type: string
+                  description: the user's email address
   /membership/{program_membership_id}/social-media-credentials:
     post:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_membership_program_membership_id_social-media-credentials
       summary: updates membership with social media credentials
       parameters:
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: program membership id
-      - name: twitter_username
-        type: string
-        in: formData
-        description: twitter handle associated with the program membership
-      - name: instagram_username
-        type: string
-        in: formData
-        description: instagram username associated with the program membership
+        schema:
+          type: string
       responses:
         '200':
           description: Membership was updated with social media credentials
-          schema:
-            type: object
-            properties:
-              membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the membership
-                  external_user_id:
-                    type: string
-                    description: The external user id for the membership
-                  wallet_address:
-                    type: string
-                    description: The wallet address for the membership
-                  on_chain_token_id:
-                    type: string
-                    description: The on chain token id for the membership
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
-                  social_media_credentials:
+                  membership:
                     type: object
                     properties:
-                      twitter_username:
+                      id:
                         type: string
-                        description: The instagram handle for the membership
-                      instagram_username:
+                        description: The ID of the membership
+                      external_user_id:
                         type: string
-                        description: The instagram handle for the membership
-                      tiktok_username:
+                        description: The external user id for the membership
+                      wallet_address:
                         type: string
-                        description: The tiktok username associated with the membership
+                        description: The wallet address for the membership
+                      on_chain_token_id:
+                        type: string
+                        description: The on chain token id for the membership
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                      social_media_credentials:
+                        type: object
+                        properties:
+                          twitter_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          instagram_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          tiktok_username:
+                            type: string
+                            description: The tiktok username associated with the membership
+                        additionalProperties: false
+                        required:
+                        - twitter_username
+                        - instagram_username
+                        - tiktok_username
                     additionalProperties: false
                     required:
-                    - twitter_username
-                    - instagram_username
-                    - tiktok_username
+                    - id
+                    - external_user_id
+                    - wallet_address
+                    - on_chain_token_id
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - external_user_id
-                - wallet_address
-                - on_chain_token_id
-                - created_at
-            additionalProperties: false
-            required:
-            - membership
+                - membership
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                twitter_username:
+                  type: string
+                  description: twitter handle associated with the program membership
+                instagram_username:
+                  type: string
+                  description: instagram username associated with the program membership
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                twitter_username:
+                  type: string
+                  description: twitter handle associated with the program membership
+                instagram_username:
+                  type: string
+                  description: instagram username associated with the program membership
   /membership/{program_membership_id}:
     get:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_membership_program_membership_id
       summary: gets membership with social media credentials
       parameters:
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: Membership was retrieved successfully
-          schema:
-            type: object
-            properties:
-              membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the membership
-                  external_user_id:
-                    type: string
-                    description: The external user id for the membership
-                  wallet_address:
-                    type: string
-                    description: The wallet address for the membership
-                  on_chain_token_id:
-                    type: string
-                    description: The on chain token id for the membership
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
-                  social_media_credentials:
+                  membership:
                     type: object
                     properties:
-                      twitter_username:
+                      id:
                         type: string
-                        description: The instagram handle for the membership
-                      instagram_username:
+                        description: The ID of the membership
+                      external_user_id:
                         type: string
-                        description: The instagram handle for the membership
-                      tiktok_username:
+                        description: The external user id for the membership
+                      wallet_address:
                         type: string
-                        description: The tiktok username associated with the membership
+                        description: The wallet address for the membership
+                      on_chain_token_id:
+                        type: string
+                        description: The on chain token id for the membership
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                      social_media_credentials:
+                        type: object
+                        properties:
+                          twitter_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          instagram_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          tiktok_username:
+                            type: string
+                            description: The tiktok username associated with the membership
+                        additionalProperties: false
+                        required:
+                        - twitter_username
+                        - instagram_username
+                        - tiktok_username
                     additionalProperties: false
                     required:
-                    - twitter_username
-                    - instagram_username
-                    - tiktok_username
+                    - id
+                    - external_user_id
+                    - wallet_address
+                    - on_chain_token_id
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - external_user_id
-                - wallet_address
-                - on_chain_token_id
-                - created_at
-            additionalProperties: false
-            required:
-            - membership
+                - membership
       description: ''
   /membership/wallets/{wallet_address}:
     get:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_membership_wallets_wallet_address
       summary: gets membership with social media credentials from wallet address
       parameters:
       - name: wallet_address
-        type: string
         in: path
         required: true
         description: user's wallet address
+        schema:
+          type: string
       responses:
         '200':
           description: Membership was retrieved successfully
-          schema:
-            type: object
-            properties:
-              membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the membership
-                  external_user_id:
-                    type: string
-                    description: The external user id for the membership
-                  wallet_address:
-                    type: string
-                    description: The wallet address for the membership
-                  on_chain_token_id:
-                    type: string
-                    description: The on chain token id for the membership
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
-                  social_media_credentials:
+                  membership:
                     type: object
                     properties:
-                      twitter_username:
+                      id:
                         type: string
-                        description: The instagram handle for the membership
-                      instagram_username:
+                        description: The ID of the membership
+                      external_user_id:
                         type: string
-                        description: The instagram handle for the membership
-                      tiktok_username:
+                        description: The external user id for the membership
+                      wallet_address:
                         type: string
-                        description: The tiktok username associated with the membership
+                        description: The wallet address for the membership
+                      on_chain_token_id:
+                        type: string
+                        description: The on chain token id for the membership
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                      social_media_credentials:
+                        type: object
+                        properties:
+                          twitter_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          instagram_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          tiktok_username:
+                            type: string
+                            description: The tiktok username associated with the membership
+                        additionalProperties: false
+                        required:
+                        - twitter_username
+                        - instagram_username
+                        - tiktok_username
                     additionalProperties: false
                     required:
-                    - twitter_username
-                    - instagram_username
-                    - tiktok_username
+                    - id
+                    - external_user_id
+                    - wallet_address
+                    - on_chain_token_id
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - external_user_id
-                - wallet_address
-                - on_chain_token_id
-                - created_at
-            additionalProperties: false
-            required:
-            - membership
+                - membership
       description: ''
   /v2/program-memberships/{program_membership_id}/add-trait:
     post:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_program-memberships_program_membership_id_add-trait
       summary: Endpoint to add a trait to a program membership
       parameters:
-      - name: trait_value
-        type: string
-        in: formData
-        required: true
-        description: value of the trait
-      - name: trait_name
-        type: string
-        in: formData
-        required: true
-        description: name of the trait
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              traits:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                      description: trait name
-                    value:
-                      type: string
-                      description: trait value
-                  additionalProperties: false
-                  required:
-                  - name
-                  - value
-            additionalProperties: false
-            required:
-            - traits
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  traits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: trait name
+                        value:
+                          type: string
+                          description: trait value
+                      additionalProperties: false
+                      required:
+                      - name
+                      - value
+                additionalProperties: false
+                required:
+                - traits
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                trait_value:
+                  type: string
+                  description: value of the trait
+                trait_name:
+                  type: string
+                  description: name of the trait
+              required:
+              - trait_value
+              - trait_name
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                trait_value:
+                  type: string
+                  description: value of the trait
+                trait_name:
+                  type: string
+                  description: name of the trait
+              required:
+              - trait_value
+              - trait_name
   /v2/program-memberships/{program_membership_id}/remove-trait:
     post:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_program-memberships_program_membership_id_remove-trait
       summary: Endpoint to remove a trait from a program membership
       parameters:
-      - name: trait_value
-        type: string
-        in: formData
-        required: true
-        description: value of the trait
-      - name: trait_name
-        type: string
-        in: formData
-        required: true
-        description: name of the trait
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              traits:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                      description: trait name
-                    value:
-                      type: string
-                      description: trait value
-                  additionalProperties: false
-                  required:
-                  - name
-                  - value
-            additionalProperties: false
-            required:
-            - traits
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  traits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: trait name
+                        value:
+                          type: string
+                          description: trait value
+                      additionalProperties: false
+                      required:
+                      - name
+                      - value
+                additionalProperties: false
+                required:
+                - traits
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                trait_value:
+                  type: string
+                  description: value of the trait
+                trait_name:
+                  type: string
+                  description: name of the trait
+              required:
+              - trait_value
+              - trait_name
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                trait_value:
+                  type: string
+                  description: value of the trait
+                trait_name:
+                  type: string
+                  description: name of the trait
+              required:
+              - trait_value
+              - trait_name
   /v2/program-memberships/{program_membership_id}/set-image:
     post:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_program-memberships_program_membership_id_set-image
       summary: Endpoint to set an image for a program membership
       parameters:
-      - name: image_url
-        type: string
-        in: formData
-        required: true
-        description: url of the image
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the membership
-                  external_user_id:
-                    type: string
-                    description: The external user id for the membership
-                  wallet_address:
-                    type: string
-                    description: The wallet address for the membership
-                  on_chain_token_id:
-                    type: string
-                    description: The on chain token id for the membership
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
-                  social_media_credentials:
+                  membership:
                     type: object
                     properties:
-                      twitter_username:
+                      id:
                         type: string
-                        description: The instagram handle for the membership
-                      instagram_username:
+                        description: The ID of the membership
+                      external_user_id:
                         type: string
-                        description: The instagram handle for the membership
-                      tiktok_username:
+                        description: The external user id for the membership
+                      wallet_address:
                         type: string
-                        description: The tiktok username associated with the membership
+                        description: The wallet address for the membership
+                      on_chain_token_id:
+                        type: string
+                        description: The on chain token id for the membership
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                      social_media_credentials:
+                        type: object
+                        properties:
+                          twitter_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          instagram_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          tiktok_username:
+                            type: string
+                            description: The tiktok username associated with the membership
+                        additionalProperties: false
+                        required:
+                        - twitter_username
+                        - instagram_username
+                        - tiktok_username
                     additionalProperties: false
                     required:
-                    - twitter_username
-                    - instagram_username
-                    - tiktok_username
+                    - id
+                    - external_user_id
+                    - wallet_address
+                    - on_chain_token_id
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - external_user_id
-                - wallet_address
-                - on_chain_token_id
-                - created_at
-            additionalProperties: false
-            required:
-            - membership
+                - membership
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                image_url:
+                  type: string
+                  description: url of the image
+              required:
+              - image_url
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image_url:
+                  type: string
+                  description: url of the image
+              required:
+              - image_url
   /v2/program-memberships/{program_membership_id}:
     patch:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: patch_v2_program-memberships_program_membership_id
-      summary: Endpoint to update a program membership with a wallet_address, on_chain_token_id, and/or external_user_id
+      summary: Endpoint to update a program membership with a wallet_address…
       parameters:
       - name: program_membership_id
-        type: number
         in: path
         required: true
-      - name: wallet_address
-        type: string
-        in: formData
-        description: the wallet address to update the program membership with
-      - name: on_chain_token_id
-        type: string
-        in: formData
-        description: the on chain token id to update the program membership with
-      - name: external_user_id
-        type: string
-        in: formData
-        description: the external user id to update the program membership with
+        schema:
+          type: number
       responses:
         '200':
           description: Membership was updated with provided wallet_address, on_chain_token_id, and/or external_user_id
-          schema:
-            type: object
-            properties:
-              membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the membership
-                  external_user_id:
-                    type: string
-                    description: The external user id for the membership
-                  wallet_address:
-                    type: string
-                    description: The wallet address for the membership
-                  on_chain_token_id:
-                    type: string
-                    description: The on chain token id for the membership
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
-                  social_media_credentials:
+                  membership:
                     type: object
                     properties:
-                      twitter_username:
+                      id:
                         type: string
-                        description: The instagram handle for the membership
-                      instagram_username:
+                        description: The ID of the membership
+                      external_user_id:
                         type: string
-                        description: The instagram handle for the membership
-                      tiktok_username:
+                        description: The external user id for the membership
+                      wallet_address:
                         type: string
-                        description: The tiktok username associated with the membership
+                        description: The wallet address for the membership
+                      on_chain_token_id:
+                        type: string
+                        description: The on chain token id for the membership
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                      social_media_credentials:
+                        type: object
+                        properties:
+                          twitter_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          instagram_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          tiktok_username:
+                            type: string
+                            description: The tiktok username associated with the membership
+                        additionalProperties: false
+                        required:
+                        - twitter_username
+                        - instagram_username
+                        - tiktok_username
                     additionalProperties: false
                     required:
-                    - twitter_username
-                    - instagram_username
-                    - tiktok_username
+                    - id
+                    - external_user_id
+                    - wallet_address
+                    - on_chain_token_id
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - external_user_id
-                - wallet_address
-                - on_chain_token_id
-                - created_at
-            additionalProperties: false
-            required:
-            - membership
+                - membership
       description: Sets a wallet_address, on_chain_token_id, and/or external_user_id on the specified program_membership.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: the wallet address to update the program membership with
+                on_chain_token_id:
+                  type: string
+                  description: the on chain token id to update the program membership with
+                external_user_id:
+                  type: string
+                  description: the external user id to update the program membership with
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: the wallet address to update the program membership with
+                on_chain_token_id:
+                  type: string
+                  description: the on chain token id to update the program membership with
+                external_user_id:
+                  type: string
+                  description: the external user id to update the program membership with
   /v2/program-memberships/search:
     get:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_v2_program-memberships_search
       summary: Endpoint to find a program membership by external_user_id
       parameters:
       - name: external_user_id
-        type: string
         in: query
         description: the external user id to update the program membership with
+        schema:
+          type: string
       responses:
         '200':
           description: Membership was found with provided wallet_address, on_chain_token_id, and/or external_user_id
-          schema:
-            type: object
-            properties:
-              membership:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: The ID of the membership
-                  external_user_id:
-                    type: string
-                    description: The external user id for the membership
-                  wallet_address:
-                    type: string
-                    description: The wallet address for the membership
-                  on_chain_token_id:
-                    type: string
-                    description: The on chain token id for the membership
-                  created_at:
-                    type: number
-                    description: When the membership was created, in epoch seconds.
-                  social_media_credentials:
+                  membership:
                     type: object
                     properties:
-                      twitter_username:
+                      id:
                         type: string
-                        description: The instagram handle for the membership
-                      instagram_username:
+                        description: The ID of the membership
+                      external_user_id:
                         type: string
-                        description: The instagram handle for the membership
-                      tiktok_username:
+                        description: The external user id for the membership
+                      wallet_address:
                         type: string
-                        description: The tiktok username associated with the membership
+                        description: The wallet address for the membership
+                      on_chain_token_id:
+                        type: string
+                        description: The on chain token id for the membership
+                      created_at:
+                        type: number
+                        description: When the membership was created, in epoch seconds.
+                      social_media_credentials:
+                        type: object
+                        properties:
+                          twitter_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          instagram_username:
+                            type: string
+                            description: The instagram handle for the membership
+                          tiktok_username:
+                            type: string
+                            description: The tiktok username associated with the membership
+                        additionalProperties: false
+                        required:
+                        - twitter_username
+                        - instagram_username
+                        - tiktok_username
                     additionalProperties: false
                     required:
-                    - twitter_username
-                    - instagram_username
-                    - tiktok_username
+                    - id
+                    - external_user_id
+                    - wallet_address
+                    - on_chain_token_id
+                    - created_at
                 additionalProperties: false
                 required:
-                - id
-                - external_user_id
-                - wallet_address
-                - on_chain_token_id
-                - created_at
-            additionalProperties: false
-            required:
-            - membership
+                - membership
       description: Finds a program membership by external_user_id.
   /v2/program-memberships/{program_membership_id}/level:
     get:
       tags:
       - Memberships
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_v2_program-memberships_program_membership_id_level
-      summary: Retrieve the current level or tier, as well as earned points (XP) for a program membership.
+      summary: Retrieve the current level or tier, as well as earned points (XP) for a program…
       parameters:
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: Returns details successfully
-          schema:
-            type: object
-            properties:
-              level:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  tier:
-                    type: string
-                    description: Tier name
-                  balance:
-                    type: number
-                    description: XP balance
+                  level:
+                    type: object
+                    properties:
+                      tier:
+                        type: string
+                        description: Tier name
+                      balance:
+                        type: number
+                        description: XP balance
+                    additionalProperties: false
+                    required:
+                    - tier
+                    - balance
                 additionalProperties: false
                 required:
-                - tier
-                - balance
-            additionalProperties: false
-            required:
-            - level
+                - level
         '404':
           description: Could not find the program membership provided.
       description: Invoke this endpoint to return the tier and earned points (XP) for a given program membership id.
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

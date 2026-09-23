@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities Member Actions API
-  description: '
+  title: Hang Partner API (params in:formData) Member Actions API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,76 +18,116 @@ paths:
     post:
       tags:
       - Member Actions
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-reward
       summary: Endpoint to grant a reward to a program membership
       parameters:
-      - name: nft_loyalty_reward_uuid
-        type: string
-        in: formData
-        required: true
-        description: The uuid of the reward
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: The program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: ok
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                nft_loyalty_reward_uuid:
+                  type: string
+                  description: The uuid of the reward
+              required:
+              - nft_loyalty_reward_uuid
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                nft_loyalty_reward_uuid:
+                  type: string
+                  description: The uuid of the reward
+              required:
+              - nft_loyalty_reward_uuid
   /v2/admin/program-memberships/{program_membership_id}/member-actions/grant-loot-box:
     post:
       tags:
       - Member Actions
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-loot-box
       summary: Endpoint to grant a loot box to a program membership
       parameters:
-      - name: loot_box_id
-        type: string
-        in: formData
-        required: true
-        description: The id of the loot box
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: The program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: ok
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                loot_box_id:
+                  type: string
+                  description: The id of the loot box
+              required:
+              - loot_box_id
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                loot_box_id:
+                  type: string
+                  description: The id of the loot box
+              required:
+              - loot_box_id
   /v2/admin/program-memberships/{program_membership_id}/member-actions/grant-points:
     post:
       tags:
       - Member Actions
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_admin_program-memberships_program_membership_id_member-actions_grant-points
       summary: Endpoint to grant points to a program membership
       parameters:
-      - name: points
-        type: number
-        in: formData
-        required: true
-        description: The amount of points to grant
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: The program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: ok
       description: ''
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                points:
+                  type: number
+                  description: The amount of points to grant
+              required:
+              - points
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                points:
+                  type: number
+                  description: The amount of points to grant
+              required:
+              - points
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

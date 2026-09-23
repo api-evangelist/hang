@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities Wallet Integration API
-  description: '
+  title: Hang Partner API (params in:formData) Wallet Integration API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,86 +18,118 @@ paths:
     post:
       tags:
       - Wallet Integration
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_integrations_search
-      summary: Get a wallet integration with either a wallet or an email address.
-      parameters:
-      - name: wallet_address
-        type: string
-        in: formData
-        required: true
-        description: wallet_address to associate with the email address
-      - name: email
-        type: string
-        in: formData
-        required: true
-        description: email address to associate with the wallet address
+      summary: Get a wallet integration with either a wallet or an email address
       responses:
         '200':
           description: OK
-          schema:
-            type: object
-            properties:
-              email:
-                type: string
-                description: email address to associate with the wallet address
-              wallet_address:
-                type: string
-                description: wallet_address to associate with the email address
-              provider:
-                type: string
-                description: Wallet integration provider
-            additionalProperties: false
-            required:
-            - email
-            - wallet_address
-            - provider
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: email address to associate with the wallet address
+                  wallet_address:
+                    type: string
+                    description: wallet_address to associate with the email address
+                  provider:
+                    type: string
+                    description: Wallet integration provider
+                additionalProperties: false
+                required:
+                - email
+                - wallet_address
+                - provider
       description: Get the email address associated with the specified wallet address or vice versa.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: wallet_address to associate with the email address
+                email:
+                  type: string
+                  description: email address to associate with the wallet address
+              required:
+              - wallet_address
+              - email
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: wallet_address to associate with the email address
+                email:
+                  type: string
+                  description: email address to associate with the wallet address
+              required:
+              - wallet_address
+              - email
   /integrations:
     post:
       tags:
       - Wallet Integration
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_integrations
       summary: Create or update a wallet integration with the email and wallet address
-      parameters:
-      - name: wallet_address
-        type: string
-        in: formData
-        required: true
-        description: wallet_address to associate with the email address
-      - name: email
-        type: string
-        in: formData
-        required: true
-        description: email address to associate with the wallet address
       responses:
         '200':
           description: OK
-          schema:
-            type: object
-            properties:
-              email:
-                type: string
-                description: email address to associate with the wallet address
-              wallet_address:
-                type: string
-                description: wallet_address to associate with the email address
-              provider:
-                type: string
-                description: Wallet integration provider
-            additionalProperties: false
-            required:
-            - email
-            - wallet_address
-            - provider
-      description: Create or update a wallet integration with the email and wallet address
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: email address to associate with the wallet address
+                  wallet_address:
+                    type: string
+                    description: wallet_address to associate with the email address
+                  provider:
+                    type: string
+                    description: Wallet integration provider
+                additionalProperties: false
+                required:
+                - email
+                - wallet_address
+                - provider
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: wallet_address to associate with the email address
+                email:
+                  type: string
+                  description: email address to associate with the wallet address
+              required:
+              - wallet_address
+              - email
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                wallet_address:
+                  type: string
+                  description: wallet_address to associate with the email address
+                email:
+                  type: string
+                  description: email address to associate with the wallet address
+              required:
+              - wallet_address
+              - email
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

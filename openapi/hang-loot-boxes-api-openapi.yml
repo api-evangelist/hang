@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities Loot Boxes API
-  description: '
+  title: Hang Partner API (params in:formData) Loot Boxes API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,1066 +18,1141 @@ paths:
     get:
       tags:
       - Loot Boxes
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_v2_admin_loot-boxes
       summary: Endpoint to fetch all loot boxes for a program
       parameters:
       - name: limit
-        type: number
         in: query
-        default: 50
         description: Amount of loot boxes to return (max 100).
+        schema:
+          type: number
+          default: 50
       - name: offset
-        type: number
         in: query
-        default: 0
         description: Index to start at.
+        schema:
+          type: number
+          default: 0
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              loot_boxes:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                      description: Unique identifier for the loot box object.
-                    name:
-                      type: string
-                      description: Name/title of the Lootbox object.
-                    description:
-                      type: string
-                      description: Description of the Lootbox object.
-                    sponsor_name:
-                      type: string
-                      description: Lootbox sponsor name.
-                    sponsor_description:
-                      type: string
-                      description: Lootbox sponsor description.
-                    recurring_interval_minutes:
-                      type: number
-                      description: Interval indicating how often a Lootbox can be granted.
-                    image_box_together_url:
-                      type: string
-                      description: URL of the combined Lootbox image.
-                    background_gradient_start_color:
-                      type: string
-                      description: Hexadecimal color value for the start of the gradient.
-                    background_gradient_stop_color:
-                      type: string
-                      description: Hexadecimal color value for the end of the gradient.
-                    reward_sequence_animation_type:
-                      type: string
-                      enum:
-                      - SHUFFLE
-                      - VIDEO
-                      description: Animation type dictating how a rewarded Lootbox is presented.
-                    is_sign_up_reward:
-                      type: boolean
-                      description: Boolean flag indicating if the Lootbox should be rewarded at signup.
-                    partner_metadata:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  loot_boxes:
+                    type: array
+                    items:
                       type: object
-                      additionalProperties: true
-                      description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
-                    created_at:
-                      type: number
-                      description: When the loot box was created, in epoch seconds.
-                    updated_at:
-                      type: number
-                      description: When the loot box was updated, in epoch seconds.
-                    loot_box_reward_choices:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                            description: ID for lootbox reward choice.
-                          title:
-                            type: string
-                            description: Title for lootbox reward choice.
-                          subtitle:
-                            type: string
-                            description: Subtitle for lootbox reward choice.
-                          category:
-                            type: string
-                            description: Category for lootbox reward choice.
-                          point_reward_value:
-                            type: number
-                            description: Points for lootbox reward choice.
-                          reward_uuids:
-                            items:
-                              type: string
-                            type: array
-                            description: Reward UUIDs for the loot box reward choice.
-                          quantity:
-                            type: number
-                            description: Max amount of this loot box reward choice to be awarded.
-                          image:
-                            type: string
-                            description: Image for lootbox reward choice.
-                          video:
-                            type: string
-                            description: Video for lootbox reward choice.
-                          probability:
-                            type: number
-                            description: Probability for lootbox reward choice.
-                          current_tier_id:
-                            type: string
-                            description: Program tier this reward choice probability applies to.
-                          rewards:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                uuid:
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the loot box object.
+                        name:
+                          type: string
+                          description: Name/title of the Lootbox object.
+                        description:
+                          type: string
+                          description: Description of the Lootbox object.
+                        sponsor_name:
+                          type: string
+                          description: Lootbox sponsor name.
+                        sponsor_description:
+                          type: string
+                          description: Lootbox sponsor description.
+                        recurring_interval_minutes:
+                          type: number
+                          description: Interval indicating how often a Lootbox can be granted.
+                        image_box_together_url:
+                          type: string
+                          description: URL of the combined Lootbox image.
+                        background_gradient_start_color:
+                          type: string
+                          description: Hexadecimal color value for the start of the gradient.
+                        background_gradient_stop_color:
+                          type: string
+                          description: Hexadecimal color value for the end of the gradient.
+                        reward_sequence_animation_type:
+                          type: string
+                          enum:
+                          - SHUFFLE
+                          - VIDEO
+                          description: Animation type dictating how a rewarded Lootbox is presented.
+                        is_sign_up_reward:
+                          type: boolean
+                          description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+                        partner_metadata:
+                          type: object
+                          additionalProperties: true
+                          description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
+                        created_at:
+                          type: number
+                          description: When the loot box was created, in epoch seconds.
+                        updated_at:
+                          type: number
+                          description: When the loot box was updated, in epoch seconds.
+                        loot_box_reward_choices:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: ID for lootbox reward choice.
+                              title:
+                                type: string
+                                description: Title for lootbox reward choice.
+                              subtitle:
+                                type: string
+                                description: Subtitle for lootbox reward choice.
+                              category:
+                                type: string
+                                description: Category for lootbox reward choice.
+                              point_reward_value:
+                                type: number
+                                description: Points for lootbox reward choice.
+                              reward_uuids:
+                                items:
                                   type: string
-                                  description: Unique identifier for the Reward object.
-                                name:
-                                  type: string
-                                  description: Reward name.
-                                description:
-                                  type: string
-                                  description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
-                                image_url:
-                                  type: string
-                                  description: An absolute URL of the reward's image.
-                                terms_and_conditions:
-                                  type: string
-                                  description: Terms and condition for the rewards.
-                                metadata:
+                                type: array
+                                description: Reward UUIDs for the loot box reward choice.
+                              quantity:
+                                type: number
+                                description: Max amount of this loot box reward choice to be awarded.
+                              image:
+                                type: string
+                                description: Image for lootbox reward choice.
+                              video:
+                                type: string
+                                description: Video for lootbox reward choice.
+                              probability:
+                                type: number
+                                description: Probability for lootbox reward choice.
+                              current_tier_id:
+                                type: string
+                                description: Program tier this reward choice probability applies to.
+                              rewards:
+                                type: array
+                                items:
                                   type: object
-                                  additionalProperties: true
-                                  description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
-                              additionalProperties: false
-                              required:
-                              - uuid
-                              - name
-                              - description
-                              - image_url
-                              - terms_and_conditions
-                              - metadata
-                        additionalProperties: false
-                        required:
-                        - id
-                        - title
-                        - subtitle
-                        - category
-                        - point_reward_value
-                        - reward_uuids
-                        - quantity
-                        - image
-                        - video
-                        - probability
-                        - current_tier_id
-                        - rewards
-                  additionalProperties: false
-                  required:
-                  - id
-                  - name
-                  - description
-                  - sponsor_name
-                  - sponsor_description
-                  - recurring_interval_minutes
-                  - image_box_together_url
-                  - background_gradient_start_color
-                  - background_gradient_stop_color
-                  - reward_sequence_animation_type
-                  - is_sign_up_reward
-                  - partner_metadata
-                  - created_at
-                  - updated_at
-                  - loot_box_reward_choices
-              total_records:
-                type: number
-            additionalProperties: false
-            required:
-            - loot_boxes
-            - total_records
+                                  properties:
+                                    uuid:
+                                      type: string
+                                      description: Unique identifier for the Reward object.
+                                    name:
+                                      type: string
+                                      description: Reward name.
+                                    description:
+                                      type: string
+                                      description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                                    image_url:
+                                      type: string
+                                      description: An absolute URL of the reward's image.
+                                    terms_and_conditions:
+                                      type: string
+                                      description: Terms and condition for the rewards.
+                                    metadata:
+                                      type: object
+                                      additionalProperties: true
+                                      description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
+                                  additionalProperties: false
+                                  required:
+                                  - uuid
+                                  - name
+                                  - description
+                                  - image_url
+                                  - terms_and_conditions
+                                  - metadata
+                            additionalProperties: false
+                            required:
+                            - id
+                            - title
+                            - subtitle
+                            - category
+                            - point_reward_value
+                            - reward_uuids
+                            - quantity
+                            - image
+                            - video
+                            - probability
+                            - current_tier_id
+                            - rewards
+                      additionalProperties: false
+                      required:
+                      - id
+                      - name
+                      - description
+                      - sponsor_name
+                      - sponsor_description
+                      - recurring_interval_minutes
+                      - image_box_together_url
+                      - background_gradient_start_color
+                      - background_gradient_stop_color
+                      - reward_sequence_animation_type
+                      - is_sign_up_reward
+                      - partner_metadata
+                      - created_at
+                      - updated_at
+                      - loot_box_reward_choices
+                  total_records:
+                    type: number
+                additionalProperties: false
+                required:
+                - loot_boxes
+                - total_records
       description: ''
     post:
       tags:
       - Loot Boxes
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_admin_loot-boxes
       summary: Endpoint to create a loot box
-      parameters:
-      - name: description
-        type: string
-        in: formData
-        required: true
-        description: Description of the Lootbox object.
-      - name: name
-        type: string
-        in: formData
-        required: true
-        description: Name/title of the Lootbox object.
-      - name: sponsor_name
-        type: string
-        in: formData
-        description: Lootbox sponsor name.
-      - name: sponsor_description
-        type: string
-        in: formData
-        description: Lootbox sponsor description.
-      - name: recurring_interval_minutes
-        type: number
-        in: formData
-        description: Interval indicating how often a Lootbox can be granted.
-      - name: image_box_together_url
-        type: string
-        in: formData
-        description: URL of the combined Lootbox image.
-      - name: background_gradient_start_color
-        type: string
-        in: formData
-        description: Hexadecimal color value for the start of the gradient.
-      - name: background_gradient_stop_color
-        type: string
-        in: formData
-        description: Hexadecimal color value for the end of the gradient.
-      - name: reward_sequence_animation_type
-        type: string
-        enum:
-        - SHUFFLE
-        - VIDEO
-        in: formData
-        description: Animation type dictating how a rewarded Lootbox is presented.
-      - name: is_sign_up_reward
-        type: boolean
-        in: formData
-        description: Boolean flag indicating if the Lootbox should be rewarded at signup.
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              loot_box:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: Unique identifier for the loot box object.
-                  name:
-                    type: string
-                    description: Name/title of the Lootbox object.
-                  description:
-                    type: string
-                    description: Description of the Lootbox object.
-                  sponsor_name:
-                    type: string
-                    description: Lootbox sponsor name.
-                  sponsor_description:
-                    type: string
-                    description: Lootbox sponsor description.
-                  recurring_interval_minutes:
-                    type: number
-                    description: Interval indicating how often a Lootbox can be granted.
-                  image_box_together_url:
-                    type: string
-                    description: URL of the combined Lootbox image.
-                  background_gradient_start_color:
-                    type: string
-                    description: Hexadecimal color value for the start of the gradient.
-                  background_gradient_stop_color:
-                    type: string
-                    description: Hexadecimal color value for the end of the gradient.
-                  reward_sequence_animation_type:
-                    type: string
-                    enum:
-                    - SHUFFLE
-                    - VIDEO
-                    description: Animation type dictating how a rewarded Lootbox is presented.
-                  is_sign_up_reward:
-                    type: boolean
-                    description: Boolean flag indicating if the Lootbox should be rewarded at signup.
-                  partner_metadata:
+                  loot_box:
                     type: object
-                    additionalProperties: true
-                    description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
-                  created_at:
-                    type: number
-                    description: When the loot box was created, in epoch seconds.
-                  updated_at:
-                    type: number
-                    description: When the loot box was updated, in epoch seconds.
-                  loot_box_reward_choices:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: ID for lootbox reward choice.
-                        title:
-                          type: string
-                          description: Title for lootbox reward choice.
-                        subtitle:
-                          type: string
-                          description: Subtitle for lootbox reward choice.
-                        category:
-                          type: string
-                          description: Category for lootbox reward choice.
-                        point_reward_value:
-                          type: number
-                          description: Points for lootbox reward choice.
-                        reward_uuids:
-                          items:
-                            type: string
-                          type: array
-                          description: Reward UUIDs for the loot box reward choice.
-                        quantity:
-                          type: number
-                          description: Max amount of this loot box reward choice to be awarded.
-                        image:
-                          type: string
-                          description: Image for lootbox reward choice.
-                        video:
-                          type: string
-                          description: Video for lootbox reward choice.
-                        probability:
-                          type: number
-                          description: Probability for lootbox reward choice.
-                        current_tier_id:
-                          type: string
-                          description: Program tier this reward choice probability applies to.
-                        rewards:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              uuid:
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the loot box object.
+                      name:
+                        type: string
+                        description: Name/title of the Lootbox object.
+                      description:
+                        type: string
+                        description: Description of the Lootbox object.
+                      sponsor_name:
+                        type: string
+                        description: Lootbox sponsor name.
+                      sponsor_description:
+                        type: string
+                        description: Lootbox sponsor description.
+                      recurring_interval_minutes:
+                        type: number
+                        description: Interval indicating how often a Lootbox can be granted.
+                      image_box_together_url:
+                        type: string
+                        description: URL of the combined Lootbox image.
+                      background_gradient_start_color:
+                        type: string
+                        description: Hexadecimal color value for the start of the gradient.
+                      background_gradient_stop_color:
+                        type: string
+                        description: Hexadecimal color value for the end of the gradient.
+                      reward_sequence_animation_type:
+                        type: string
+                        enum:
+                        - SHUFFLE
+                        - VIDEO
+                        description: Animation type dictating how a rewarded Lootbox is presented.
+                      is_sign_up_reward:
+                        type: boolean
+                        description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+                      partner_metadata:
+                        type: object
+                        additionalProperties: true
+                        description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
+                      created_at:
+                        type: number
+                        description: When the loot box was created, in epoch seconds.
+                      updated_at:
+                        type: number
+                        description: When the loot box was updated, in epoch seconds.
+                      loot_box_reward_choices:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: ID for lootbox reward choice.
+                            title:
+                              type: string
+                              description: Title for lootbox reward choice.
+                            subtitle:
+                              type: string
+                              description: Subtitle for lootbox reward choice.
+                            category:
+                              type: string
+                              description: Category for lootbox reward choice.
+                            point_reward_value:
+                              type: number
+                              description: Points for lootbox reward choice.
+                            reward_uuids:
+                              items:
                                 type: string
-                                description: Unique identifier for the Reward object.
-                              name:
-                                type: string
-                                description: Reward name.
-                              description:
-                                type: string
-                                description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
-                              image_url:
-                                type: string
-                                description: An absolute URL of the reward's image.
-                              terms_and_conditions:
-                                type: string
-                                description: Terms and condition for the rewards.
-                              metadata:
+                              type: array
+                              description: Reward UUIDs for the loot box reward choice.
+                            quantity:
+                              type: number
+                              description: Max amount of this loot box reward choice to be awarded.
+                            image:
+                              type: string
+                              description: Image for lootbox reward choice.
+                            video:
+                              type: string
+                              description: Video for lootbox reward choice.
+                            probability:
+                              type: number
+                              description: Probability for lootbox reward choice.
+                            current_tier_id:
+                              type: string
+                              description: Program tier this reward choice probability applies to.
+                            rewards:
+                              type: array
+                              items:
                                 type: object
-                                additionalProperties: true
-                                description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
-                            additionalProperties: false
-                            required:
-                            - uuid
-                            - name
-                            - description
-                            - image_url
-                            - terms_and_conditions
-                            - metadata
-                      additionalProperties: false
-                      required:
-                      - id
-                      - title
-                      - subtitle
-                      - category
-                      - point_reward_value
-                      - reward_uuids
-                      - quantity
-                      - image
-                      - video
-                      - probability
-                      - current_tier_id
-                      - rewards
+                                properties:
+                                  uuid:
+                                    type: string
+                                    description: Unique identifier for the Reward object.
+                                  name:
+                                    type: string
+                                    description: Reward name.
+                                  description:
+                                    type: string
+                                    description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                                  image_url:
+                                    type: string
+                                    description: An absolute URL of the reward's image.
+                                  terms_and_conditions:
+                                    type: string
+                                    description: Terms and condition for the rewards.
+                                  metadata:
+                                    type: object
+                                    additionalProperties: true
+                                    description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
+                                additionalProperties: false
+                                required:
+                                - uuid
+                                - name
+                                - description
+                                - image_url
+                                - terms_and_conditions
+                                - metadata
+                          additionalProperties: false
+                          required:
+                          - id
+                          - title
+                          - subtitle
+                          - category
+                          - point_reward_value
+                          - reward_uuids
+                          - quantity
+                          - image
+                          - video
+                          - probability
+                          - current_tier_id
+                          - rewards
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - sponsor_name
+                    - sponsor_description
+                    - recurring_interval_minutes
+                    - image_box_together_url
+                    - background_gradient_start_color
+                    - background_gradient_stop_color
+                    - reward_sequence_animation_type
+                    - is_sign_up_reward
+                    - partner_metadata
+                    - created_at
+                    - updated_at
+                    - loot_box_reward_choices
                 additionalProperties: false
                 required:
-                - id
-                - name
-                - description
-                - sponsor_name
-                - sponsor_description
-                - recurring_interval_minutes
-                - image_box_together_url
-                - background_gradient_start_color
-                - background_gradient_stop_color
-                - reward_sequence_animation_type
-                - is_sign_up_reward
-                - partner_metadata
-                - created_at
-                - updated_at
-                - loot_box_reward_choices
-            additionalProperties: false
-            required:
-            - loot_box
+                - loot_box
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Description of the Lootbox object.
+                name:
+                  type: string
+                  description: Name/title of the Lootbox object.
+                sponsor_name:
+                  type: string
+                  description: Lootbox sponsor name.
+                sponsor_description:
+                  type: string
+                  description: Lootbox sponsor description.
+                recurring_interval_minutes:
+                  type: number
+                  description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_url:
+                  type: string
+                  description: URL of the combined Lootbox image.
+                background_gradient_start_color:
+                  type: string
+                  description: Hexadecimal color value for the start of the gradient.
+                background_gradient_stop_color:
+                  type: string
+                  description: Hexadecimal color value for the end of the gradient.
+                reward_sequence_animation_type:
+                  type: string
+                  enum:
+                  - SHUFFLE
+                  - VIDEO
+                  description: Animation type dictating how a rewarded Lootbox is presented.
+                is_sign_up_reward:
+                  type: boolean
+                  description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+              required:
+              - description
+              - name
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Description of the Lootbox object.
+                name:
+                  type: string
+                  description: Name/title of the Lootbox object.
+                sponsor_name:
+                  type: string
+                  description: Lootbox sponsor name.
+                sponsor_description:
+                  type: string
+                  description: Lootbox sponsor description.
+                recurring_interval_minutes:
+                  type: number
+                  description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_url:
+                  type: string
+                  description: URL of the combined Lootbox image.
+                background_gradient_start_color:
+                  type: string
+                  description: Hexadecimal color value for the start of the gradient.
+                background_gradient_stop_color:
+                  type: string
+                  description: Hexadecimal color value for the end of the gradient.
+                reward_sequence_animation_type:
+                  type: string
+                  enum:
+                  - SHUFFLE
+                  - VIDEO
+                  description: Animation type dictating how a rewarded Lootbox is presented.
+                is_sign_up_reward:
+                  type: boolean
+                  description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+              required:
+              - description
+              - name
   /v2/admin/loot-boxes/{loot_box_id}:
     get:
       tags:
       - Loot Boxes
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_v2_admin_loot-boxes_loot_box_id
-      summary: Get the Loot Box with the given ID.
+      summary: Get the Loot Box with the given ID
       parameters:
       - name: loot_box_id
-        type: string
         in: path
         required: true
         description: the ID of the Loot Box
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              loot_box:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: Unique identifier for the loot box object.
-                  name:
-                    type: string
-                    description: Name/title of the Lootbox object.
-                  description:
-                    type: string
-                    description: Description of the Lootbox object.
-                  sponsor_name:
-                    type: string
-                    description: Lootbox sponsor name.
-                  sponsor_description:
-                    type: string
-                    description: Lootbox sponsor description.
-                  recurring_interval_minutes:
-                    type: number
-                    description: Interval indicating how often a Lootbox can be granted.
-                  image_box_together_url:
-                    type: string
-                    description: URL of the combined Lootbox image.
-                  background_gradient_start_color:
-                    type: string
-                    description: Hexadecimal color value for the start of the gradient.
-                  background_gradient_stop_color:
-                    type: string
-                    description: Hexadecimal color value for the end of the gradient.
-                  reward_sequence_animation_type:
-                    type: string
-                    enum:
-                    - SHUFFLE
-                    - VIDEO
-                    description: Animation type dictating how a rewarded Lootbox is presented.
-                  is_sign_up_reward:
-                    type: boolean
-                    description: Boolean flag indicating if the Lootbox should be rewarded at signup.
-                  partner_metadata:
+                  loot_box:
                     type: object
-                    additionalProperties: true
-                    description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
-                  created_at:
-                    type: number
-                    description: When the loot box was created, in epoch seconds.
-                  updated_at:
-                    type: number
-                    description: When the loot box was updated, in epoch seconds.
-                  loot_box_reward_choices:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: ID for lootbox reward choice.
-                        title:
-                          type: string
-                          description: Title for lootbox reward choice.
-                        subtitle:
-                          type: string
-                          description: Subtitle for lootbox reward choice.
-                        category:
-                          type: string
-                          description: Category for lootbox reward choice.
-                        point_reward_value:
-                          type: number
-                          description: Points for lootbox reward choice.
-                        reward_uuids:
-                          items:
-                            type: string
-                          type: array
-                          description: Reward UUIDs for the loot box reward choice.
-                        quantity:
-                          type: number
-                          description: Max amount of this loot box reward choice to be awarded.
-                        image:
-                          type: string
-                          description: Image for lootbox reward choice.
-                        video:
-                          type: string
-                          description: Video for lootbox reward choice.
-                        probability:
-                          type: number
-                          description: Probability for lootbox reward choice.
-                        current_tier_id:
-                          type: string
-                          description: Program tier this reward choice probability applies to.
-                        rewards:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              uuid:
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the loot box object.
+                      name:
+                        type: string
+                        description: Name/title of the Lootbox object.
+                      description:
+                        type: string
+                        description: Description of the Lootbox object.
+                      sponsor_name:
+                        type: string
+                        description: Lootbox sponsor name.
+                      sponsor_description:
+                        type: string
+                        description: Lootbox sponsor description.
+                      recurring_interval_minutes:
+                        type: number
+                        description: Interval indicating how often a Lootbox can be granted.
+                      image_box_together_url:
+                        type: string
+                        description: URL of the combined Lootbox image.
+                      background_gradient_start_color:
+                        type: string
+                        description: Hexadecimal color value for the start of the gradient.
+                      background_gradient_stop_color:
+                        type: string
+                        description: Hexadecimal color value for the end of the gradient.
+                      reward_sequence_animation_type:
+                        type: string
+                        enum:
+                        - SHUFFLE
+                        - VIDEO
+                        description: Animation type dictating how a rewarded Lootbox is presented.
+                      is_sign_up_reward:
+                        type: boolean
+                        description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+                      partner_metadata:
+                        type: object
+                        additionalProperties: true
+                        description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
+                      created_at:
+                        type: number
+                        description: When the loot box was created, in epoch seconds.
+                      updated_at:
+                        type: number
+                        description: When the loot box was updated, in epoch seconds.
+                      loot_box_reward_choices:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: ID for lootbox reward choice.
+                            title:
+                              type: string
+                              description: Title for lootbox reward choice.
+                            subtitle:
+                              type: string
+                              description: Subtitle for lootbox reward choice.
+                            category:
+                              type: string
+                              description: Category for lootbox reward choice.
+                            point_reward_value:
+                              type: number
+                              description: Points for lootbox reward choice.
+                            reward_uuids:
+                              items:
                                 type: string
-                                description: Unique identifier for the Reward object.
-                              name:
-                                type: string
-                                description: Reward name.
-                              description:
-                                type: string
-                                description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
-                              image_url:
-                                type: string
-                                description: An absolute URL of the reward's image.
-                              terms_and_conditions:
-                                type: string
-                                description: Terms and condition for the rewards.
-                              metadata:
+                              type: array
+                              description: Reward UUIDs for the loot box reward choice.
+                            quantity:
+                              type: number
+                              description: Max amount of this loot box reward choice to be awarded.
+                            image:
+                              type: string
+                              description: Image for lootbox reward choice.
+                            video:
+                              type: string
+                              description: Video for lootbox reward choice.
+                            probability:
+                              type: number
+                              description: Probability for lootbox reward choice.
+                            current_tier_id:
+                              type: string
+                              description: Program tier this reward choice probability applies to.
+                            rewards:
+                              type: array
+                              items:
                                 type: object
-                                additionalProperties: true
-                                description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
-                            additionalProperties: false
-                            required:
-                            - uuid
-                            - name
-                            - description
-                            - image_url
-                            - terms_and_conditions
-                            - metadata
-                      additionalProperties: false
-                      required:
-                      - id
-                      - title
-                      - subtitle
-                      - category
-                      - point_reward_value
-                      - reward_uuids
-                      - quantity
-                      - image
-                      - video
-                      - probability
-                      - current_tier_id
-                      - rewards
+                                properties:
+                                  uuid:
+                                    type: string
+                                    description: Unique identifier for the Reward object.
+                                  name:
+                                    type: string
+                                    description: Reward name.
+                                  description:
+                                    type: string
+                                    description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                                  image_url:
+                                    type: string
+                                    description: An absolute URL of the reward's image.
+                                  terms_and_conditions:
+                                    type: string
+                                    description: Terms and condition for the rewards.
+                                  metadata:
+                                    type: object
+                                    additionalProperties: true
+                                    description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
+                                additionalProperties: false
+                                required:
+                                - uuid
+                                - name
+                                - description
+                                - image_url
+                                - terms_and_conditions
+                                - metadata
+                          additionalProperties: false
+                          required:
+                          - id
+                          - title
+                          - subtitle
+                          - category
+                          - point_reward_value
+                          - reward_uuids
+                          - quantity
+                          - image
+                          - video
+                          - probability
+                          - current_tier_id
+                          - rewards
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - sponsor_name
+                    - sponsor_description
+                    - recurring_interval_minutes
+                    - image_box_together_url
+                    - background_gradient_start_color
+                    - background_gradient_stop_color
+                    - reward_sequence_animation_type
+                    - is_sign_up_reward
+                    - partner_metadata
+                    - created_at
+                    - updated_at
+                    - loot_box_reward_choices
                 additionalProperties: false
                 required:
-                - id
-                - name
-                - description
-                - sponsor_name
-                - sponsor_description
-                - recurring_interval_minutes
-                - image_box_together_url
-                - background_gradient_start_color
-                - background_gradient_stop_color
-                - reward_sequence_animation_type
-                - is_sign_up_reward
-                - partner_metadata
-                - created_at
-                - updated_at
-                - loot_box_reward_choices
-            additionalProperties: false
-            required:
-            - loot_box
+                - loot_box
       description: ''
     patch:
       tags:
       - Loot Boxes
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: patch_v2_admin_loot-boxes_loot_box_id
-      summary: Updates the lootbox with the provided fields.
+      summary: Updates the lootbox with the provided fields
       parameters:
-      - name: description
-        type: string
-        in: formData
-        required: true
-        description: Description of the Lootbox object.
-      - name: name
-        type: string
-        in: formData
-        required: true
-        description: Name/title of the Lootbox object.
       - name: loot_box_id
-        type: number
         in: path
         required: true
-      - name: sponsor_name
-        type: string
-        in: formData
-        description: Lootbox sponsor name.
-      - name: sponsor_description
-        type: string
-        in: formData
-        description: Lootbox sponsor description.
-      - name: recurring_interval_minutes
-        type: number
-        in: formData
-        description: Interval indicating how often a Lootbox can be granted.
-      - name: image_box_together_url
-        type: string
-        in: formData
-        description: URL of the combined Lootbox image.
-      - name: background_gradient_start_color
-        type: string
-        in: formData
-        description: Hexadecimal color value for the start of the gradient.
-      - name: background_gradient_stop_color
-        type: string
-        in: formData
-        description: Hexadecimal color value for the end of the gradient.
-      - name: reward_sequence_animation_type
-        type: string
-        enum:
-        - SHUFFLE
-        - VIDEO
-        in: formData
-        description: Animation type dictating how a rewarded Lootbox is presented.
-      - name: is_sign_up_reward
-        type: boolean
-        in: formData
-        description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+        schema:
+          type: number
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              loot_box:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: string
-                    description: Unique identifier for the loot box object.
-                  name:
-                    type: string
-                    description: Name/title of the Lootbox object.
-                  description:
-                    type: string
-                    description: Description of the Lootbox object.
-                  sponsor_name:
-                    type: string
-                    description: Lootbox sponsor name.
-                  sponsor_description:
-                    type: string
-                    description: Lootbox sponsor description.
-                  recurring_interval_minutes:
-                    type: number
-                    description: Interval indicating how often a Lootbox can be granted.
-                  image_box_together_url:
-                    type: string
-                    description: URL of the combined Lootbox image.
-                  background_gradient_start_color:
-                    type: string
-                    description: Hexadecimal color value for the start of the gradient.
-                  background_gradient_stop_color:
-                    type: string
-                    description: Hexadecimal color value for the end of the gradient.
-                  reward_sequence_animation_type:
-                    type: string
-                    enum:
-                    - SHUFFLE
-                    - VIDEO
-                    description: Animation type dictating how a rewarded Lootbox is presented.
-                  is_sign_up_reward:
-                    type: boolean
-                    description: Boolean flag indicating if the Lootbox should be rewarded at signup.
-                  partner_metadata:
+                  loot_box:
                     type: object
-                    additionalProperties: true
-                    description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
-                  created_at:
-                    type: number
-                    description: When the loot box was created, in epoch seconds.
-                  updated_at:
-                    type: number
-                    description: When the loot box was updated, in epoch seconds.
-                  loot_box_reward_choices:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          description: ID for lootbox reward choice.
-                        title:
-                          type: string
-                          description: Title for lootbox reward choice.
-                        subtitle:
-                          type: string
-                          description: Subtitle for lootbox reward choice.
-                        category:
-                          type: string
-                          description: Category for lootbox reward choice.
-                        point_reward_value:
-                          type: number
-                          description: Points for lootbox reward choice.
-                        reward_uuids:
-                          items:
-                            type: string
-                          type: array
-                          description: Reward UUIDs for the loot box reward choice.
-                        quantity:
-                          type: number
-                          description: Max amount of this loot box reward choice to be awarded.
-                        image:
-                          type: string
-                          description: Image for lootbox reward choice.
-                        video:
-                          type: string
-                          description: Video for lootbox reward choice.
-                        probability:
-                          type: number
-                          description: Probability for lootbox reward choice.
-                        current_tier_id:
-                          type: string
-                          description: Program tier this reward choice probability applies to.
-                        rewards:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              uuid:
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the loot box object.
+                      name:
+                        type: string
+                        description: Name/title of the Lootbox object.
+                      description:
+                        type: string
+                        description: Description of the Lootbox object.
+                      sponsor_name:
+                        type: string
+                        description: Lootbox sponsor name.
+                      sponsor_description:
+                        type: string
+                        description: Lootbox sponsor description.
+                      recurring_interval_minutes:
+                        type: number
+                        description: Interval indicating how often a Lootbox can be granted.
+                      image_box_together_url:
+                        type: string
+                        description: URL of the combined Lootbox image.
+                      background_gradient_start_color:
+                        type: string
+                        description: Hexadecimal color value for the start of the gradient.
+                      background_gradient_stop_color:
+                        type: string
+                        description: Hexadecimal color value for the end of the gradient.
+                      reward_sequence_animation_type:
+                        type: string
+                        enum:
+                        - SHUFFLE
+                        - VIDEO
+                        description: Animation type dictating how a rewarded Lootbox is presented.
+                      is_sign_up_reward:
+                        type: boolean
+                        description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+                      partner_metadata:
+                        type: object
+                        additionalProperties: true
+                        description: Set of key-value pairs that you can attach to a requirement. This can be useful for storing additional information about the quest requirement in a structured format.
+                      created_at:
+                        type: number
+                        description: When the loot box was created, in epoch seconds.
+                      updated_at:
+                        type: number
+                        description: When the loot box was updated, in epoch seconds.
+                      loot_box_reward_choices:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: ID for lootbox reward choice.
+                            title:
+                              type: string
+                              description: Title for lootbox reward choice.
+                            subtitle:
+                              type: string
+                              description: Subtitle for lootbox reward choice.
+                            category:
+                              type: string
+                              description: Category for lootbox reward choice.
+                            point_reward_value:
+                              type: number
+                              description: Points for lootbox reward choice.
+                            reward_uuids:
+                              items:
                                 type: string
-                                description: Unique identifier for the Reward object.
-                              name:
-                                type: string
-                                description: Reward name.
-                              description:
-                                type: string
-                                description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
-                              image_url:
-                                type: string
-                                description: An absolute URL of the reward's image.
-                              terms_and_conditions:
-                                type: string
-                                description: Terms and condition for the rewards.
-                              metadata:
+                              type: array
+                              description: Reward UUIDs for the loot box reward choice.
+                            quantity:
+                              type: number
+                              description: Max amount of this loot box reward choice to be awarded.
+                            image:
+                              type: string
+                              description: Image for lootbox reward choice.
+                            video:
+                              type: string
+                              description: Video for lootbox reward choice.
+                            probability:
+                              type: number
+                              description: Probability for lootbox reward choice.
+                            current_tier_id:
+                              type: string
+                              description: Program tier this reward choice probability applies to.
+                            rewards:
+                              type: array
+                              items:
                                 type: object
-                                additionalProperties: true
-                                description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
-                            additionalProperties: false
-                            required:
-                            - uuid
-                            - name
-                            - description
-                            - image_url
-                            - terms_and_conditions
-                            - metadata
-                      additionalProperties: false
-                      required:
-                      - id
-                      - title
-                      - subtitle
-                      - category
-                      - point_reward_value
-                      - reward_uuids
-                      - quantity
-                      - image
-                      - video
-                      - probability
-                      - current_tier_id
-                      - rewards
+                                properties:
+                                  uuid:
+                                    type: string
+                                    description: Unique identifier for the Reward object.
+                                  name:
+                                    type: string
+                                    description: Reward name.
+                                  description:
+                                    type: string
+                                    description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                                  image_url:
+                                    type: string
+                                    description: An absolute URL of the reward's image.
+                                  terms_and_conditions:
+                                    type: string
+                                    description: Terms and condition for the rewards.
+                                  metadata:
+                                    type: object
+                                    additionalProperties: true
+                                    description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the quest in a structured format.
+                                additionalProperties: false
+                                required:
+                                - uuid
+                                - name
+                                - description
+                                - image_url
+                                - terms_and_conditions
+                                - metadata
+                          additionalProperties: false
+                          required:
+                          - id
+                          - title
+                          - subtitle
+                          - category
+                          - point_reward_value
+                          - reward_uuids
+                          - quantity
+                          - image
+                          - video
+                          - probability
+                          - current_tier_id
+                          - rewards
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - sponsor_name
+                    - sponsor_description
+                    - recurring_interval_minutes
+                    - image_box_together_url
+                    - background_gradient_start_color
+                    - background_gradient_stop_color
+                    - reward_sequence_animation_type
+                    - is_sign_up_reward
+                    - partner_metadata
+                    - created_at
+                    - updated_at
+                    - loot_box_reward_choices
                 additionalProperties: false
                 required:
-                - id
-                - name
-                - description
-                - sponsor_name
-                - sponsor_description
-                - recurring_interval_minutes
-                - image_box_together_url
-                - background_gradient_start_color
-                - background_gradient_stop_color
-                - reward_sequence_animation_type
-                - is_sign_up_reward
-                - partner_metadata
-                - created_at
-                - updated_at
-                - loot_box_reward_choices
-            additionalProperties: false
-            required:
-            - loot_box
+                - loot_box
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Description of the Lootbox object.
+                name:
+                  type: string
+                  description: Name/title of the Lootbox object.
+                sponsor_name:
+                  type: string
+                  description: Lootbox sponsor name.
+                sponsor_description:
+                  type: string
+                  description: Lootbox sponsor description.
+                recurring_interval_minutes:
+                  type: number
+                  description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_url:
+                  type: string
+                  description: URL of the combined Lootbox image.
+                background_gradient_start_color:
+                  type: string
+                  description: Hexadecimal color value for the start of the gradient.
+                background_gradient_stop_color:
+                  type: string
+                  description: Hexadecimal color value for the end of the gradient.
+                reward_sequence_animation_type:
+                  type: string
+                  enum:
+                  - SHUFFLE
+                  - VIDEO
+                  description: Animation type dictating how a rewarded Lootbox is presented.
+                is_sign_up_reward:
+                  type: boolean
+                  description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+              required:
+              - description
+              - name
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Description of the Lootbox object.
+                name:
+                  type: string
+                  description: Name/title of the Lootbox object.
+                sponsor_name:
+                  type: string
+                  description: Lootbox sponsor name.
+                sponsor_description:
+                  type: string
+                  description: Lootbox sponsor description.
+                recurring_interval_minutes:
+                  type: number
+                  description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_url:
+                  type: string
+                  description: URL of the combined Lootbox image.
+                background_gradient_start_color:
+                  type: string
+                  description: Hexadecimal color value for the start of the gradient.
+                background_gradient_stop_color:
+                  type: string
+                  description: Hexadecimal color value for the end of the gradient.
+                reward_sequence_animation_type:
+                  type: string
+                  enum:
+                  - SHUFFLE
+                  - VIDEO
+                  description: Animation type dictating how a rewarded Lootbox is presented.
+                is_sign_up_reward:
+                  type: boolean
+                  description: Boolean flag indicating if the Lootbox should be rewarded at signup.
+              required:
+              - description
+              - name
   /v2/program-memberships/{program_membership_id}/loot-boxes:
     get:
       tags:
       - Loot Boxes
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_v2_program-memberships_program_membership_id_loot-boxes
       summary: Endpoint to fetch all loot boxes for a program membership
       parameters:
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              allocated_loot_boxes:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    loot_box_id:
-                      type: string
-                      description: Unique identifier for the Lootbox object.
-                    name:
-                      type: string
-                      description: Name/title of the Lootbox object.
-                    description:
-                      type: string
-                      description: description of the Lootbox object.
-                    available_since:
-                      type: number
-                      description: When the lootbox became available, in epoch seconds.
-                    redeemed_at:
-                      type: number
-                      description: When the lootbox was opened, in epoch seconds.
-                    allocated_reward_choice:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allocated_loot_boxes:
+                    type: array
+                    items:
                       type: object
                       properties:
-                        id:
+                        loot_box_id:
                           type: string
-                          description: Unique identifier for the LootBoxRewardChoice object.
-                        reward_uuid:
+                          description: Unique identifier for the Lootbox object.
+                        name:
                           type: string
-                          description: Unique identifier for the reward tied to the reward choice.
-                        title:
+                          description: Name/title of the Lootbox object.
+                        description:
                           type: string
-                          description: A title for the LootBoxRewardChoice object.
-                        subtitle:
-                          type: string
-                          description: A subtitle for the LootBoxRewardChoice object.
-                        category:
-                          type: string
-                          description: A category for the LootBoxRewardChoice object.
-                        point_reward_value:
+                          description: description of the Lootbox object.
+                        available_since:
                           type: number
-                          description: The amount of points, or any tier metric (e.g. xp, points, stars, etc), the user has won.
-                        image:
-                          type: string
-                          description: An absolute URL of the LootBoxRewardChoice's image.
-                        reward_metadata:
+                          description: When the lootbox became available, in epoch seconds.
+                        redeemed_at:
+                          type: number
+                          description: When the lootbox was opened, in epoch seconds.
+                        allocated_reward_choice:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Unique identifier for the LootBoxRewardChoice object.
+                            reward_uuid:
+                              type: string
+                              description: Unique identifier for the reward tied to the reward choice.
+                            title:
+                              type: string
+                              description: A title for the LootBoxRewardChoice object.
+                            subtitle:
+                              type: string
+                              description: A subtitle for the LootBoxRewardChoice object.
+                            category:
+                              type: string
+                              description: A category for the LootBoxRewardChoice object.
+                            point_reward_value:
+                              type: number
+                              description: The amount of points, or any tier metric (e.g. xp, points, stars, etc), the user has won.
+                            image:
+                              type: string
+                              description: An absolute URL of the LootBoxRewardChoice's image.
+                            reward_metadata:
+                              type: object
+                              additionalProperties: true
+                              description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
+                          additionalProperties: false
+                          required:
+                          - id
+                          - reward_uuid
+                          - title
+                          - subtitle
+                          - category
+                          - point_reward_value
+                          - image
+                          - reward_metadata
+                        reward_choices:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Unique identifier for the LootBoxRewardChoice object.
+                              reward_uuid:
+                                type: string
+                                description: Unique identifier for the reward tied to the reward choice.
+                              probability:
+                                type: number
+                                description: The probability of winning the LootBoxRewardChoice.
+                              title:
+                                type: string
+                                description: A title for the LootBoxRewardChoice object.
+                              subtitle:
+                                type: string
+                                description: A subtitle for the LootBoxRewardChoice object.
+                              category:
+                                type: string
+                                description: A category for the LootBoxRewardChoice object.
+                              reward_metadata:
+                                type: object
+                                additionalProperties: true
+                                description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
+                            additionalProperties: false
+                            required:
+                            - id
+                            - reward_uuid
+                            - probability
+                            - title
+                            - subtitle
+                            - category
+                            - reward_metadata
+                        loot_box_container_images:
+                          type: object
+                          properties:
+                            box_together:
+                              type: string
+                              description: An absolute URL of the LootBox's closed container image.
+                            box_top:
+                              type: string
+                              description: An absolute URL of the LootBox's container top image.
+                            box_bottom:
+                              type: string
+                              description: An absolute URL of the LootBox's container bottom image.
+                          additionalProperties: false
+                          required:
+                          - box_together
+                          - box_top
+                          - box_bottom
+                        metadata:
                           type: object
                           additionalProperties: true
-                          description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
+                          description: Set of key-value pairs that you can attach to a lootbox. This can be useful for storing additional information about the lootbox in a structured format.
+                        sponsor_description:
+                          type: string
+                          description: Lootbox sponsor description.
                       additionalProperties: false
                       required:
-                      - id
-                      - reward_uuid
-                      - title
-                      - subtitle
-                      - category
-                      - point_reward_value
-                      - image
-                      - reward_metadata
-                    reward_choices:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                            description: Unique identifier for the LootBoxRewardChoice object.
-                          reward_uuid:
-                            type: string
-                            description: Unique identifier for the reward tied to the reward choice.
-                          probability:
-                            type: number
-                            description: The probability of winning the LootBoxRewardChoice.
-                          title:
-                            type: string
-                            description: A title for the LootBoxRewardChoice object.
-                          subtitle:
-                            type: string
-                            description: A subtitle for the LootBoxRewardChoice object.
-                          category:
-                            type: string
-                            description: A category for the LootBoxRewardChoice object.
-                          reward_metadata:
-                            type: object
-                            additionalProperties: true
-                            description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
-                        additionalProperties: false
-                        required:
-                        - id
-                        - reward_uuid
-                        - probability
-                        - title
-                        - subtitle
-                        - category
-                        - reward_metadata
-                    loot_box_container_images:
-                      type: object
-                      properties:
-                        box_together:
-                          type: string
-                          description: An absolute URL of the LootBox's closed container image.
-                        box_top:
-                          type: string
-                          description: An absolute URL of the LootBox's container top image.
-                        box_bottom:
-                          type: string
-                          description: An absolute URL of the LootBox's container bottom image.
-                      additionalProperties: false
-                      required:
-                      - box_together
-                      - box_top
-                      - box_bottom
-                    metadata:
-                      type: object
-                      additionalProperties: true
-                      description: Set of key-value pairs that you can attach to a lootbox. This can be useful for storing additional information about the lootbox in a structured format.
-                    sponsor_description:
-                      type: string
-                      description: Lootbox sponsor description.
-                  additionalProperties: false
-                  required:
-                  - loot_box_id
-                  - name
-                  - description
-                  - available_since
-                  - redeemed_at
-                  - allocated_reward_choice
-                  - reward_choices
-                  - loot_box_container_images
-                  - metadata
-                  - sponsor_description
-            additionalProperties: false
-            required:
-            - allocated_loot_boxes
+                      - loot_box_id
+                      - name
+                      - description
+                      - available_since
+                      - redeemed_at
+                      - allocated_reward_choice
+                      - reward_choices
+                      - loot_box_container_images
+                      - metadata
+                      - sponsor_description
+                additionalProperties: false
+                required:
+                - allocated_loot_boxes
       description: ''
   /v2/program-memberships/{program_membership_id}/loot-boxes/{loot_box_id}/open:
     post:
       tags:
       - Loot Boxes
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_program-memberships_program_membership_id_loot-boxes_loot_box_id_open
       summary: Endpoint to open a loot box
       parameters:
       - name: loot_box_id
-        type: string
         in: path
         required: true
         description: the loot box id
+        schema:
+          type: string
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              loot_box_reward_outcome:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  loot_box_reward_choice_id:
-                    type: string
-                    description: Unique identifier for the LootBoxRewardChoice object.
-                  loot_box_reward_choice_title:
-                    type: string
-                    description: A title for the LootBoxRewardChoice object.
-                  loot_box_reward_choice_subtitle:
-                    type: string
-                    description: A subtitle for the LootBoxRewardChoice object.
-                  loot_box_reward_choice_category:
-                    type: string
-                    description: A category for the LootBoxRewardChoice object.
-                  loot_box_reward_choice_point_reward_value:
-                    type: number
-                    description: The amount of points, or any tier metric (e.g. xp, points, stars, etc), the user has won.
-                  loot_box_reward_choice_image:
-                    type: string
-                    description: An absolute URL of the LootBoxRewardChoice's image.
-                  loot_box_sponsor_name:
-                    type: string
-                    description: Lootbox sponsor name.
-                  loot_box_sponsor_description:
-                    type: string
-                    description: Lootbox sponsor description.
-                  loot_box_metadata:
-                    type: string
-                    description: The metadata set on the lootbox.
-                  reward_uuid:
-                    type: string
-                    description: Unique identifier for the Reward object.
-                  reward_name:
-                    type: string
-                    description: Reward name.
-                  reward_description:
-                    type: string
-                    description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
-                  reward_image_url:
-                    type: string
-                    description: An absolute URL of the rewards's image.
-                  reward_redemption_instruction:
-                    type: string
-                    description: The redemption instructions for a reward.
-                  reward_terms_and_conditions:
-                    type: string
-                    description: The terms and conditions for the reward.
-                  reward_end_date:
-                    type: string
-                    description: The end date for the reward.
-                  reward_store_discount_url:
-                    type: string
-                    description: The button url for the reward.
-                  reward_metadata:
-                    type: string
-                    description: The metadata set on the reward.
+                  loot_box_reward_outcome:
+                    type: object
+                    properties:
+                      loot_box_reward_choice_id:
+                        type: string
+                        description: Unique identifier for the LootBoxRewardChoice object.
+                      loot_box_reward_choice_title:
+                        type: string
+                        description: A title for the LootBoxRewardChoice object.
+                      loot_box_reward_choice_subtitle:
+                        type: string
+                        description: A subtitle for the LootBoxRewardChoice object.
+                      loot_box_reward_choice_category:
+                        type: string
+                        description: A category for the LootBoxRewardChoice object.
+                      loot_box_reward_choice_point_reward_value:
+                        type: number
+                        description: The amount of points, or any tier metric (e.g. xp, points, stars, etc), the user has won.
+                      loot_box_reward_choice_image:
+                        type: string
+                        description: An absolute URL of the LootBoxRewardChoice's image.
+                      loot_box_sponsor_name:
+                        type: string
+                        description: Lootbox sponsor name.
+                      loot_box_sponsor_description:
+                        type: string
+                        description: Lootbox sponsor description.
+                      loot_box_metadata:
+                        type: string
+                        description: The metadata set on the lootbox.
+                      reward_uuid:
+                        type: string
+                        description: Unique identifier for the Reward object.
+                      reward_name:
+                        type: string
+                        description: Reward name.
+                      reward_description:
+                        type: string
+                        description: An arbitrary description attached to the Reward object. Often useful for displaying to users.
+                      reward_image_url:
+                        type: string
+                        description: An absolute URL of the rewards's image.
+                      reward_redemption_instruction:
+                        type: string
+                        description: The redemption instructions for a reward.
+                      reward_terms_and_conditions:
+                        type: string
+                        description: The terms and conditions for the reward.
+                      reward_end_date:
+                        type: string
+                        description: The end date for the reward.
+                      reward_store_discount_url:
+                        type: string
+                        description: The button url for the reward.
+                      reward_metadata:
+                        type: string
+                        description: The metadata set on the reward.
+                    additionalProperties: false
+                    required:
+                    - loot_box_reward_choice_id
+                    - loot_box_reward_choice_title
+                    - loot_box_reward_choice_subtitle
+                    - loot_box_reward_choice_category
+                    - loot_box_reward_choice_point_reward_value
+                    - loot_box_reward_choice_image
+                    - loot_box_sponsor_name
+                    - loot_box_sponsor_description
+                    - loot_box_metadata
+                    - reward_uuid
+                    - reward_name
+                    - reward_description
+                    - reward_image_url
+                    - reward_redemption_instruction
+                    - reward_terms_and_conditions
+                    - reward_end_date
+                    - reward_store_discount_url
+                    - reward_metadata
                 additionalProperties: false
                 required:
-                - loot_box_reward_choice_id
-                - loot_box_reward_choice_title
-                - loot_box_reward_choice_subtitle
-                - loot_box_reward_choice_category
-                - loot_box_reward_choice_point_reward_value
-                - loot_box_reward_choice_image
-                - loot_box_sponsor_name
-                - loot_box_sponsor_description
-                - loot_box_metadata
-                - reward_uuid
-                - reward_name
-                - reward_description
-                - reward_image_url
-                - reward_redemption_instruction
-                - reward_terms_and_conditions
-                - reward_end_date
-                - reward_store_discount_url
-                - reward_metadata
-            additionalProperties: false
-            required:
-            - loot_box_reward_outcome
+                - loot_box_reward_outcome
       description: ''
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

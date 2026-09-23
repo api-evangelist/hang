@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Hang Partner API (params in:formData) Activities TokenizedRewards API
-  description: '
+  title: Hang Partner API (params in:formData) Tokenized Rewards API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,86 +18,104 @@ paths:
     get:
       tags:
       - TokenizedRewards
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: get_tokenized-rewards_contracts_contract_address_wallets_wallet_address
-      summary: Retrieve all tokenized rewards and their balances for a given wallet address and contract address.
+      summary: Retrieve all tokenized rewards and their balances for a given wallet address…
       parameters:
       - name: contract_address
-        type: string
         in: path
         required: true
         description: The contract address
+        schema:
+          type: string
       - name: wallet_address
-        type: string
         in: path
         required: true
         description: The wallet address
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              rewards:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    token_id:
-                      type: string
-                      description: The id of the token
-                    burned_at:
-                      type: number
-                      description: The time of when the token was burned, if any, in epoch seconds
-                  additionalProperties: false
-                  required:
-                  - token_id
-                  - burned_at
-            additionalProperties: false
-            required:
-            - rewards
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rewards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        token_id:
+                          type: string
+                          description: The id of the token
+                        burned_at:
+                          type: number
+                          description: The time of when the token was burned, if any, in epoch seconds
+                      additionalProperties: false
+                      required:
+                      - token_id
+                      - burned_at
+                additionalProperties: false
+                required:
+                - rewards
       description: ''
   /tokenized-rewards/burn:
     post:
       tags:
       - TokenizedRewards
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_tokenized-rewards_burn
-      summary: Burn a tokenized reward for the given contract address and token id.
-      parameters:
-      - name: contract_address
-        type: string
-        in: formData
-        required: true
-        description: The contract address
-      - name: token_id
-        type: string
-        in: formData
-        required: true
-        description: The id of the token
+      summary: Burn a tokenized reward for the given contract address and token id
       responses:
         '200':
           description: Successful response
-          schema:
-            type: object
-            properties:
-              burned_at:
-                type: number
-                description: The time at which the token was burned, in epoch seconds
-              redeemed_by:
-                type: string
-                description: The wallet address of the token holder
-            additionalProperties: false
-            required:
-            - burned_at
-            - redeemed_by
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  burned_at:
+                    type: number
+                    description: The time at which the token was burned, in epoch seconds
+                  redeemed_by:
+                    type: string
+                    description: The wallet address of the token holder
+                additionalProperties: false
+                required:
+                - burned_at
+                - redeemed_by
       description: ''
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                contract_address:
+                  type: string
+                  description: The contract address
+                token_id:
+                  type: string
+                  description: The id of the token
+              required:
+              - contract_address
+              - token_id
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                contract_address:
+                  type: string
+                  description: The contract address
+                token_id:
+                  type: string
+                  description: The id of the token
+              required:
+              - contract_address
+              - token_id
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

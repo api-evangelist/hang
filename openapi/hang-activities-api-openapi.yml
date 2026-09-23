@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   title: Hang Partner API (params in:formData) Activities API
-  description: '
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
 
-    <p>The Partner API allows you to request various resources that can power your loyalty program.</p>
 
-    &copy Hang 2023'
+    © Hang 2023'
   version: 2023.09.07
   x-copyright: '&copy Hang 2023'
-basePath: /partner-api
-schemes:
-- https
-consumes:
-- application/x-www-form-urlencoded
-- multipart/form-data
+servers:
+- url: /partner-api
 security:
 - ApiKeyAuth: []
 tags:
@@ -23,104 +18,153 @@ paths:
     post:
       tags:
       - Activities
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_program-memberships_program_membership_id_activities
-      summary: Create a new activity.
+      summary: Create a new activity
       parameters:
-      - name: activity[transaction_timestamp]
-        type: number
-        in: formData
-        required: true
-      - name: activity[value]
-        type: string
-        in: formData
-        required: true
-      - name: activity[activity_type_id]
-        type: string
-        in: formData
-        required: true
-      - name: idempotency_key
-        type: string
-        in: formData
-        required: true
-        description: used to prevent double-processing
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
-      - name: activity[line_items]
-        type: array
-        items:
+        schema:
           type: string
-        in: formData
       responses:
         '200':
           description: Activity recorded for post-processing
-          schema:
-            type: object
-            properties:
-              idempotency_key:
-                type: string
-                description: idempotency key sent for activity
-            additionalProperties: false
-            required:
-            - idempotency_key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idempotency_key:
+                    type: string
+                    description: idempotency key sent for activity
+                additionalProperties: false
+                required:
+                - idempotency_key
       description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                activity[transaction_timestamp]:
+                  type: number
+                activity[value]:
+                  type: string
+                activity[activity_type_id]:
+                  type: string
+                idempotency_key:
+                  type: string
+                  description: used to prevent double-processing
+                activity[line_items]:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - activity[transaction_timestamp]
+              - activity[value]
+              - activity[activity_type_id]
+              - idempotency_key
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                activity[transaction_timestamp]:
+                  type: number
+                activity[value]:
+                  type: string
+                activity[activity_type_id]:
+                  type: string
+                idempotency_key:
+                  type: string
+                  description: used to prevent double-processing
+                activity[line_items]:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - activity[transaction_timestamp]
+              - activity[value]
+              - activity[activity_type_id]
+              - idempotency_key
   /v2/program-memberships/{program_membership_id}/activies/synchronous:
     post:
       tags:
       - Activities
-      consumes:
-      - application/x-www-form-urlencoded
-      - multipart/form-data
       operationId: post_v2_program-memberships_program_membership_id_activies_synchronous
-      summary: Create a new activity synchronously.
+      summary: Create a new activity synchronously
       parameters:
-      - name: activity[transaction_timestamp]
-        type: number
-        in: formData
-        required: true
-      - name: activity[value]
-        type: string
-        in: formData
-        required: true
-      - name: activity[activity_type_id]
-        type: string
-        in: formData
-        required: true
-      - name: idempotency_key
-        type: string
-        in: formData
-        required: true
-        description: used to prevent double-processing
       - name: program_membership_id
-        type: string
         in: path
         required: true
         description: the program membership id
-      - name: activity[line_items]
-        type: array
-        items:
+        schema:
           type: string
-        in: formData
       responses:
         '200':
           description: Activity recorded for post-processing
-          schema:
-            type: object
-            properties:
-              idempotency_key:
-                type: string
-                description: idempotency key sent for activity
-            additionalProperties: false
-            required:
-            - idempotency_key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idempotency_key:
+                    type: string
+                    description: idempotency key sent for activity
+                additionalProperties: false
+                required:
+                - idempotency_key
       description: ''
-securityDefinitions:
-  ApiKeyAuth:
-    type: apiKey
-    in: header
-    name: X-API-Key
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                activity[transaction_timestamp]:
+                  type: number
+                activity[value]:
+                  type: string
+                activity[activity_type_id]:
+                  type: string
+                idempotency_key:
+                  type: string
+                  description: used to prevent double-processing
+                activity[line_items]:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - activity[transaction_timestamp]
+              - activity[value]
+              - activity[activity_type_id]
+              - idempotency_key
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                activity[transaction_timestamp]:
+                  type: number
+                activity[value]:
+                  type: string
+                activity[activity_type_id]:
+                  type: string
+                idempotency_key:
+                  type: string
+                  description: used to prevent double-processing
+                activity[line_items]:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - activity[transaction_timestamp]
+              - activity[value]
+              - activity[activity_type_id]
+              - idempotency_key
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
