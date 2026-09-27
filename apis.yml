@@ -57,6 +57,7 @@ tags:
 - Restaurant
 - Point-of-Sale
 - Webhook
+- Loyalty & Incentives
 tags_raw:
 - Company
 - Consumer
@@ -68,6 +69,7 @@ tags_raw:
 - Restaurants
 - Point of Sale
 - Webhooks
+- Loyalty & Incentives
 apis:
 - aid: hang:hang-activities-api
   name: Hang Activities API
