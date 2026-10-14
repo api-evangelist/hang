@@ -1,0 +1,43 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- olo/integrations/olo-integration-edges.yml
+- toast/integrations/toast-integration-edges.yml
+source:
+- olo/integrations/olo-integration-edges.yml
+- toast/integrations/toast-integration-edges.yml
+edges:
+- partner_name: Olo (own)
+  partner: olo
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.olo.com/partners/hang
+  mirror_of: olo/integrations/olo-integration-edges.yml
+  apps:
+  - Hang
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Loyalty
+- partner_name: Toast (own)
+  partner: toast
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://pos.toasttab.com/partners/directory/hang
+  mirror_of: toast/integrations/toast-integration-edges.yml
+  apps:
+  - Hang
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Analytics
