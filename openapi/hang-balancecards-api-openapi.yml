@@ -1,0 +1,359 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Balance Cards API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: BalanceCards
+paths:
+  /v2/program-memberships/{program_membership_id}/balance-cards:
+    get:
+      tags:
+      - BalanceCards
+      operationId: get_v2_program-memberships_program_membership_id_balance-cards
+      summary: Get all balance cards belonging to the program membership
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balance_cards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The ID of the balance card.
+                        nickname:
+                          type: string
+                          description: The nickname of the balance card.
+                        balance_in_cents:
+                          type: number
+                          description: The current balance in cents for the balance card.
+                        program_membership_id:
+                          type: string
+                          description: The program membership ID associated with the balance card.
+                        created_at:
+                          type: number
+                          description: When the balance card was created, in epoch seconds.
+                        updated_at:
+                          type: number
+                          description: When the balance card was updated, in epoch seconds.
+                      additionalProperties: false
+                      required:
+                      - id
+                      - nickname
+                      - balance_in_cents
+                      - program_membership_id
+                      - created_at
+                      - updated_at
+                additionalProperties: false
+                required:
+                - balance_cards
+      description: ''
+    post:
+      tags:
+      - BalanceCards
+      operationId: post_v2_program-memberships_program_membership_id_balance-cards
+      summary: Create a program membership balance card with an initial balance
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction:
+                    type: object
+                    properties:
+                      transaction_id:
+                        type: string
+                        description: The ID of the balance card transaction.
+                      idempotency_key:
+                        type: string
+                        description: Idempotency key to prevent duplicate transactions.
+                      balance_card_id:
+                        type: string
+                        description: The ID of the membership balance card receiving the transaction.
+                      transaction_type:
+                        type: string
+                        description: The type of transaction [deposit, withdrawal].
+                      deposit_amount_in_cents:
+                        type: number
+                        description: The transaction amount, in cents.
+                      available_balance_in_cents:
+                        type: number
+                        description: The available balance of the associated balance card after the transaction.
+                    additionalProperties: false
+                    required:
+                    - transaction_id
+                    - idempotency_key
+                    - balance_card_id
+                    - transaction_type
+                    - deposit_amount_in_cents
+                    - available_balance_in_cents
+                additionalProperties: false
+                required:
+                - transaction
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                  description: The nickname of the balance card.
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                  description: The nickname of the balance card.
+  /v2/program-memberships/{program_membership_id}/balance-cards/{balance_card_id}:
+    get:
+      tags:
+      - BalanceCards
+      operationId: get_v2_program-memberships_program_membership_id_balance-cards_balance_card_id
+      summary: Get a balance card by ID
+      parameters:
+      - name: balance_card_id
+        in: path
+        required: true
+        description: The ID of the balance card.
+        schema:
+          type: string
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balance_card:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the balance card.
+                      nickname:
+                        type: string
+                        description: The nickname of the balance card.
+                      balance_in_cents:
+                        type: number
+                        description: The current balance in cents for the balance card.
+                      program_membership_id:
+                        type: string
+                        description: The program membership ID associated with the balance card.
+                      created_at:
+                        type: number
+                        description: When the balance card was created, in epoch seconds.
+                      updated_at:
+                        type: number
+                        description: When the balance card was updated, in epoch seconds.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - nickname
+                    - balance_in_cents
+                    - program_membership_id
+                    - created_at
+                    - updated_at
+                additionalProperties: false
+                required:
+                - balance_card
+      description: ''
+  /v2/program-memberships/{program_membership_id}/balance-cards/deposit:
+    post:
+      tags:
+      - BalanceCards
+      operationId: post_v2_program-memberships_program_membership_id_balance-cards_deposit
+      summary: Deposit amount to a program membership balance card
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction:
+                    type: object
+                    properties:
+                      transaction_id:
+                        type: string
+                        description: The ID of the balance card transaction.
+                      idempotency_key:
+                        type: string
+                        description: Idempotency key to prevent duplicate transactions.
+                      balance_card_id:
+                        type: string
+                        description: The ID of the membership balance card receiving the transaction.
+                      transaction_type:
+                        type: string
+                        description: The type of transaction [deposit, withdrawal].
+                      deposit_amount_in_cents:
+                        type: number
+                        description: The transaction amount, in cents.
+                      available_balance_in_cents:
+                        type: number
+                        description: The available balance of the associated balance card after the transaction.
+                    additionalProperties: false
+                    required:
+                    - transaction_id
+                    - idempotency_key
+                    - balance_card_id
+                    - transaction_type
+                    - deposit_amount_in_cents
+                    - available_balance_in_cents
+                additionalProperties: false
+                required:
+                - transaction
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                deposit_amount_in_cents:
+                  type: number
+                  description: The amount to be deposited into the membership balance card.
+                idempotency_key:
+                  type: string
+                  description: Idempotency key to prevent duplicate transactions.
+                balance_card_id:
+                  type: string
+                  description: The ID of the membership balance card to deposit into.
+                payment_provider:
+                  type: string
+                  description: The provider used to process balance payment.
+              required:
+              - deposit_amount_in_cents
+              - idempotency_key
+              - balance_card_id
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                deposit_amount_in_cents:
+                  type: number
+                  description: The amount to be deposited into the membership balance card.
+                idempotency_key:
+                  type: string
+                  description: Idempotency key to prevent duplicate transactions.
+                balance_card_id:
+                  type: string
+                  description: The ID of the membership balance card to deposit into.
+                payment_provider:
+                  type: string
+                  description: The provider used to process balance payment.
+              required:
+              - deposit_amount_in_cents
+              - idempotency_key
+              - balance_card_id
+  /v2/program-memberships/{program_membership_id}/balance-cards/reverse-transaction:
+    post:
+      tags:
+      - BalanceCards
+      operationId: post_v2_program-memberships_program_membership_id_balance-cards_reverse-transaction
+      summary: Reverse an existing balance transaction
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The program membership associated with the transaction.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction_id:
+                    type: string
+                    description: The ID of the newly created reversal transaction.
+                additionalProperties: false
+                required:
+                - transaction_id
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                idempotency_key:
+                  type: string
+                  description: An idempotency key for the reversal transaction.
+                transaction_id:
+                  type: string
+                  description: The ID of the transaction to be reversed.
+              required:
+              - idempotency_key
+              - transaction_id
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                idempotency_key:
+                  type: string
+                  description: An idempotency key for the reversal transaction.
+                transaction_id:
+                  type: string
+                  description: The ID of the transaction to be reversed.
+              required:
+              - idempotency_key
+              - transaction_id
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

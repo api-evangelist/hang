@@ -1,0 +1,126 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Program stripe…
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Program stripe accounts
+paths:
+  /v2/admin/program_stripe_accounts:
+    get:
+      tags:
+      - Program stripe accounts
+      operationId: get_v2_admin_program_stripe_accounts
+      summary: Get the program stripe account for a given program id
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_stripe_account:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the program stripe account object.
+                      stripe_account_id:
+                        type: string
+                        description: The ID of the stripe account associated to the program.
+                      program_id:
+                        type: number
+                        description: The ID of the program.
+                      application_fee_percentage:
+                        type: number
+                        description: Percentage that a restaurant is charged for using Hang's ordering platform.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - stripe_account_id
+                    - program_id
+                    - application_fee_percentage
+                additionalProperties: false
+                required:
+                - program_stripe_account
+      description: ''
+  /v2/admin/program_stripe_accounts/create:
+    post:
+      tags:
+      - Program stripe accounts
+      operationId: post_v2_admin_program_stripe_accounts_create
+      summary: Creates a program stripe account with included fields
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_stripe_account:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the program stripe account object.
+                      stripe_account_id:
+                        type: string
+                        description: The ID of the stripe account associated to the program.
+                      program_id:
+                        type: number
+                        description: The ID of the program.
+                      application_fee_percentage:
+                        type: number
+                        description: Percentage that a restaurant is charged for using Hang's ordering platform.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - stripe_account_id
+                    - program_id
+                    - application_fee_percentage
+                additionalProperties: false
+                required:
+                - program_stripe_account
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                stripe_account_id:
+                  type: string
+                  description: The ID of the stripe account associated to the program.
+                application_fee_percentage:
+                  type: number
+                  description: Percentage that a restaurant is charged for using Hang's ordering platform.
+              required:
+              - stripe_account_id
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                stripe_account_id:
+                  type: string
+                  description: The ID of the stripe account associated to the program.
+                application_fee_percentage:
+                  type: number
+                  description: Percentage that a restaurant is charged for using Hang's ordering platform.
+              required:
+              - stripe_account_id
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Promotions API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Promotions
+paths:
+  /v2/admin/promotions:
+    get:
+      tags:
+      - Promotions
+      operationId: get_v2_admin_promotions
+      summary: Endpoint to return all promoted rewards for a program using the current JWT
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promotions:
+                    type: array
+                    items:
+                      type: string
+                additionalProperties: false
+                required:
+                - promotions
+      description: ''
+    post:
+      tags:
+      - Promotions
+      operationId: post_v2_admin_promotions
+      summary: Endpoint to create a promotion
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promotion:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for promoted reward object.
+                      title:
+                        type: string
+                        description: Full title for promoted reward.
+                      description:
+                        type: string
+                        description: Description for promoted reward.
+                      reward_id:
+                        type: number
+                        description: Unique identifier of loyalty reward to be promoted.
+                      start_date:
+                        type: number
+                        description: Epoch start date of promotion.
+                      end_date:
+                        type: number
+                        description: Epoch end date of promotion.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - title
+                    - description
+                    - reward_id
+                    - start_date
+                    - end_date
+                additionalProperties: false
+                required:
+                - promotion
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: number
+                  description: When the promotion becomes active, in epoch seconds.
+                title:
+                  type: string
+                  description: Title of the promotion.
+                description:
+                  type: string
+                  description: Description of the reward.
+                end_date:
+                  type: number
+                  description: When the promotion is no longer active, in epoch seconds.
+                image_url:
+                  type: string
+                  description: URL of the promotion image.
+              required:
+              - start_date
+              - title
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: number
+                  description: When the promotion becomes active, in epoch seconds.
+                title:
+                  type: string
+                  description: Title of the promotion.
+                description:
+                  type: string
+                  description: Description of the reward.
+                end_date:
+                  type: number
+                  description: When the promotion is no longer active, in epoch seconds.
+                image_url:
+                  type: string
+                  description: URL of the promotion image.
+              required:
+              - start_date
+              - title
+  /v2/admin/promotions/{promotion_id}:
+    patch:
+      tags:
+      - Promotions
+      operationId: patch_v2_admin_promotions_promotion_id
+      summary: Endpoint to update a promotion
+      parameters:
+      - name: promotion_id
+        in: path
+        required: true
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promotion:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for promoted reward object.
+                      title:
+                        type: string
+                        description: Full title for promoted reward.
+                      description:
+                        type: string
+                        description: Description for promoted reward.
+                      reward_id:
+                        type: number
+                        description: Unique identifier of loyalty reward to be promoted.
+                      start_date:
+                        type: number
+                        description: Epoch start date of promotion.
+                      end_date:
+                        type: number
+                        description: Epoch end date of promotion.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - title
+                    - description
+                    - reward_id
+                    - start_date
+                    - end_date
+                additionalProperties: false
+                required:
+                - promotion
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: number
+                  description: When the promotion becomes active, in epoch seconds.
+                title:
+                  type: string
+                  description: Title of the promotion.
+                description:
+                  type: string
+                  description: Description of the reward.
+                end_date:
+                  type: number
+                  description: When the promotion is no longer active, in epoch seconds.
+                image_url:
+                  type: string
+                  description: URL of the promotion image.
+              required:
+              - start_date
+              - title
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: number
+                  description: When the promotion becomes active, in epoch seconds.
+                title:
+                  type: string
+                  description: Title of the promotion.
+                description:
+                  type: string
+                  description: Description of the reward.
+                end_date:
+                  type: number
+                  description: When the promotion is no longer active, in epoch seconds.
+                image_url:
+                  type: string
+                  description: URL of the promotion image.
+              required:
+              - start_date
+              - title
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

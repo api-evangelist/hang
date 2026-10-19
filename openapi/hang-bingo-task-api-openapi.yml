@@ -1,0 +1,126 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Bingo Task API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Bingo Task
+paths:
+  /v2/admin/bingo-games/{bingo_game_id}/bingo-tasks:
+    post:
+      tags:
+      - Bingo Task
+      operationId: post_v2_admin_bingo-games_bingo_game_id_bingo-tasks
+      summary: Endpoint to create all bingo tasks associated to a bingo game
+      parameters:
+      - name: bingo_game_id
+        in: path
+        required: true
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bingo_tasks:
+                    type: array
+                    items:
+                      type: string
+                additionalProperties: false
+                required:
+                - bingo_tasks
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                bingo_tasks:
+                  type: array
+                  items:
+                    type: string
+                  description: List of bingo tasks to create.
+              required:
+              - bingo_tasks
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                bingo_tasks:
+                  type: array
+                  items:
+                    type: string
+                  description: List of bingo tasks to create.
+              required:
+              - bingo_tasks
+  /v2/admin/bingo-games/{bingo_game_id}/bingo-tasks/bulk-update:
+    put:
+      tags:
+      - Bingo Task
+      operationId: put_v2_admin_bingo-games_bingo_game_id_bingo-tasks_bulk-update
+      summary: Endpoint to update bingo tasks associated to a bingo game
+      parameters:
+      - name: bingo_game_id
+        in: path
+        required: true
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bingo_tasks:
+                    type: array
+                    items:
+                      type: string
+                additionalProperties: false
+                required:
+                - bingo_tasks
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                bingo_tasks:
+                  type: array
+                  items:
+                    type: string
+                  description: List of bingo tasks to update.
+              required:
+              - bingo_tasks
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                bingo_tasks:
+                  type: array
+                  items:
+                    type: string
+                  description: List of bingo tasks to update.
+              required:
+              - bingo_tasks
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

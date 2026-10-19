@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -125,6 +125,69 @@ paths:
                   description: The amount of points to grant
               required:
               - points
+  /v2/admin/program-memberships/{program_membership_id}/member-actions/activity:
+    post:
+      tags:
+      - Member Actions
+      operationId: post_v2_admin_program-memberships_program_membership_id_member-actions_activity
+      summary: Create a new activity synchronously
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: the program membership id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Activity recorded for post-processing
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                activity[transaction_timestamp]:
+                  type: number
+                activity[value]:
+                  type: string
+                activity[activity_type_id]:
+                  type: string
+                idempotency_key:
+                  type: string
+                  description: used to prevent double-processing
+                activity[line_items]:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - activity[transaction_timestamp]
+              - activity[value]
+              - activity[activity_type_id]
+              - idempotency_key
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                activity[transaction_timestamp]:
+                  type: number
+                activity[value]:
+                  type: string
+                activity[activity_type_id]:
+                  type: string
+                idempotency_key:
+                  type: string
+                  description: used to prevent double-processing
+                activity[line_items]:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - activity[transaction_timestamp]
+              - activity[value]
+              - activity[activity_type_id]
+              - idempotency_key
 components:
   securitySchemes:
     ApiKeyAuth:

@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -75,6 +75,10 @@ paths:
         schema:
           type: string
       responses:
+        '404':
+          description: Could not generate code due to invalid token_id, or reward_id.
+        '401':
+          description: Could not generate code due to wallet_address not owning token.
         '200':
           description: OK
           content:
@@ -110,10 +114,6 @@ paths:
                 additionalProperties: false
                 required:
                 - redemption
-        '401':
-          description: Could not generate code due to wallet_address not owning token.
-        '404':
-          description: Could not generate code due to invalid token_id, or reward_id.
       description: Utilize this endpoint to generate a redemption code for a given reward.
       requestBody:
         content:
@@ -157,6 +157,10 @@ paths:
         schema:
           type: string
       responses:
+        '404':
+          description: Redemption code not found for given uuid.
+        '422':
+          description: The reward is not redeemable.
         '200':
           description: OK
           content:
@@ -192,10 +196,6 @@ paths:
                 additionalProperties: false
                 required:
                 - redemption
-        '404':
-          description: Redemption code not found for given uuid.
-        '422':
-          description: The reward is not redeemable.
       description: Utilize this endpoint to redeem a redemption code via its corresponding uuid
   /v2/program-memberships/{program_membership_id}/redemptions:
     get:
@@ -254,6 +254,8 @@ paths:
         schema:
           type: string
       responses:
+        '404':
+          description: Could not generate code due to invalid program_membership_id or reward_id.
         '200':
           description: OK
           content:
@@ -289,8 +291,6 @@ paths:
                 additionalProperties: false
                 required:
                 - redemption
-        '404':
-          description: Could not generate code due to invalid program_membership_id or reward_id.
       description: Utilize this endpoint to generate a redemption code for a given reward.
       requestBody:
         content:
@@ -326,6 +326,10 @@ paths:
         schema:
           type: string
       responses:
+        '404':
+          description: Redemption code not found for given uuid.
+        '422':
+          description: The reward is not redeemable.
         '200':
           description: OK
           content:
@@ -361,10 +365,6 @@ paths:
                 additionalProperties: false
                 required:
                 - redemption
-        '404':
-          description: Redemption code not found for given uuid.
-        '422':
-          description: The reward is not redeemable.
       description: Utilize this endpoint to redeem a redemption code via its corresponding uuid
 components:
   securitySchemes:

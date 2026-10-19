@@ -332,6 +332,116 @@ apis:
     url: https://app.swaggerhub.com/apis/Hang.xyz/hang_partner_api/2023.09.07
   - type: Documentation
     url: https://docs.hang.com/hang-platform
+- aid: hang:hang-applicablerewards-api
+  name: Hang Applicable Rewards API
+  description: The ApplicableRewards API from Hang — 1 operation(s) for applicablerewards.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - ApplicableRewards
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-applicablerewards-api-openapi.yml
+- aid: hang:hang-balancecards-api
+  name: Hang Balance Cards API
+  description: The BalanceCards API from Hang — 4 operation(s) for balancecards.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - BalanceCards
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-balancecards-api-openapi.yml
+- aid: hang:hang-bingo-api
+  name: Hang Bingo API
+  description: The Bingo API from Hang — 2 operation(s) for bingo.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Bingo
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-bingo-api-openapi.yml
+- aid: hang:hang-bingo-task-api
+  name: Hang Bingo Task API
+  description: The Bingo Task API from Hang — 2 operation(s) for bingo task.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Bingo Task
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-bingo-task-api-openapi.yml
+- aid: hang:hang-challenges-api
+  name: Hang Challenges API
+  description: The Challenges API from Hang — 5 operation(s) for challenges.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Challenges
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-challenges-api-openapi.yml
+- aid: hang:hang-integrations-api
+  name: Hang Integrations API
+  description: The Integrations API from Hang — 3 operation(s) for integrations.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-integrations-api-openapi.yml
+- aid: hang:hang-orders-api
+  name: Hang Orders API
+  description: The Orders API from Hang — 1 operation(s) for orders.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-orders-api-openapi.yml
+- aid: hang:hang-program-segments-api
+  name: Hang Program Segments API
+  description: The Program Segments API from Hang — 4 operation(s) for program segments.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Program Segments
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-program-segments-api-openapi.yml
+- aid: hang:hang-program-stripe-accounts-api
+  name: Hang Program stripe accounts API
+  description: The Program stripe accounts API from Hang — 2 operation(s) for program stripe accounts.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - Program stripe accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-program-stripe-accounts-api-openapi.yml
+- aid: hang:hang-promotions-api
+  name: Hang Promotions API
+  description: The promotions API from Hang — 2 operation(s) for promotions.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - promotions
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-promotions-api-openapi.yml
+- aid: hang:hang-toasttakeoutorders-api
+  name: Hang Toast Takeout Orders API
+  description: The ToastTakeoutOrders API from Hang — 3 operation(s) for toasttakeoutorders.
+  humanURL: https://docs.hang.com/hang-platform
+  baseURL: https://loyalty.hang.xyz/partner-api
+  tags:
+  - ToastTakeoutOrders
+  properties:
+  - type: OpenAPI
+    url: openapi/hang-toasttakeoutorders-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

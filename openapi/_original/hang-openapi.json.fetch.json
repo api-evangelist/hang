@@ -1,0 +1,12 @@
+{
+ "url": "https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FnDjUJ7LXq2gMv9rmEsrI%2Fimports%2F9Jq6a7ptZ1zZpcbGXBNq%2Fschema_swagger_form_data.json?alt=media&amp;token=f20a8d6c-a561-4ac2-8ede-0d9b6f694b19",
+ "final": "https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FnDjUJ7LXq2gMv9rmEsrI%2Fimports%2F9Jq6a7ptZ1zZpcbGXBNq%2Fschema_swagger_form_data.json?alt=media&amp;token=f20a8d6c-a561-4ac2-8ede-0d9b6f694b19",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 580849,
+ "sha256": "3a4039bc14d8cd096825fbd376b269d44ab301f560cee1562ec96a65f44ae9de",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}

@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -21,6 +21,10 @@ paths:
       operationId: post_users
       summary: Creates a new user with the given wallet_address and either a phone or an email…
       responses:
+        '400':
+          description: Missing required parameters.
+        '409':
+          description: When any of the parameters passed in already exist in the system.
         '200':
           description: User was created successfully
           content:
@@ -40,10 +44,6 @@ paths:
                 additionalProperties: false
                 required:
                 - user
-        '400':
-          description: Missing required parameters.
-        '409':
-          description: When any of the parameters passed in already exist in the system.
       description: Invoke this endpoint to add a new user to your loyalty program.
       requestBody:
         content:

@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -205,6 +205,15 @@ paths:
                       image_url:
                         type: string
                         description: URL of the combined Puzzle image.
+                      status:
+                        type: string
+                        description: Status of the Puzzle object.
+                      archived_at:
+                        type: number
+                        description: When the Puzzle was archived, in epoch seconds.
+                      published_at:
+                        type: number
+                        description: When the Puzzle was published, in epoch seconds.
                       rewards:
                         type: array
                         items:
@@ -218,6 +227,9 @@ paths:
                     - description
                     - earn_instructions
                     - image_url
+                    - status
+                    - archived_at
+                    - published_at
                     - rewards
                 additionalProperties: false
                 required:
@@ -263,6 +275,15 @@ paths:
                       image_url:
                         type: string
                         description: URL of the combined Puzzle image.
+                      status:
+                        type: string
+                        description: Status of the Puzzle object.
+                      archived_at:
+                        type: number
+                        description: When the Puzzle was archived, in epoch seconds.
+                      published_at:
+                        type: number
+                        description: When the Puzzle was published, in epoch seconds.
                       rewards:
                         type: array
                         items:
@@ -276,6 +297,9 @@ paths:
                     - description
                     - earn_instructions
                     - image_url
+                    - status
+                    - archived_at
+                    - published_at
                     - rewards
                 additionalProperties: false
                 required:
@@ -301,6 +325,11 @@ paths:
                   items:
                     type: string
                   description: Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].
+                loot_box_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of loot box IDs that are associated with the puzzle. Example ['ca338290-0a9b-447e-bef7-943f81a90a28'] or ['ca338290-0a9b-447e-bef7-943f81a90a28','a25a2468-180c-4e7d-953c-99fff4f9484f'].
                 earn_instructions:
                   type: string
                   description: Instructions for earning the puzzle.
@@ -322,6 +351,11 @@ paths:
                   items:
                     type: string
                   description: Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].
+                loot_box_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of loot box IDs that are associated with the puzzle. Example ['ca338290-0a9b-447e-bef7-943f81a90a28'] or ['ca338290-0a9b-447e-bef7-943f81a90a28','a25a2468-180c-4e7d-953c-99fff4f9484f'].
                 earn_instructions:
                   type: string
                   description: Instructions for earning the puzzle.
@@ -360,6 +394,15 @@ paths:
                       image_url:
                         type: string
                         description: URL of the combined Puzzle image.
+                      status:
+                        type: string
+                        description: Status of the Puzzle object.
+                      archived_at:
+                        type: number
+                        description: When the Puzzle was archived, in epoch seconds.
+                      published_at:
+                        type: number
+                        description: When the Puzzle was published, in epoch seconds.
                       rewards:
                         type: array
                         items:
@@ -373,6 +416,9 @@ paths:
                     - description
                     - earn_instructions
                     - image_url
+                    - status
+                    - archived_at
+                    - published_at
                     - rewards
                 additionalProperties: false
                 required:
@@ -398,6 +444,11 @@ paths:
                   items:
                     type: string
                   description: Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].
+                loot_box_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of loot box IDs that are associated with the puzzle. Example ['ca338290-0a9b-447e-bef7-943f81a90a28'] or ['ca338290-0a9b-447e-bef7-943f81a90a28','a25a2468-180c-4e7d-953c-99fff4f9484f'].
                 earn_instructions:
                   type: string
                   description: Instructions for earning the puzzle.
@@ -423,6 +474,11 @@ paths:
                   items:
                     type: string
                   description: Array of reward IDs that are associated with the puzzle. Example [1] or [1,2,3].
+                loot_box_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of loot box IDs that are associated with the puzzle. Example ['ca338290-0a9b-447e-bef7-943f81a90a28'] or ['ca338290-0a9b-447e-bef7-943f81a90a28','a25a2468-180c-4e7d-953c-99fff4f9484f'].
                 earn_instructions:
                   type: string
                   description: Instructions for earning the puzzle.

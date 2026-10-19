@@ -1,0 +1,90 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Applicable Rewards API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: ApplicableRewards
+paths:
+  /v2/program-memberships/{program_membership_id}/applicable-rewards:
+    post:
+      tags:
+      - ApplicableRewards
+      operationId: post_v2_program-memberships_program_membership_id_applicable-rewards
+      summary: Retrieve the rewards, if any, for a given program membership id
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The program membership id
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Could not retrieve rewards for cart.
+        '200':
+          description: Returns rewards successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rewards:
+                    type: array
+                    items:
+                      type: string
+                    description: List of applicable rewards.
+                additionalProperties: false
+                required:
+                - rewards
+      description: Invoke this endpoint to return an array of rewards that are applicable for a given cart selection.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                toast_restaurant_guid:
+                  type: string
+                  description: The external toast restaurant guid
+                check[amount]:
+                  type: number
+                  description: Total cart amount.
+                check[selections]:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of selections
+              required:
+              - toast_restaurant_guid
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                toast_restaurant_guid:
+                  type: string
+                  description: The external toast restaurant guid
+                check[amount]:
+                  type: number
+                  description: Total cart amount.
+                check[selections]:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of selections
+              required:
+              - toast_restaurant_guid
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

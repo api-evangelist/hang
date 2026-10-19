@@ -1,0 +1,91 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Integrations API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Integrations
+paths:
+  /v2/admin/integrations:
+    get:
+      tags:
+      - Integrations
+      operationId: get_v2_admin_integrations
+      summary: Get the current state of a program's integrations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  integrations:
+                    type: object
+                    properties:
+                      square_integration:
+                        type: string
+                        description: The status of program Square integration. Values are active or inactive.
+                    additionalProperties: false
+                    required:
+                    - square_integration
+                additionalProperties: false
+                required:
+                - integrations
+      description: ''
+  /v2/admin/integrations/square:
+    get:
+      tags:
+      - Integrations
+      operationId: get_v2_admin_integrations_square
+      summary: Get the URL to install the Square app
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  square_app_installation_link:
+                    type: string
+                    description: The URL to install the Square app.
+                additionalProperties: false
+                required:
+                - square_app_installation_link
+      description: ''
+  /v2/admin/integrations/square/disconnect:
+    post:
+      tags:
+      - Integrations
+      operationId: post_v2_admin_integrations_square_disconnect
+      summary: Revokes Square OAuth token
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates if the Square app was successfully disconnected.
+                additionalProperties: false
+                required:
+                - success
+      description: ''
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

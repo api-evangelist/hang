@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Toast Takeout Orders…
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: ToastTakeoutOrders
+paths:
+  /v2/admin/toast_takeout_orders:
+    get:
+      tags:
+      - ToastTakeoutOrders
+      operationId: get_v2_admin_toast_takeout_orders
+      summary: Get all Toast Takeout Orders for a program_membership
+      parameters:
+      - name: program_membership_id
+        in: query
+        required: true
+        description: Program membership ID
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Number of the page for Toast Takeout Orders (default is 1)
+        schema:
+          type: number
+      - name: per_page
+        in: query
+        description: Limit of toast takeout orders per page (default is 25)
+        schema:
+          type: number
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  toast_takeout_orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the order.
+                        tip_amount_cents:
+                          type: number
+                          description: Amount in cents for tip on the order.
+                        tax_amount_cents:
+                          type: number
+                          description: Amount in cents for tax on the order.
+                        order_amount_cents:
+                          type: number
+                          description: Amount in cents of the initial order.
+                        status:
+                          type: string
+                          description: Status of the order
+                        reference:
+                          type: string
+                          description: Randomly generated value for internal reference for the order.
+                        order_guid:
+                          type: string
+                          description: Order ID given by toast to uniquely identify the takeout order.
+                        created_at:
+                          type: number
+                          description: Creation time of the order.
+                        service_charge_amount_cents:
+                          type: number
+                          description: Amount in cents of service charges.
+                        total_amount_cents:
+                          type: number
+                          description: Amount in cents of the final total.
+                        toast_restaurant_id:
+                          type: string
+                          description: ID of the toast restaurant.
+                        application_fee_cents:
+                          type: number
+                          description: Amount in cents of the application fee.
+                        refunded_at:
+                          type: number
+                          description: Date of refund to the customer if applicable.
+                        stripe_session_data:
+                          type: object
+                          additionalProperties: true
+                          description: Data related to stripe session for a toast order.
+                        refund_data:
+                          type: object
+                          additionalProperties: true
+                          description: Data related to refund on an order.
+                      additionalProperties: false
+                      required:
+                      - id
+                      - tip_amount_cents
+                      - tax_amount_cents
+                      - order_amount_cents
+                      - status
+                      - reference
+                      - order_guid
+                      - created_at
+                      - service_charge_amount_cents
+                      - total_amount_cents
+                      - toast_restaurant_id
+                      - application_fee_cents
+                      - refunded_at
+                      - stripe_session_data
+                      - refund_data
+                additionalProperties: false
+                required:
+                - toast_takeout_orders
+      description: ''
+  /v2/admin/toast_takeout_orders/{reference}:
+    get:
+      tags:
+      - ToastTakeoutOrders
+      operationId: get_v2_admin_toast_takeout_orders_reference
+      summary: Get all Toast Takeout Orders for a program_membership
+      parameters:
+      - name: reference
+        in: path
+        required: true
+        description: Reference id for the Toast Takeout Order.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  toast_takeout_order:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the order.
+                      tip_amount_cents:
+                        type: number
+                        description: Amount in cents for tip on the order.
+                      tax_amount_cents:
+                        type: number
+                        description: Amount in cents for tax on the order.
+                      order_amount_cents:
+                        type: number
+                        description: Amount in cents of the initial order.
+                      status:
+                        type: string
+                        description: Status of the order
+                      reference:
+                        type: string
+                        description: Randomly generated value for internal reference for the order.
+                      order_guid:
+                        type: string
+                        description: Order ID given by toast to uniquely identify the takeout order.
+                      created_at:
+                        type: number
+                        description: Creation time of the order.
+                      service_charge_amount_cents:
+                        type: number
+                        description: Amount in cents of service charges.
+                      total_amount_cents:
+                        type: number
+                        description: Amount in cents of the final total.
+                      toast_restaurant_id:
+                        type: string
+                        description: ID of the toast restaurant.
+                      application_fee_cents:
+                        type: number
+                        description: Amount in cents of the application fee.
+                      refunded_at:
+                        type: number
+                        description: Date of refund to the customer if applicable.
+                      stripe_session_data:
+                        type: object
+                        additionalProperties: true
+                        description: Data related to stripe session for a toast order.
+                      refund_data:
+                        type: object
+                        additionalProperties: true
+                        description: Data related to refund on an order.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - tip_amount_cents
+                    - tax_amount_cents
+                    - order_amount_cents
+                    - status
+                    - reference
+                    - order_guid
+                    - created_at
+                    - service_charge_amount_cents
+                    - total_amount_cents
+                    - toast_restaurant_id
+                    - application_fee_cents
+                    - refunded_at
+                    - stripe_session_data
+                    - refund_data
+                additionalProperties: false
+                required:
+                - toast_takeout_order
+      description: ''
+  /v2/admin/toast_takeout_orders/{reference}/refund:
+    post:
+      tags:
+      - ToastTakeoutOrders
+      operationId: post_v2_admin_toast_takeout_orders_reference_refund
+      summary: Refunds toast takeout order for orders that have been paid for
+      parameters:
+      - name: reference
+        in: path
+        required: true
+        description: Reference id for the Toast Takeout Order.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      description: ''
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

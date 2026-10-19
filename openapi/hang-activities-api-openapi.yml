@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api

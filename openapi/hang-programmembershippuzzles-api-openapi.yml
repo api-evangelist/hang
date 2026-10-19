@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -61,6 +61,15 @@ paths:
                       image_url:
                         type: string
                         description: URL of the combined Puzzle image.
+                      status:
+                        type: string
+                        description: Status of the Puzzle object.
+                      archived_at:
+                        type: number
+                        description: When the Puzzle was archived, in epoch seconds.
+                      published_at:
+                        type: number
+                        description: When the Puzzle was published, in epoch seconds.
                       rewards:
                         type: array
                         items:
@@ -74,6 +83,9 @@ paths:
                     - description
                     - earn_instructions
                     - image_url
+                    - status
+                    - archived_at
+                    - published_at
                     - rewards
                 additionalProperties: false
                 required:
@@ -127,6 +139,15 @@ paths:
                       image_url:
                         type: string
                         description: URL of the combined Puzzle image.
+                      status:
+                        type: string
+                        description: Status of the Puzzle object.
+                      archived_at:
+                        type: number
+                        description: When the Puzzle was archived, in epoch seconds.
+                      published_at:
+                        type: number
+                        description: When the Puzzle was published, in epoch seconds.
                       rewards:
                         type: array
                         items:
@@ -140,6 +161,9 @@ paths:
                     - description
                     - earn_instructions
                     - image_url
+                    - status
+                    - archived_at
+                    - published_at
                     - rewards
                 additionalProperties: false
                 required:
@@ -165,6 +189,10 @@ paths:
         schema:
           type: string
       responses:
+        '422':
+          description: The puzzle is not redeemable because it is not complete or the puzzle_id given is not correct.
+        '401':
+          description: The program membership is not authorized to redeem the puzzle with given puzzle_id.
         '200':
           description: Successful response
           content:
@@ -193,6 +221,15 @@ paths:
                       image_url:
                         type: string
                         description: URL of the combined Puzzle image.
+                      status:
+                        type: string
+                        description: Status of the Puzzle object.
+                      archived_at:
+                        type: number
+                        description: When the Puzzle was archived, in epoch seconds.
+                      published_at:
+                        type: number
+                        description: When the Puzzle was published, in epoch seconds.
                       rewards:
                         type: array
                         items:
@@ -206,14 +243,13 @@ paths:
                     - description
                     - earn_instructions
                     - image_url
+                    - status
+                    - archived_at
+                    - published_at
                     - rewards
                 additionalProperties: false
                 required:
                 - puzzle
-        '401':
-          description: The program membership is not authorized to redeem the puzzle with given puzzle_id.
-        '422':
-          description: The puzzle is not redeemable because it is not complete or the puzzle_id given is not correct.
       description: ''
 components:
   securitySchemes:

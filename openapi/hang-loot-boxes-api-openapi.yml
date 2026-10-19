@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -392,6 +392,9 @@ paths:
                 recurring_interval_minutes:
                   type: number
                   description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_b64:
+                  type: string
+                  description: Base 64 string of the combined Lootbox image.
                 image_box_together_url:
                   type: string
                   description: URL of the combined Lootbox image.
@@ -432,6 +435,9 @@ paths:
                 recurring_interval_minutes:
                   type: number
                   description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_b64:
+                  type: string
+                  description: Base 64 string of the combined Lootbox image.
                 image_box_together_url:
                   type: string
                   description: URL of the combined Lootbox image.
@@ -826,6 +832,9 @@ paths:
                 recurring_interval_minutes:
                   type: number
                   description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_b64:
+                  type: string
+                  description: Base 64 string of the combined Lootbox image.
                 image_box_together_url:
                   type: string
                   description: URL of the combined Lootbox image.
@@ -866,6 +875,9 @@ paths:
                 recurring_interval_minutes:
                   type: number
                   description: Interval indicating how often a Lootbox can be granted.
+                image_box_together_b64:
+                  type: string
+                  description: Base 64 string of the combined Lootbox image.
                 image_box_together_url:
                   type: string
                   description: URL of the combined Lootbox image.

@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -21,6 +21,8 @@ paths:
       operationId: get_programs_tiers
       summary: Fetch all tiers and corresponding benefits for the program linked to the API…
       responses:
+        '500':
+          description: Something unexpected happened while trying to retrive the tier benefits.
         '200':
           description: Successful response
           content:
@@ -84,8 +86,6 @@ paths:
                 additionalProperties: false
                 required:
                 - tiers
-        '500':
-          description: Something unexpected happened while trying to retrive the tier benefits.
       description: Tiers represent a status level that a user can achieve based on their activity within a loyalty program. Each tier has a minimum threshold that a user must reach before being able to unlock the tier.
   /v2/admin/program:
     get:
@@ -107,9 +107,17 @@ paths:
                       should_use_progression_v2:
                         type: boolean
                         description: Boolean flag indicating if the program is using v2 progression.
+                      timezone:
+                        type: string
+                        description: Timezone for the program.
+                      member_segments_enabled:
+                        type: boolean
+                        description: Boolean flag indicating if the program has segments enabled.
                     additionalProperties: false
                     required:
                     - should_use_progression_v2
+                    - timezone
+                    - member_segments_enabled
                 additionalProperties: false
                 required:
                 - program

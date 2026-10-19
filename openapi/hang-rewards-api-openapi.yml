@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -28,6 +28,10 @@ paths:
         schema:
           type: string
       responses:
+        '404':
+          description: Could not find the program membership provided.
+        '500':
+          description: Could not retrieve rewards for program membership.
         '200':
           description: Returns rewards successfully
           content:
@@ -38,79 +42,11 @@ paths:
                   rewards:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        uuid:
-                          type: string
-                          description: reward uuid
-                        name:
-                          type: string
-                          description: reward name
-                        redemption_instruction:
-                          type: string
-                          description: instructions on how to redeem the reward
-                        redemption_method:
-                          type: string
-                          enum:
-                          - code
-                          - store_link
-                          - promo_code
-                          - achievement
-                          description: the method upon which this reward should be redeemed
-                        redemption_count:
-                          type: number
-                          description: the number of times this reward has been redeemed
-                        interval:
-                          type: number
-                          description: how often the user can redeem the reward in days, if 0 then unlimited
-                        limit:
-                          type: number
-                          description: reward limit, if any, for the reward
-                        start_date:
-                          type: number
-                          description: when the reward can be redeemed, in epoch seconds
-                        end_date:
-                          type: number
-                          description: when the reward can no longer be redeemed, in epoch seconds
-                        reward_type:
-                          type: string
-                          enum:
-                          - redemption
-                          - discount_percent_based
-                          - discount_value_based
-                          - access
-                          description: "redemption should be used as default, discount based rewards\n      should use one of discount_percent_based or discount_value_based, and access should be used for voting,\n      forms or events."
-                        last_redeemed_at:
-                          type: number
-                          description: the last time this reward has been redeemed, in epoch seconds
-                        image_url:
-                          type: string
-                          description: an absolute URL of the reward's image
-                        achievement_id:
-                          type: number
-                          description: the id of the reward achievement
-                      additionalProperties: false
-                      required:
-                      - uuid
-                      - name
-                      - redemption_instruction
-                      - redemption_method
-                      - redemption_count
-                      - interval
-                      - limit
-                      - start_date
-                      - end_date
-                      - reward_type
-                      - last_redeemed_at
-                      - image_url
-                      - achievement_id
+                      type: string
+                    description: List of rewards.
                 additionalProperties: false
                 required:
                 - rewards
-        '404':
-          description: Could not find the program membership provided.
-        '500':
-          description: Could not retrieve rewards for program membership.
       description: Invoke this endpoint to return an array of rewards that are associated with a given program membership id.
   /v2/admin/rewards/{reward_uuid}:
     get:
@@ -191,6 +127,9 @@ paths:
                       is_program_reward:
                         type: boolean
                         description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                      is_promoted_reward:
+                        type: boolean
+                        description: A boolean indicating if the reward should is a promoted reward.
                       reward_type:
                         type: string
                         enum:
@@ -243,6 +182,9 @@ paths:
                       updated_at:
                         type: number
                         description: When the reward was updated, in epoch seconds.
+                      is_welcome_reward:
+                        type: boolean
+                        description: A boolean indicating if the reward should be granted on sign up.
                     additionalProperties: false
                     required:
                     - name
@@ -260,6 +202,7 @@ paths:
                     - redemption_instructions
                     - reward_group
                     - is_program_reward
+                    - is_promoted_reward
                     - reward_type
                     - reward_value
                     - achievement_id
@@ -355,6 +298,9 @@ paths:
                       is_program_reward:
                         type: boolean
                         description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                      is_promoted_reward:
+                        type: boolean
+                        description: A boolean indicating if the reward should is a promoted reward.
                       reward_type:
                         type: string
                         enum:
@@ -407,6 +353,9 @@ paths:
                       updated_at:
                         type: number
                         description: When the reward was updated, in epoch seconds.
+                      is_welcome_reward:
+                        type: boolean
+                        description: A boolean indicating if the reward should be granted on sign up.
                     additionalProperties: false
                     required:
                     - name
@@ -424,6 +373,7 @@ paths:
                     - redemption_instructions
                     - reward_group
                     - is_program_reward
+                    - is_promoted_reward
                     - reward_type
                     - reward_value
                     - achievement_id
@@ -548,6 +498,12 @@ paths:
                 promo_code:
                   type: string
                   description: Promo code, required if redemption method is promo_code.
+                expiration_in_minutes:
+                  type: number
+                  description: How long until a reward expires after being granted.
+                is_welcome_reward:
+                  type: boolean
+                  description: A boolean indicating if the reward should be granted on sign up.
           multipart/form-data:
             schema:
               type: object
@@ -653,6 +609,12 @@ paths:
                 promo_code:
                   type: string
                   description: Promo code, required if redemption method is promo_code.
+                expiration_in_minutes:
+                  type: number
+                  description: How long until a reward expires after being granted.
+                is_welcome_reward:
+                  type: boolean
+                  description: A boolean indicating if the reward should be granted on sign up.
   /v2/admin/rewards:
     post:
       tags:
@@ -725,6 +687,9 @@ paths:
                       is_program_reward:
                         type: boolean
                         description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                      is_promoted_reward:
+                        type: boolean
+                        description: A boolean indicating if the reward should is a promoted reward.
                       reward_type:
                         type: string
                         enum:
@@ -777,6 +742,9 @@ paths:
                       updated_at:
                         type: number
                         description: When the reward was updated, in epoch seconds.
+                      is_welcome_reward:
+                        type: boolean
+                        description: A boolean indicating if the reward should be granted on sign up.
                     additionalProperties: false
                     required:
                     - name
@@ -794,6 +762,7 @@ paths:
                     - redemption_instructions
                     - reward_group
                     - is_program_reward
+                    - is_promoted_reward
                     - reward_type
                     - reward_value
                     - achievement_id
@@ -869,6 +838,9 @@ paths:
                 is_program_reward:
                   type: boolean
                   description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                is_welcome_reward:
+                  type: boolean
+                  description: A boolean indicating if the reward should be granted on sign up.
                 trait_ids:
                   type: array
                   items:
@@ -916,6 +888,9 @@ paths:
                 promo_code:
                   type: string
                   description: Promo code, required if redemption method is promo_code.
+                expiration_in_minutes:
+                  type: number
+                  description: How long until a reward expires after being granted.
               required:
               - reward_group
               - start_date
@@ -976,6 +951,9 @@ paths:
                 is_program_reward:
                   type: boolean
                   description: A boolean indicating if the reward should be available by just being in the program. Only applies to trait_or_program_rewards.
+                is_welcome_reward:
+                  type: boolean
+                  description: A boolean indicating if the reward should be granted on sign up.
                 trait_ids:
                   type: array
                   items:
@@ -1023,6 +1001,9 @@ paths:
                 promo_code:
                   type: string
                   description: Promo code, required if redemption method is promo_code.
+                expiration_in_minutes:
+                  type: number
+                  description: How long until a reward expires after being granted.
               required:
               - reward_group
               - start_date

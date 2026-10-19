@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -344,6 +344,8 @@ paths:
         schema:
           type: number
       responses:
+        '404':
+          description: Could not find the token provided.
         '200':
           description: Returns details successfully
           content:
@@ -367,8 +369,6 @@ paths:
                 additionalProperties: false
                 required:
                 - level
-        '404':
-          description: Could not find the token provided.
       description: Invoke this endpoint to return the tier and earned points (XP) for a given token id.
   /tokens/{token_id}/loot-boxes:
     get:
@@ -455,6 +455,10 @@ paths:
                               reward_uuid:
                                 type: string
                                 description: Unique identifier for the reward tied to the reward choice.
+                              reward_metadata:
+                                type: object
+                                additionalProperties: true
+                                description: Set of key-value pairs that you can attach to a reward. This can be useful for storing additional information about the reward in a structured format.
                               probability:
                                 type: number
                                 description: The probability of winning the LootBoxRewardChoice.
@@ -471,6 +475,7 @@ paths:
                             required:
                             - id
                             - reward_uuid
+                            - reward_metadata
                             - probability
                             - title
                             - subtitle

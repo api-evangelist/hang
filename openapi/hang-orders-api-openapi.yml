@@ -1,0 +1,148 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Orders API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Orders
+paths:
+  /v2/external/orders:
+    post:
+      tags:
+      - Orders
+      operationId: post_v2_external_orders
+      summary: Create an Order record
+      responses:
+        '200':
+          description: ok
+      description: 'This endpoint receives orders from external systems. It requires a comprehensive payload that includes details about the order,
+
+        such as the items purchased, applicable taxes, discounts, and the source and POS system of the order. It can optionally link the order
+
+        to a program membership if the program_membership_id is provided.'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                payload[order][line_items]:
+                  type: array
+                  items:
+                    type: string
+                  description: Line items in the order
+                payload[order][amount]:
+                  type: number
+                  description: Total amount of the order in cents
+                payload[order_source]:
+                  type: string
+                  description: Source of the order.
+                payload[type]:
+                  type: string
+                  enum:
+                  - payment.created
+                  - payment.updated
+                  - refund.created
+                  - refund.updated
+                  description: What type of transaction occurred.
+                payload[merchant_pos_system]:
+                  type: string
+                  description: Type of POS system from which the order originates.
+                payload[external_order_guid]:
+                  type: string
+                  description: Unique identifier for the order from the external system.
+                payload[external_location_type]:
+                  type: string
+                  description: Type of the external location (e.g., ToastRestaurant).
+                payload[external_location_id]:
+                  type: string
+                  description: Unique identifier for the location from the external system (e.g., a restaurant ID from Toast).
+                payload[program_membership_id]:
+                  type: string
+                  description: Program membership ID if available. Nullable field to tie the order to a specific membership.
+                payload[external_customer_id]:
+                  type: string
+                  description: External customer ID associated with the order.
+                payload[order][applied_discounts]:
+                  type: array
+                  items:
+                    type: string
+                  description: List of reward IDs applied to the transaction as a whole
+              required:
+              - payload[order][line_items]
+              - payload[order][amount]
+              - payload[order_source]
+              - payload[type]
+              - payload[merchant_pos_system]
+              - payload[external_order_guid]
+              - payload[external_location_type]
+              - payload[external_location_id]
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                payload[order][line_items]:
+                  type: array
+                  items:
+                    type: string
+                  description: Line items in the order
+                payload[order][amount]:
+                  type: number
+                  description: Total amount of the order in cents
+                payload[order_source]:
+                  type: string
+                  description: Source of the order.
+                payload[type]:
+                  type: string
+                  enum:
+                  - payment.created
+                  - payment.updated
+                  - refund.created
+                  - refund.updated
+                  description: What type of transaction occurred.
+                payload[merchant_pos_system]:
+                  type: string
+                  description: Type of POS system from which the order originates.
+                payload[external_order_guid]:
+                  type: string
+                  description: Unique identifier for the order from the external system.
+                payload[external_location_type]:
+                  type: string
+                  description: Type of the external location (e.g., ToastRestaurant).
+                payload[external_location_id]:
+                  type: string
+                  description: Unique identifier for the location from the external system (e.g., a restaurant ID from Toast).
+                payload[program_membership_id]:
+                  type: string
+                  description: Program membership ID if available. Nullable field to tie the order to a specific membership.
+                payload[external_customer_id]:
+                  type: string
+                  description: External customer ID associated with the order.
+                payload[order][applied_discounts]:
+                  type: array
+                  items:
+                    type: string
+                  description: List of reward IDs applied to the transaction as a whole
+              required:
+              - payload[order][line_items]
+              - payload[order][amount]
+              - payload[order_source]
+              - payload[type]
+              - payload[merchant_pos_system]
+              - payload[external_order_guid]
+              - payload[external_location_type]
+              - payload[external_location_id]
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

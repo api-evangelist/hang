@@ -1,0 +1,437 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Program Segments API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Program Segments
+paths:
+  /v2/admin/program-segments:
+    get:
+      tags:
+      - Program Segments
+      operationId: get_v2_admin_program-segments
+      summary: Get all program segments
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_segments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the program segment.
+                        name:
+                          type: string
+                          description: Name of the program segment.
+                        description:
+                          type: string
+                          description: Description of the program segment.
+                        version_id:
+                          type: string
+                          description: Version id of the program segment.
+                        members_last_refreshed_at:
+                          type: number
+                          description: When the members of the segment were last refreshed, in epoch seconds.
+                        created_at:
+                          type: number
+                          description: When the program segment was created, in epoch seconds.
+                        updated_at:
+                          type: number
+                          description: When the program segment was last updated, in epoch seconds.
+                      additionalProperties: false
+                      required:
+                      - id
+                      - name
+                      - description
+                      - version_id
+                      - members_last_refreshed_at
+                      - created_at
+                      - updated_at
+                additionalProperties: false
+                required:
+                - program_segments
+      description: Retrieves all program segments for a program
+    post:
+      tags:
+      - Program Segments
+      operationId: post_v2_admin_program-segments
+      summary: Create a program segment
+      responses:
+        '201':
+          description: Program segment created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_segment:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the program segment.
+                      name:
+                        type: string
+                        description: Name of the program segment.
+                      description:
+                        type: string
+                        description: Description of the program segment.
+                      version_id:
+                        type: string
+                        description: Version id of the program segment.
+                      members_last_refreshed_at:
+                        type: number
+                        description: When the members of the segment were last refreshed, in epoch seconds.
+                      created_at:
+                        type: number
+                        description: When the program segment was created, in epoch seconds.
+                      updated_at:
+                        type: number
+                        description: When the program segment was last updated, in epoch seconds.
+                      program_segment_requirements:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Unique identifier for the program segment requirement.
+                            program_segment_id:
+                              type: string
+                              description: Program Segment ID.
+                            filter_key:
+                              type: string
+                              description: Filter key for the program segment requirement.
+                            filter_value:
+                              type: string
+                              description: Filter value for the program segment requirement.
+                            created_at:
+                              type: number
+                              description: When the program segment requirement was created, in epoch seconds.
+                            updated_at:
+                              type: number
+                              description: When the program segment requirement was last updated, in epoch seconds.
+                          additionalProperties: false
+                          required:
+                          - id
+                          - program_segment_id
+                          - filter_key
+                          - filter_value
+                          - created_at
+                          - updated_at
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - version_id
+                    - members_last_refreshed_at
+                    - created_at
+                    - updated_at
+                    - program_segment_requirements
+                additionalProperties: false
+                required:
+                - program_segment
+        '422':
+          description: Unprocessable entity
+      description: Creates a program segment
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the program segment
+                description:
+                  type: string
+                  description: Description of the program segment
+                requirements:
+                  type: array
+                  items:
+                    type: string
+                  description: Requirements for the program segment
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the program segment
+                description:
+                  type: string
+                  description: Description of the program segment
+                requirements:
+                  type: array
+                  items:
+                    type: string
+                  description: Requirements for the program segment
+  /v2/admin/program-memberships/{program_membership_id}/program-segments:
+    get:
+      tags:
+      - Program Segments
+      operationId: get_v2_admin_program-memberships_program_membership_id_program-segments
+      summary: Get all of the program segments that program memberhip belongs to
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: the user's program membership id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_membership_segments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the program segment.
+                        name:
+                          type: string
+                          description: Name of the program segment.
+                        description:
+                          type: string
+                          description: Description of the program segment.
+                        version_id:
+                          type: string
+                          description: Version id of the program segment.
+                        members_last_refreshed_at:
+                          type: number
+                          description: When the members of the segment were last refreshed, in epoch seconds.
+                        created_at:
+                          type: number
+                          description: When the program segment was created, in epoch seconds.
+                        updated_at:
+                          type: number
+                          description: When the program segment was last updated, in epoch seconds.
+                      additionalProperties: false
+                      required:
+                      - id
+                      - name
+                      - description
+                      - version_id
+                      - members_last_refreshed_at
+                      - created_at
+                      - updated_at
+                additionalProperties: false
+                required:
+                - program_membership_segments
+      description: ''
+  /v2/admin/program-segments/{id}:
+    get:
+      tags:
+      - Program Segments
+      operationId: get_v2_admin_program-segments_id
+      summary: Get a program segment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_segment:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the program segment.
+                      name:
+                        type: string
+                        description: Name of the program segment.
+                      description:
+                        type: string
+                        description: Description of the program segment.
+                      version_id:
+                        type: string
+                        description: Version id of the program segment.
+                      members_last_refreshed_at:
+                        type: number
+                        description: When the members of the segment were last refreshed, in epoch seconds.
+                      created_at:
+                        type: number
+                        description: When the program segment was created, in epoch seconds.
+                      updated_at:
+                        type: number
+                        description: When the program segment was last updated, in epoch seconds.
+                      program_segment_requirements:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Unique identifier for the program segment requirement.
+                            program_segment_id:
+                              type: string
+                              description: Program Segment ID.
+                            filter_key:
+                              type: string
+                              description: Filter key for the program segment requirement.
+                            filter_value:
+                              type: string
+                              description: Filter value for the program segment requirement.
+                            created_at:
+                              type: number
+                              description: When the program segment requirement was created, in epoch seconds.
+                            updated_at:
+                              type: number
+                              description: When the program segment requirement was last updated, in epoch seconds.
+                          additionalProperties: false
+                          required:
+                          - id
+                          - program_segment_id
+                          - filter_key
+                          - filter_value
+                          - created_at
+                          - updated_at
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - version_id
+                    - members_last_refreshed_at
+                    - created_at
+                    - updated_at
+                    - program_segment_requirements
+                additionalProperties: false
+                required:
+                - program_segment
+        '404':
+          description: Program segment not found
+      description: Retrieves a program segment
+    delete:
+      tags:
+      - Program Segments
+      operationId: delete_v2_admin_program-segments_id
+      summary: Delete a program segment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: number
+      responses:
+        '204':
+          description: No content
+        '404':
+          description: Program segment not found
+  /v2/admin/program-segments/{id}/members:
+    get:
+      tags:
+      - Program Segments
+      operationId: get_v2_admin_program-segments_id_members
+      summary: Get all members of a program segment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the program segment
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Index to start at.
+        schema:
+          type: number
+      - name: limit
+        in: query
+        description: Results per page. Defaults to 50
+        schema:
+          type: number
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  program_memberships:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the program membership.
+                        first_name:
+                          type: string
+                          description: First name of the user.
+                        last_name:
+                          type: string
+                          description: Last name of the user.
+                        email:
+                          type: string
+                          description: Email of the user.
+                        phone:
+                          type: string
+                          description: Phone number of the user.
+                        phone_verified:
+                          type: boolean
+                          description: A boolean indicating whether the user has verified their phone.
+                        created_at:
+                          type: number
+                          description: When the membership was created, in epoch seconds.
+                        stripe_customer_id:
+                          type: string
+                          description: ID representing the customer in stripe.
+                      additionalProperties: false
+                      required:
+                      - id
+                      - first_name
+                      - last_name
+                      - email
+                      - phone
+                      - phone_verified
+                      - created_at
+                      - stripe_customer_id
+                  total_records:
+                    type: number
+                additionalProperties: false
+                required:
+                - program_memberships
+                - total_records
+        '404':
+          description: Program segment not found
+      description: Gets all members for the program segment
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

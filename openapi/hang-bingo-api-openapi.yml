@@ -1,0 +1,293 @@
+openapi: 3.2.0
+info:
+  title: Hang Partner API (params in:formData) Bingo API
+  description: 'The Partner API allows you to request various resources that can power your loyalty program.
+
+
+    © Hang 2023'
+  version: '1.0'
+  x-copyright: '&copy Hang 2023'
+servers:
+- url: /partner-api
+security:
+- ApiKeyAuth: []
+tags:
+- name: Bingo
+paths:
+  /v2/admin/bingo-games:
+    get:
+      tags:
+      - Bingo
+      operationId: get_v2_admin_bingo-games
+      summary: Endpoint to list all bingo games and associated tasks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bingo_games:
+                    type: array
+                    items:
+                      type: string
+                    description: List of bingo games
+                additionalProperties: false
+                required:
+                - bingo_games
+      description: ''
+    post:
+      tags:
+      - Bingo
+      operationId: post_v2_admin_bingo-games
+      summary: Create a bingo game
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bingo_game:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the bingo game object.
+                      name:
+                        type: string
+                        description: Name of the bingo game object.
+                      description:
+                        type: string
+                        description: Description of the bingo game object.
+                      status:
+                        type: string
+                        description: Bingo game status.
+                      prize_ids:
+                        type: array
+                        items:
+                          type: string
+                        description: List of prize ids associated with the bingo game.
+                      program_id:
+                        type: number
+                        description: The ID of the Program associated with the bingo game.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - status
+                    - prize_ids
+                    - program_id
+                additionalProperties: false
+                required:
+                - bingo_game
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                prize_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: the prize_ids for the bingo game
+                name:
+                  type: string
+                  description: the name of the Bingo game
+                description:
+                  type: string
+                  description: the name of the Bingo game
+              required:
+              - prize_ids
+              - name
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                prize_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: the prize_ids for the bingo game
+                name:
+                  type: string
+                  description: the name of the Bingo game
+                description:
+                  type: string
+                  description: the name of the Bingo game
+              required:
+              - prize_ids
+              - name
+  /v2/admin/bingo-games/{bingo_game_id}:
+    get:
+      tags:
+      - Bingo
+      operationId: get_v2_admin_bingo-games_bingo_game_id
+      summary: Get the bingo game with the given ID
+      parameters:
+      - name: bingo_game_id
+        in: path
+        required: true
+        description: the ID of the Bingo game
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bingo_game:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the bingo game object.
+                      name:
+                        type: string
+                        description: Name of the bingo game object.
+                      description:
+                        type: string
+                        description: Description of the bingo game object.
+                      status:
+                        type: string
+                        description: Bingo game status.
+                      prize_ids:
+                        type: array
+                        items:
+                          type: string
+                        description: List of prize ids associated with the bingo game.
+                      program_id:
+                        type: number
+                        description: The ID of the Program associated with the bingo game.
+                      bingo_tasks:
+                        type: array
+                        items:
+                          type: string
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - status
+                    - prize_ids
+                    - program_id
+                    - bingo_tasks
+                additionalProperties: false
+                required:
+                - bingo_game
+      description: ''
+    patch:
+      tags:
+      - Bingo
+      operationId: patch_v2_admin_bingo-games_bingo_game_id
+      summary: Update a bingo game
+      parameters:
+      - name: bingo_game_id
+        in: path
+        required: true
+        description: the ID of the Bingo game
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bingo_game:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for the bingo game object.
+                      name:
+                        type: string
+                        description: Name of the bingo game object.
+                      description:
+                        type: string
+                        description: Description of the bingo game object.
+                      status:
+                        type: string
+                        description: Bingo game status.
+                      prize_ids:
+                        type: array
+                        items:
+                          type: string
+                        description: List of prize ids associated with the bingo game.
+                      program_id:
+                        type: number
+                        description: The ID of the Program associated with the bingo game.
+                    additionalProperties: false
+                    required:
+                    - id
+                    - name
+                    - description
+                    - status
+                    - prize_ids
+                    - program_id
+                additionalProperties: false
+                required:
+                - bingo_game
+      description: ''
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: the name of the Bingo game
+                description:
+                  type: string
+                  description: the description of the Bingo game
+                prize_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: the prize_ids for the bingo game
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - published
+                  - archived
+                  description: the status of the Bingo game
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: the name of the Bingo game
+                description:
+                  type: string
+                  description: the description of the Bingo game
+                prize_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: the prize_ids for the bingo game
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - published
+                  - archived
+                  description: the status of the Bingo game
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

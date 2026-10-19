@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -59,9 +59,15 @@ paths:
                         phone:
                           type: string
                           description: Phone number of the user.
+                        phone_verified:
+                          type: boolean
+                          description: A boolean indicating whether the user has verified their phone.
                         created_at:
                           type: number
                           description: When the membership was created, in epoch seconds.
+                        stripe_customer_id:
+                          type: string
+                          description: ID representing the customer in stripe.
                       additionalProperties: false
                       required:
                       - id
@@ -69,7 +75,9 @@ paths:
                       - last_name
                       - email
                       - phone
+                      - phone_verified
                       - created_at
+                      - stripe_customer_id
                   total_records:
                     type: number
                 additionalProperties: false
@@ -115,9 +123,15 @@ paths:
                       phone:
                         type: string
                         description: Phone number of the user.
+                      phone_verified:
+                        type: boolean
+                        description: A boolean indicating whether the user has verified their phone.
                       created_at:
                         type: number
                         description: When the membership was created, in epoch seconds.
+                      stripe_customer_id:
+                        type: string
+                        description: ID representing the customer in stripe.
                     additionalProperties: false
                     required:
                     - id
@@ -125,7 +139,9 @@ paths:
                     - last_name
                     - email
                     - phone
+                    - phone_verified
                     - created_at
+                    - stripe_customer_id
                 additionalProperties: false
                 required:
                 - program_membership
@@ -168,9 +184,15 @@ paths:
                       phone:
                         type: string
                         description: Phone number of the user.
+                      phone_verified:
+                        type: boolean
+                        description: A boolean indicating whether the user has verified their phone.
                       created_at:
                         type: number
                         description: When the membership was created, in epoch seconds.
+                      stripe_customer_id:
+                        type: string
+                        description: ID representing the customer in stripe.
                     additionalProperties: false
                     required:
                     - id
@@ -178,7 +200,9 @@ paths:
                     - last_name
                     - email
                     - phone
+                    - phone_verified
                     - created_at
+                    - stripe_customer_id
                 additionalProperties: false
                 required:
                 - program_membership
@@ -192,6 +216,15 @@ paths:
                 email:
                   type: string
                   description: Email address of the user.
+                instagram_username:
+                  type: string
+                  description: Instagram username of the user.
+                twitter_username:
+                  type: string
+                  description: Twitter username of the user.
+                tiktok_username:
+                  type: string
+                  description: TikTok username of the user.
               required:
               - email
           multipart/form-data:
@@ -201,8 +234,210 @@ paths:
                 email:
                   type: string
                   description: Email address of the user.
+                instagram_username:
+                  type: string
+                  description: Instagram username of the user.
+                twitter_username:
+                  type: string
+                  description: Twitter username of the user.
+                tiktok_username:
+                  type: string
+                  description: TikTok username of the user.
               required:
               - email
+  /v2/admin/program-memberships/{program_membership_id}/bonus-rewards:
+    get:
+      tags:
+      - Program memberships
+      operationId: get_v2_admin_program-memberships_program_membership_id_bonus-rewards
+      summary: Get all bonus rewards that belong to the specified program membership
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rewards:
+                    type: object
+                    properties:
+                      reward_uuid:
+                        type: string
+                        description: The unique ID of the reward.
+                      image_url:
+                        type: string
+                        description: URL of the reward image.
+                      name:
+                        type: string
+                        description: Name/title of the reward.
+                      granted_on:
+                        type: string
+                        description: When the bonus reward was granted.
+                      redeemed:
+                        type: boolean
+                        description: A boolean indicating if the bonus reward has been redeemed.
+                    additionalProperties: false
+                    required:
+                    - reward_uuid
+                    - image_url
+                    - name
+                    - granted_on
+                    - redeemed
+                additionalProperties: false
+                required:
+                - rewards
+      description: ''
+  /v2/admin/program-memberships/{program_membership_id}/program-and-tier-rewards:
+    get:
+      tags:
+      - Program memberships
+      operationId: get_v2_admin_program-memberships_program_membership_id_program-and-tier-rewards
+      summary: Get all option rewards that belong to the specified program membership
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rewards:
+                    type: object
+                    properties:
+                      reward_uuid:
+                        type: string
+                        description: The unique ID of the reward.
+                      type:
+                        type: string
+                        enum:
+                        - tier
+                        - program
+                        description: String defining if the reward is sourced from a program or a tier.
+                      image_url:
+                        type: string
+                        description: URL of the reward image.
+                      name:
+                        type: string
+                        description: Name/title of the reward.
+                      limit:
+                        type: number
+                        description: Maximum amount of times a user can receive the reward.
+                      interval:
+                        type: number
+                        description: How often the user can redeem the reward in days, if 0 then unlimited.
+                      last_redeemed_at:
+                        type: string
+                        description: When the reward was last redeemed.
+                    additionalProperties: false
+                    required:
+                    - reward_uuid
+                    - type
+                    - image_url
+                    - name
+                    - limit
+                    - interval
+                    - last_redeemed_at
+                additionalProperties: false
+                required:
+                - rewards
+      description: ''
+  /v2/admin/program-memberships/{program_membership_id}/activity-history:
+    get:
+      tags:
+      - Program memberships
+      operationId: get_v2_admin_program-memberships_program_membership_id_activity-history
+      summary: Gets the activity history for the program membership
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  activity_aggregates:
+                    type: object
+                    properties:
+                      value:
+                        type: number
+                        description: The value of the activity.
+                      activity_type:
+                        type: string
+                        description: The type of activity.
+                      timestamp:
+                        type: number
+                    additionalProperties: false
+                    required:
+                    - value
+                    - activity_type
+                    - timestamp
+                additionalProperties: false
+                required:
+                - activity_aggregates
+      description: ''
+  /v2/admin/program-memberships/{program_membership_id}/quest-activities:
+    get:
+      tags:
+      - Program memberships
+      operationId: get_v2_admin_program-memberships_program_membership_id_quest-activities
+      summary: Gets the quest history for the program membership
+      parameters:
+      - name: program_membership_id
+        in: path
+        required: true
+        description: The ID of the program membership.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  activity_aggregates:
+                    type: object
+                    properties:
+                      value:
+                        type: number
+                        description: The value of the activity.
+                      activity_type:
+                        type: string
+                        description: The type of activity.
+                      timestamp:
+                        type: number
+                    additionalProperties: false
+                    required:
+                    - value
+                    - activity_type
+                    - timestamp
+                additionalProperties: false
+                required:
+                - activity_aggregates
+      description: ''
 components:
   securitySchemes:
     ApiKeyAuth:

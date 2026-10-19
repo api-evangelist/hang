@@ -5,7 +5,7 @@ info:
 
 
     © Hang 2023'
-  version: 2023.09.07
+  version: '1.0'
   x-copyright: '&copy Hang 2023'
 servers:
 - url: /partner-api
@@ -21,6 +21,8 @@ paths:
       operationId: post_v2_program-memberships
       summary: Creates a new membership with a given wallet_address, external_user_id, or both
       responses:
+        '400':
+          description: Missing required parameters.
         '200':
           description: Membership was created successfully, or an existing membership was found
           content:
@@ -40,6 +42,9 @@ paths:
                       wallet_address:
                         type: string
                         description: The wallet address for the membership
+                      profile_image:
+                        type: string
+                        description: The profile image for the membership
                       on_chain_token_id:
                         type: string
                         description: The on chain token id for the membership
@@ -63,18 +68,22 @@ paths:
                         - twitter_username
                         - instagram_username
                         - tiktok_username
+                      family_member_birthdays:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of family member birthdays
                     additionalProperties: false
                     required:
                     - id
                     - external_user_id
                     - wallet_address
+                    - profile_image
                     - on_chain_token_id
                     - created_at
                 additionalProperties: false
                 required:
                 - membership
-        '400':
-          description: Missing required parameters.
       description: Invoke this endpoint to add a new membership to your loyalty program.
       requestBody:
         content:
@@ -82,6 +91,18 @@ paths:
             schema:
               type: object
               properties:
+                family_member_birthdays[status]:
+                  type: string
+                  enum:
+                  - active
+                  - inactive
+                  description: family member's membership status
+                family_member_birthdays[first_name]:
+                  type: string
+                  description: the first name of the family member
+                family_member_birthdays[birthday]:
+                  type: string
+                  description: the birthday of the family member
                 external_user_id:
                   type: string
                   description: the user's external_user_id (must be provided if wallet_address is blank)
@@ -91,10 +112,44 @@ paths:
                 email:
                   type: string
                   description: the user's email address
+                phone:
+                  type: string
+                  description: the user's phone
+                birthday:
+                  type: string
+                  description: The user's birthday
+                first_name:
+                  type: string
+                  description: The user's first name
+                last_name:
+                  type: string
+                  description: The user's last name
+                include_magic_link:
+                  type: boolean
+                  description: Whether to return a magic link URL. Defaults to false.
+                family_member_birthdays[last_name]:
+                  type: string
+                  description: the last name of the family member
+              required:
+              - family_member_birthdays[status]
+              - family_member_birthdays[first_name]
+              - family_member_birthdays[birthday]
           multipart/form-data:
             schema:
               type: object
               properties:
+                family_member_birthdays[status]:
+                  type: string
+                  enum:
+                  - active
+                  - inactive
+                  description: family member's membership status
+                family_member_birthdays[first_name]:
+                  type: string
+                  description: the first name of the family member
+                family_member_birthdays[birthday]:
+                  type: string
+                  description: the birthday of the family member
                 external_user_id:
                   type: string
                   description: the user's external_user_id (must be provided if wallet_address is blank)
@@ -104,6 +159,28 @@ paths:
                 email:
                   type: string
                   description: the user's email address
+                phone:
+                  type: string
+                  description: the user's phone
+                birthday:
+                  type: string
+                  description: The user's birthday
+                first_name:
+                  type: string
+                  description: The user's first name
+                last_name:
+                  type: string
+                  description: The user's last name
+                include_magic_link:
+                  type: boolean
+                  description: Whether to return a magic link URL. Defaults to false.
+                family_member_birthdays[last_name]:
+                  type: string
+                  description: the last name of the family member
+              required:
+              - family_member_birthdays[status]
+              - family_member_birthdays[first_name]
+              - family_member_birthdays[birthday]
   /membership/{program_membership_id}/social-media-credentials:
     post:
       tags:
@@ -137,6 +214,9 @@ paths:
                       wallet_address:
                         type: string
                         description: The wallet address for the membership
+                      profile_image:
+                        type: string
+                        description: The profile image for the membership
                       on_chain_token_id:
                         type: string
                         description: The on chain token id for the membership
@@ -160,11 +240,17 @@ paths:
                         - twitter_username
                         - instagram_username
                         - tiktok_username
+                      family_member_birthdays:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of family member birthdays
                     additionalProperties: false
                     required:
                     - id
                     - external_user_id
                     - wallet_address
+                    - profile_image
                     - on_chain_token_id
                     - created_at
                 additionalProperties: false
@@ -226,6 +312,9 @@ paths:
                       wallet_address:
                         type: string
                         description: The wallet address for the membership
+                      profile_image:
+                        type: string
+                        description: The profile image for the membership
                       on_chain_token_id:
                         type: string
                         description: The on chain token id for the membership
@@ -249,11 +338,17 @@ paths:
                         - twitter_username
                         - instagram_username
                         - tiktok_username
+                      family_member_birthdays:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of family member birthdays
                     additionalProperties: false
                     required:
                     - id
                     - external_user_id
                     - wallet_address
+                    - profile_image
                     - on_chain_token_id
                     - created_at
                 additionalProperties: false
@@ -293,6 +388,9 @@ paths:
                       wallet_address:
                         type: string
                         description: The wallet address for the membership
+                      profile_image:
+                        type: string
+                        description: The profile image for the membership
                       on_chain_token_id:
                         type: string
                         description: The on chain token id for the membership
@@ -316,11 +414,17 @@ paths:
                         - twitter_username
                         - instagram_username
                         - tiktok_username
+                      family_member_birthdays:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of family member birthdays
                     additionalProperties: false
                     required:
                     - id
                     - external_user_id
                     - wallet_address
+                    - profile_image
                     - on_chain_token_id
                     - created_at
                 additionalProperties: false
@@ -496,6 +600,9 @@ paths:
                       wallet_address:
                         type: string
                         description: The wallet address for the membership
+                      profile_image:
+                        type: string
+                        description: The profile image for the membership
                       on_chain_token_id:
                         type: string
                         description: The on chain token id for the membership
@@ -519,11 +626,17 @@ paths:
                         - twitter_username
                         - instagram_username
                         - tiktok_username
+                      family_member_birthdays:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of family member birthdays
                     additionalProperties: false
                     required:
                     - id
                     - external_user_id
                     - wallet_address
+                    - profile_image
                     - on_chain_token_id
                     - created_at
                 additionalProperties: false
@@ -582,6 +695,9 @@ paths:
                       wallet_address:
                         type: string
                         description: The wallet address for the membership
+                      profile_image:
+                        type: string
+                        description: The profile image for the membership
                       on_chain_token_id:
                         type: string
                         description: The on chain token id for the membership
@@ -605,11 +721,17 @@ paths:
                         - twitter_username
                         - instagram_username
                         - tiktok_username
+                      family_member_birthdays:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of family member birthdays
                     additionalProperties: false
                     required:
                     - id
                     - external_user_id
                     - wallet_address
+                    - profile_image
                     - on_chain_token_id
                     - created_at
                 additionalProperties: false
@@ -622,6 +744,18 @@ paths:
             schema:
               type: object
               properties:
+                family_member_birthdays[status]:
+                  type: string
+                  enum:
+                  - active
+                  - inactive
+                  description: family member's membership status
+                family_member_birthdays[first_name]:
+                  type: string
+                  description: the first name of the family member
+                family_member_birthdays[birthday]:
+                  type: string
+                  description: the birthday of the family member
                 wallet_address:
                   type: string
                   description: the wallet address to update the program membership with
@@ -631,10 +765,44 @@ paths:
                 external_user_id:
                   type: string
                   description: the external user id to update the program membership with
+                birthday:
+                  type: string
+                  description: The user's birthday
+                first_name:
+                  type: string
+                  description: The user's first name
+                last_name:
+                  type: string
+                  description: The user's last name
+                email:
+                  type: string
+                  description: the user's email address
+                phone:
+                  type: string
+                  description: the user's phone number
+                family_member_birthdays[last_name]:
+                  type: string
+                  description: the last name of the family member
+              required:
+              - family_member_birthdays[status]
+              - family_member_birthdays[first_name]
+              - family_member_birthdays[birthday]
           multipart/form-data:
             schema:
               type: object
               properties:
+                family_member_birthdays[status]:
+                  type: string
+                  enum:
+                  - active
+                  - inactive
+                  description: family member's membership status
+                family_member_birthdays[first_name]:
+                  type: string
+                  description: the first name of the family member
+                family_member_birthdays[birthday]:
+                  type: string
+                  description: the birthday of the family member
                 wallet_address:
                   type: string
                   description: the wallet address to update the program membership with
@@ -644,6 +812,28 @@ paths:
                 external_user_id:
                   type: string
                   description: the external user id to update the program membership with
+                birthday:
+                  type: string
+                  description: The user's birthday
+                first_name:
+                  type: string
+                  description: The user's first name
+                last_name:
+                  type: string
+                  description: The user's last name
+                email:
+                  type: string
+                  description: the user's email address
+                phone:
+                  type: string
+                  description: the user's phone number
+                family_member_birthdays[last_name]:
+                  type: string
+                  description: the last name of the family member
+              required:
+              - family_member_birthdays[status]
+              - family_member_birthdays[first_name]
+              - family_member_birthdays[birthday]
   /v2/program-memberships/search:
     get:
       tags:
@@ -676,6 +866,9 @@ paths:
                       wallet_address:
                         type: string
                         description: The wallet address for the membership
+                      profile_image:
+                        type: string
+                        description: The profile image for the membership
                       on_chain_token_id:
                         type: string
                         description: The on chain token id for the membership
@@ -699,11 +892,17 @@ paths:
                         - twitter_username
                         - instagram_username
                         - tiktok_username
+                      family_member_birthdays:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of family member birthdays
                     additionalProperties: false
                     required:
                     - id
                     - external_user_id
                     - wallet_address
+                    - profile_image
                     - on_chain_token_id
                     - created_at
                 additionalProperties: false
@@ -724,6 +923,8 @@ paths:
         schema:
           type: string
       responses:
+        '404':
+          description: Could not find the program membership provided.
         '200':
           description: Returns details successfully
           content:
@@ -747,8 +948,6 @@ paths:
                 additionalProperties: false
                 required:
                 - level
-        '404':
-          description: Could not find the program membership provided.
       description: Invoke this endpoint to return the tier and earned points (XP) for a given program membership id.
 components:
   securitySchemes:
