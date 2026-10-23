@@ -357,3 +357,9 @@ components:
       type: apiKey
       in: header
       name: X-API-Key
+x-provenance:
+  method: harvested
+  publisher: Hang
+  source: https://firebasestorage.googleapis.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FnDjUJ7LXq2gMv9rmEsrI%2Fimports%2F9Jq6a7ptZ1zZpcbGXBNq%2Fschema_swagger_form_data.json?alt=media&amp;token=f20a8d6c-a561-4ac2-8ede-0d9b6f694b19
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
